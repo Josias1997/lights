@@ -1,0 +1,18 @@
+.NavLink {
+    margin: 10px 0;
+    box-sizing: border-box;
+    display: block;
+    text-align: center;
+    width: 100%;
+}
+
+.NavLink > a {
+    color: white;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+.NavLink > a:hover,
+.NavLink > .active {
+    color: orange;
+}

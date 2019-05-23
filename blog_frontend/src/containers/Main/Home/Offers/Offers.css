@@ -1,0 +1,11 @@
+.Offers {
+    display: flex;
+    flex-flow: row nowrap;
+    justify-content: center;
+    align-items: center;
+    color: white;
+}
+
+.Offers [class="carousel"] {
+    display: none;
+}

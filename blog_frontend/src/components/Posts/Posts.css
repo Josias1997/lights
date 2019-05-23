@@ -1,0 +1,11 @@
+.Posts {
+    display: flex;
+    flex-flow: row nowrap;
+    justify-content: center;
+    align-items: center;
+    align-self: center;
+    color: white;
+}
+.Posts [class="carousel"] {
+    display: none;
+}

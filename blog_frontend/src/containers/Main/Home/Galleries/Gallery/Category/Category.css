@@ -1,0 +1,10 @@
+.Category {
+    width: 300px;
+}
+.Category img {
+    width: 150px;
+    height: 100px;
+}
+.Single:hover {
+    padding: 3px;
+}

@@ -1,0 +1,37 @@
+{
+  "name": "myblog",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "dev": "webpack --mode development ./blog_frontend/src/index.js --output ./blog_frontend/static/frontend/js/main.js",
+    "build": "webpack --mode production ./blog_frontend/src/index.js --output ./blog_frontend/static/frontend/js/main.js"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "@babel/core": "^7.4.3",
+    "@babel/preset-env": "^7.4.3",
+    "@babel/preset-react": "^7.0.0",
+    "babel-loader": "^8.0.5",
+    "babel-plugin-transform-class-properties": "^6.24.1",
+    "css-loader": "^2.1.1",
+    "file-loader": "^3.0.1",
+    "prop-types": "^15.7.2",
+    "react": "^16.8.6",
+    "react-dom": "^16.8.6",
+    "style-loader": "^0.23.1",
+    "swiper": "^4.5.0",
+    "webpack": "^4.30.0",
+    "webpack-cli": "^3.3.1"
+  },
+  "dependencies": {
+    "axios": "^0.18.0",
+    "react-id-swiper": "^2.1.2",
+    "react-responsive-carousel": "^3.1.49",
+    "react-router": "^5.0.0",
+    "react-router-dom": "^5.0.0"
+  }
+}
