@@ -1,8 +1,10 @@
 import React from 'react';
+import truncate from '../../../../../helpers/truncate';
 import './Offer.css';
 
 const Offer = props => {
     const {offer} = props;
+    let content = truncate(offer.content, null, null);
     return(
         <div className={"Offer"}>
             <h3>{offer.title}</h3>
@@ -10,7 +12,7 @@ const Offer = props => {
             <div>
                <img src={offer.url} alt={offer.url}/>
             </div>
-            <p>{offer.content}</p>
+            <p>{content}</p>
         </div>
     )
 };

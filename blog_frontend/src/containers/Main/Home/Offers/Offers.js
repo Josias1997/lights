@@ -11,7 +11,6 @@ class Offers extends Component {
     componentDidMount() {
         axios.get('api/blog/offers')
             .then(response => {
-                console.log(response.data);
                 let updatedOffers = response.data.reverse();
                 this.setState({
                     offers: updatedOffers

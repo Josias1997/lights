@@ -5,12 +5,14 @@ import Blog from "./Blog/Blog";
 import Offers from "./Offers/Offers";
 import './Home.css';
 import axios from "axios";
-import Modal from "../../../components/UI/Modal/Modal";
+import CategoryModal from "../../../components/UI/CategoryModal/CategoryModal";
 
 class Home extends Component {
     state = {
         pictures: [],
-        loading: true
+        loading: true,
+        open: false,
+        currentId: ''
     };
     componentWillMount() {
         axios.get('api/blog/pictures')
@@ -22,8 +24,22 @@ class Home extends Component {
                 this.setState({loading: false});
         });
     }
-    handleCategoryClick = name => {
-        console.log(name);
+    onOpenCategoryModal = id => {
+        console.log(id);
+        const homeState = this.state;
+        homeState.open = true;
+        homeState.currentId = id;
+        this.setState({
+            ...homeState
+        });
+    };
+    onCloseCategoryModal = () => {
+        const homeState = this.state;
+        homeState.open = false;
+        homeState.currentId = '';
+        this.setState({
+            ...homeState
+        })
     };
     render() {
         return (
@@ -33,12 +49,16 @@ class Home extends Component {
                         pictures={this.state.pictures}
                         loading={this.state.loading}/>
                 </div>
-                <Galleries galleryClicked={this.handleCategoryClick}/>
-                <Modal/>
+                <Galleries galleryClicked={this.onOpenCategoryModal}/>
+                <CategoryModal
+                    open={this.state.open}
+                    close={this.onCloseCategoryModal}
+                    id={this.state.currentId}
+                />
                 <Blog/>
                 <Offers />
             </div>
-    )
+        )
     }
 }
 

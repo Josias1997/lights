@@ -1,6 +1,6 @@
 import React, {Component} from 'react';
 import Gallery from "./Gallery/Gallery";
-import Modal from "../../../../components/UI/Modal/Modal";
+import CategoryModal from "../../../../components/UI/CategoryModal/CategoryModal";
 
 class Galleries extends Component {
     render() {
