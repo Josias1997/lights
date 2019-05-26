@@ -9,16 +9,16 @@ class CategoryModal extends Component {
         pictures: [],
         loading: true
     };
-    shouldComponentUpdate(nextProps, nextState, nextContext) {
-        return this.props.id !== nextProps.id;
-    }
+   // shouldComponentUpdate(nextProps, nextState, nextContext) {
+    //    return this.props.open && this.props.id !== '';
+   // }
 
     componentDidUpdate() {
         const {id} = this.props;
         if(id !== '') {
             axios.get('api/blog/pictures')
             .then(response => {
-                console.log(response.data);
+                console.log(response);
                 let updatedPictures = response.data.filter(picture => {
                     return picture.category.id === id;
                 }).reverse();
