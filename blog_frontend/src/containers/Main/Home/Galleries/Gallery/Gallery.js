@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import axios from 'axios';
 import Category from './Category/Category';
+import Roll from 'react-reveal/Roll';
 import './Gallery.css';
 
 class Gallery extends Component {
@@ -35,9 +36,11 @@ class Gallery extends Component {
                 });
         }
         return(
-            <div className={single ? "Gallery":"Slider"}>
-                {content}
-            </div>
+            <Roll>
+                <div className={single ? "Gallery":"Slider"}>
+                    {content}
+                </div>
+            </Roll>
         );
     }
 }

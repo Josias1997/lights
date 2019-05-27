@@ -1,10 +1,64 @@
+.Category, .MultipleCategory{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    align-self: center;
+}
 .Category {
-    width: 300px;
+    width: 33%;
 }
 .Category img {
-    width: 150px;
-    height: 100px;
+    width: 95%;
+    height: 100%;
 }
 .Single:hover {
-    padding: 3px;
+    -webkit-filter: blur(3px);
+    filter: blur(3px);
+}
+.Multiple:hover {
+    filter: opacity(50%);
+}
+.FirstLineCategoryTitle,
+.SecondLineCategoryTitle,
+.MultipleCategoryTitle {
+    background-color: rgba(0,0,0, 0.9); /* Black w/opacity/see-through */
+    color: white;
+    font-weight: bold;
+    position: absolute;
+    /*top: 50%;*/
+    transform: translate(-50%, -50%);
+    z-index: 2;
+    text-align: center;
+    cursor: pointer;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.MultipleCategoryTitle{
+    margin-top: 200px;
+    left: 50%;
+    height: 6%;
+    width: 60%;
+    padding: 20px;
+}
+.FirstLineCategoryTitle, .SecondLineCategoryTitle{
+    width: 10%;
+    height: 25%;
+}
+.FirstLineCategoryTitle:hover,
+.SecondLineCategoryTitle:hover,
+.MultipleCategoryTitle:hover {
+    -webkit-filter: opacity(60%);
+    filter: opacity(60%);
+}
+#category-1, #category-4 {
+    left: 17%;
+}
+#category-2, #category-5 {
+    left: 50%;
+}
+
+#category-3, #category-6 {
+    left: 83%;
 }

@@ -24,6 +24,10 @@ const SimpleCarousel = props => {
     }
     return (
         <div className={"Carousel"}>
+            <div className={"Slogan"}>
+                <h1 className={"title"}>Lights Photography</h1>
+                <h1 className={"subtitle"}>"Because your moments are valuable to us"</h1>
+            </div>
             {content}
         </div>
     )

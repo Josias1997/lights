@@ -5,7 +5,8 @@ import MyCarousel from "../../../../components/UI/MyCarousel/MyCarousel";
 
 class Offers extends Component {
     state = {
-        offers: []
+        offers: [],
+        loading: true
     };
 
     componentDidMount() {
@@ -13,7 +14,8 @@ class Offers extends Component {
             .then(response => {
                 let updatedOffers = response.data.reverse();
                 this.setState({
-                    offers: updatedOffers
+                    offers: updatedOffers,
+                    loading: false
                 })
             }).catch(error => {
                 console.log(error);
@@ -21,12 +23,12 @@ class Offers extends Component {
     }
 
     render() {
-        return (<div >
-            <h1>Offers</h1>
+        return (
             <div className={"Offers"}>
-                <MyCarousel elements={this.state.offers}/>
+                <MyCarousel elements={this.state.offers} title={"Offers"}/>
             </div>
-        </div>)
+
+        )
     }
 }
 

@@ -28,7 +28,7 @@ class Picture(Content):
 
 class Offer(Content):
     image = models.ImageField(upload_to="offers/pictures/", null=True)
-    price = models.FloatField
+    price = models.FloatField(default=0)
 
 
 class Category(models.Model):
