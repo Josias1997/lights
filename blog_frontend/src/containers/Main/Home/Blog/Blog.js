@@ -1,4 +1,5 @@
 import React, {Component} from 'react';
+import Slider from 'react-reveal/Slide';
 import axios from 'axios';
 import Posts from "../../../../components/Posts/Posts";
 
@@ -19,7 +20,9 @@ class Blog extends Component {
     }
     render() {
         return (<div className={"Blog"}>
-            <Posts articles={this.state.articles}/>
+            <Slider>
+                <Posts articles={this.state.articles}/>
+            </Slider>
         </div>);
     }
 }
