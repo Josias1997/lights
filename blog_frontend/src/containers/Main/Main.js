@@ -26,7 +26,7 @@ class Main extends Component {
                     <Route path={"/"} exact component={Home}/>
                     <Route path={"/gallery"} component={() => <Gallery single={false}/>} />
                     <Route path={"/offers"} component={() => <Offers anotherPage={true}/>} />
-                    <Route path={"/blog"} component={Blog} />
+                    <Route path={"/blog"} component={() => <Blog anotherPage={true}/>} />
                 </Aux>
         );
     }

@@ -1,13 +1,37 @@
 import React from 'react';
 import {Carousel} from "react-responsive-carousel";
+import Roll from 'react-reveal/Roll';
 import 'react-responsive-carousel/lib/styles/carousel.css';
 import './MyCarousel.css';
 import truncate from "../../../helpers/truncate";
+import Loader from "../Loader/Loader";
 
 const MyCarousel = props => {
-    const {elements} = props;
+    const {elements, title} = props;
+    let div = <Loader/>;
+    let newTitle = null;
+    if (title === 'Blog') {
+        newTitle = 'Last Article';
+    }
+    else {
+        newTitle = 'Last Offer';
+    }
+    if(elements.length !== 0) {
+        let {elementTitle, created_at, content} = elements[0];
+        let date = new Date(created_at).toString();
+        let truncatedContent = truncate(content, null, null);
+        div = <div className={"Offers-text"}>
+                <h1>{newTitle}</h1>
+                <h3>{elementTitle}</h3>
+                <i>{date}</i>
+                <p>{truncatedContent}</p>
+            {title === 'Offers' ? <h1>Price : {elements[0].price}</h1>:null}
+            </div>
+    }
     return (
-        <Carousel
+        <Roll left>
+            {div}
+                <Carousel
                 showArrows
                 emulateTouch
                 infiniteLoop
@@ -15,19 +39,15 @@ const MyCarousel = props => {
                 interval={4000}
             >
                 {elements.map(element =>{
-                    let date = new Date(element.created_at);
-                    let content = truncate(element.content, null, null);
                     return (
-                       <div key={element.id}>
-                            <h3>{element.title}</h3>
-                            <i>Added on {date.toString()}</i>
+                       <div key={element.id} className={"single-carousel"}>
                             <img src={element.url} alt={element.url}/>
-                            <p className={"legend"}>{content}</p>
                        </div>
                     )
                 }
                     )}
-        </Carousel>
+                </Carousel>
+        </Roll>
     )
 };
 

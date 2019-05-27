@@ -5,12 +5,17 @@ import MyCarousel from "../UI/MyCarousel/MyCarousel";
 
 class Posts extends Component {
     render() {
-        return (<div>
-            <h1>Blog</h1>
+        let content = <div>
             <div className={"Posts"}>
-                <MyCarousel elements={this.props.articles}/>
+                <MyCarousel elements={this.props.articles} title={"Blog"}/>
             </div>
-        </div>)
+        </div>;
+        if(this.props.anotherPage) {
+            content = <div>Blog</div>
+        }
+        return (
+            content
+        )
     }
 }
 

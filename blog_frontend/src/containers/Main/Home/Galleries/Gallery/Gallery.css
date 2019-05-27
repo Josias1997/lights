@@ -1,6 +1,6 @@
 .Gallery {
     display: flex;
-    flex-flow: row nowrap;
+    flex-flow: row wrap;
     justify-content: center;
     align-items: center;
     text-align: center;

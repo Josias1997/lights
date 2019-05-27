@@ -50,13 +50,14 @@ class Home extends Component {
                         loading={this.state.loading}/>
                 </div>
                 <Galleries galleryClicked={this.onOpenCategoryModal}/>
+
                 <CategoryModal
                     open={this.state.open}
                     close={this.onCloseCategoryModal}
                     id={this.state.currentId}
                 />
-                <Blog/>
-                <Offers />
+                <Blog anotherPage={false}/>
+                <Offers anotherPage={false}/>
             </div>
         )
     }

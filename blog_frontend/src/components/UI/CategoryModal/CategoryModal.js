@@ -42,6 +42,7 @@ class CategoryModal extends Component {
                 open={open}
                 onClose={close}
                 center
+                animationDuration={1000}
             >
                 <div className={"CategoryModal"}>
                     <SimpleCarousel

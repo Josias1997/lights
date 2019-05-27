@@ -30,24 +30,38 @@ class Category extends Component {
         let content = null;
         if(this.state.pictures.length !== 0) {
             if(single) {
-                 content = (<div key={category.id}
+                 content = (
+                         <div key={category.id}
                                  className={"Category"}
                                  onClick={clicked} >
-                                <p>{this.state.name}</p>
+                             <div>
+                                 <p
+                                     className={
+                                         category.id <= 3 ? "FirstLineCategoryTitle":"SecondLineCategoryTitle"
+                                     }
+                                     id={"category-"+category.id}
+                                 >{this.state.name}</p>
+                             </div>
                                 {this.state.pictures.map(picture => {
                                     return (
-                                            <img className={"Single"}
-                                                key={picture.id}
+                                        <div  key={picture.id}
+                                              className={"Single"}
+                                        >
+                                            <img
                                                 src={picture.url}
                                                 alt={picture.url}
                                             />
+                                        </div>
                                     )})}
-                            </div>
+                         </div>
                  )
             }
             else {
-                content = (<div key={category.id}>
-                <p>{this.state.name}</p>
+                content = (<div key={category.id} className={"MultipleCategory"}
+                >
+                <div className={"MultipleCategoryTitle"}>
+                  <h1>{this.state.name}</h1>
+                </div>
                 <Carousel
                     showArrows
                     emulateTouch
@@ -57,7 +71,10 @@ class Category extends Component {
                 >
                     {this.state.pictures.map(picture => {
                     return (
-                        <div key={picture.id} onClick={() => imageClicked(picture.id)}>
+                        <div key={picture.id}
+                             onClick={() => imageClicked(picture.id)}
+                             className={"Multiple"}
+                        >
                               <img
                                 src={picture.url}
                                 alt={picture.url}

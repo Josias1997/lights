@@ -1,4 +1,5 @@
 /node_modules
 /venv
 /.idea
+/blog_frontend/static/frontend/js
 
