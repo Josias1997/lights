@@ -56,8 +56,8 @@ class Home extends Component {
                     close={this.onCloseCategoryModal}
                     id={this.state.currentId}
                 />
-                <Blog/>
-                <Offers />
+                <Blog anotherPage={false}/>
+                <Offers anotherPage={false}/>
             </div>
         )
     }

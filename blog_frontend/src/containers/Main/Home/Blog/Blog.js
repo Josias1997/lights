@@ -19,7 +19,9 @@ class Blog extends Component {
     }
     render() {
         return (<div className={"Blog"}>
-            <Posts articles={this.state.articles}/>
+            <Posts articles={this.state.articles}
+                   anotherPage={this.props.anotherPage}
+            />
         </div>);
     }
 }

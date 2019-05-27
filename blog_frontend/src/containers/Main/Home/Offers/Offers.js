@@ -23,11 +23,14 @@ class Offers extends Component {
     }
 
     render() {
-        return (
-            <div className={"Offers"}>
+        let content =  <div className={"Offers"}>
                 <MyCarousel elements={this.state.offers} title={"Offers"}/>
-            </div>
-
+            </div>;
+        if(this.props.anotherPage) {
+            content = <div>Offers</div>
+        }
+        return (
+            content
         )
     }
 }
