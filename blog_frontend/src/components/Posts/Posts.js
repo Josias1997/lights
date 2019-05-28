@@ -2,6 +2,7 @@ import React, {Component} from 'react';
 
 import './Posts.css';
 import MyCarousel from "../UI/MyCarousel/MyCarousel";
+import Grid from "../UI/Grid/Grid";
 
 class Posts extends Component {
     render() {
@@ -10,8 +11,8 @@ class Posts extends Component {
                 <MyCarousel elements={this.props.articles} title={"Blog"}/>
             </div>
         </div>;
-        if(this.props.anotherPage) {
-            content = <div>Blog</div>
+        if (this.props.anotherPage) {
+            content = <Grid elements={this.props.articles} type={'articles'}/>
         }
         return (
             content

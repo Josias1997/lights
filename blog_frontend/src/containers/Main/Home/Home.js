@@ -5,14 +5,14 @@ import Blog from "./Blog/Blog";
 import Offers from "./Offers/Offers";
 import './Home.css';
 import axios from "axios";
-import CategoryModal from "../../../components/UI/CategoryModal/CategoryModal";
+import CustomModal from "../../../components/UI/Modals/CustomModal/CustomModal";
 
 class Home extends Component {
     state = {
         pictures: [],
         loading: true,
         open: false,
-        currentId: ''
+        selectedId: ''
     };
     componentWillMount() {
         axios.get('api/blog/pictures')
@@ -28,7 +28,7 @@ class Home extends Component {
         console.log(id);
         const homeState = this.state;
         homeState.open = true;
-        homeState.currentId = id;
+        homeState.selectedId = id;
         this.setState({
             ...homeState
         });
@@ -36,7 +36,7 @@ class Home extends Component {
     onCloseCategoryModal = () => {
         const homeState = this.state;
         homeState.open = false;
-        homeState.currentId = '';
+        homeState.selectedId = '';
         this.setState({
             ...homeState
         })
@@ -47,14 +47,17 @@ class Home extends Component {
                 <div className={"Home"}>
                     <SimpleCarousel
                         pictures={this.state.pictures}
-                        loading={this.state.loading}/>
+                        loading={this.state.loading}
+                        banner={true}
+                    />
                 </div>
                 <Galleries galleryClicked={this.onOpenCategoryModal}/>
 
-                <CategoryModal
+                <CustomModal
                     open={this.state.open}
                     close={this.onCloseCategoryModal}
-                    id={this.state.currentId}
+                    id={this.state.selectedId}
+                    type={'pictures'}
                 />
                 <Blog anotherPage={false}/>
                 <Offers anotherPage={false}/>

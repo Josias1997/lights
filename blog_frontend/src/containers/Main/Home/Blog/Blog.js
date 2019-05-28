@@ -6,6 +6,7 @@ class Blog extends Component {
     state = {
         articles: []
     };
+
     componentDidMount() {
         axios.get('api/blog/articles')
             .then(response => {
@@ -14,9 +15,10 @@ class Blog extends Component {
                     articles: updatedArticles
                 })
             }).catch(error => {
-                console.log(error)
+            console.log(error)
         })
     }
+
     render() {
         return (<div className={"Blog"}>
             <Posts articles={this.state.articles}

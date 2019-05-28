@@ -1,6 +1,7 @@
 .single-carousel img {
     -webkit-filter: blur(8px);
     filter: blur(8px);
+    border-radius: 30%;
 }
 .Offers-text {
     background-color: rgba(0,0,0, 1); /* Black w/opacity/see-through */
