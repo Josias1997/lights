@@ -24,10 +24,15 @@ class Offers extends Component {
     }
 
     render() {
+        const {anotherPage, clicked} = this.props;
         let content =  <div className={"Offers"}>
-                <MyCarousel elements={this.state.offers} title={"Offers"}/>
+                <MyCarousel
+                    elements={this.state.offers}
+                    title={"Offers"}
+                    carouselClicked={() => clicked(this.state.offers[0].id, "offers")}
+                />
             </div>;
-        if(this.props.anotherPage) {
+        if(anotherPage) {
             content = <Grid elements={this.state.offers} type={"offers"}/>
         }
         return (

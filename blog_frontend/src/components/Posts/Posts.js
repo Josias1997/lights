@@ -6,12 +6,17 @@ import Grid from "../UI/Grid/Grid";
 
 class Posts extends Component {
     render() {
+        const {anotherPage, clicked, articles} = this.props;
         let content = <div>
             <div className={"Posts"}>
-                <MyCarousel elements={this.props.articles} title={"Blog"}/>
+                <MyCarousel
+                    elements={articles}
+                    title={"Blog"}
+                    carouselClicked={() => clicked(articles[0].id, "articles")}
+                />
             </div>
         </div>;
-        if (this.props.anotherPage) {
+        if (anotherPage) {
             content = <Grid elements={this.props.articles} type={'articles'}/>
         }
         return (

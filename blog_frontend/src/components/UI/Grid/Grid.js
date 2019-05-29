@@ -2,7 +2,6 @@ import React, {Component} from 'react';
 import Card from "./Card/Card";
 import Roll from 'react-reveal/Roll';
 import './Grid.css';
-import CardModal from "../Modals/CardModal/CardModal";
 import CustomModal from "../Modals/CustomModal/CustomModal";
 
 

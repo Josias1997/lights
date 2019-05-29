@@ -41,7 +41,6 @@ class CustomModal extends Component {
             })
         }
     }
-
     render() {
         const {open, close} = this.props;
         let content = null;

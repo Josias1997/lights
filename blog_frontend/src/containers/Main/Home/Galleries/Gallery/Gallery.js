@@ -29,8 +29,8 @@ class Gallery extends Component {
                             key={category.id}
                             category={category}
                             single={single}
-                            clicked={() => categoryClicked(category.id)}
-                            imageClicked={this.handleImageClick}
+                            clicked={() => categoryClicked(category.id, "pictures")}
+                            imageClicked={() => this.handleImageClick(category.id)}
                         />
                     );
                 });

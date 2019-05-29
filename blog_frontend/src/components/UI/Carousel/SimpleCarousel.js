@@ -3,6 +3,7 @@ import {Carousel} from 'react-responsive-carousel'
 import 'react-responsive-carousel/lib/styles/carousel.css';
 import './SimpleCarousel.css';
 import Loader from '../Loader/Loader';
+import Slogan from "../Slogans/Slogan";
 
 const SimpleCarousel = props => {
     let content = <Loader/>;
@@ -24,10 +25,9 @@ const SimpleCarousel = props => {
     }
     let slogan = null;
     if (props.banner) {
-        slogan = <div className={"Slogan"}>
-            <h1 className={"title"}>Lights Photography</h1>
-            <h1 className={"subtitle"}>"Because your moments are valuable to us"</h1>
-        </div>
+        slogan =  <Slogan title={"Lights Photography"}
+                          subtitle={"\"Because your moments are valuable to us\""}
+        />
     }
     return (
         <div className={"Carousel"}>

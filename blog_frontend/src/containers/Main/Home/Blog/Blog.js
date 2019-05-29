@@ -20,9 +20,11 @@ class Blog extends Component {
     }
 
     render() {
+        const {anotherPage, clicked} = this.props;
         return (<div className={"Blog"}>
             <Posts articles={this.state.articles}
-                   anotherPage={this.props.anotherPage}
+                   anotherPage={anotherPage}
+                   clicked={clicked}
             />
         </div>);
     }

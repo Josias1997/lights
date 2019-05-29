@@ -24,8 +24,9 @@ class Home extends Component {
                 this.setState({loading: false});
         });
     }
-    onOpenCategoryModal = id => {
+    onOpenModal = (id, type) => {
         console.log(id);
+        console.log(type);
         const homeState = this.state;
         homeState.open = true;
         homeState.selectedId = id;
@@ -33,14 +34,15 @@ class Home extends Component {
             ...homeState
         });
     };
-    onCloseCategoryModal = () => {
+    onCloseModal = () => {
         const homeState = this.state;
         homeState.open = false;
         homeState.selectedId = '';
         this.setState({
             ...homeState
-        })
+        });
     };
+
     render() {
         return (
             <div>
@@ -51,16 +53,16 @@ class Home extends Component {
                         banner={true}
                     />
                 </div>
-                <Galleries galleryClicked={this.onOpenCategoryModal}/>
+                <Galleries galleryClicked={this.onOpenModal}/>
 
                 <CustomModal
                     open={this.state.open}
-                    close={this.onCloseCategoryModal}
+                    close={this.onCloseModal}
                     id={this.state.selectedId}
-                    type={'pictures'}
+                    type={"pictures"}
                 />
-                <Blog anotherPage={false}/>
-                <Offers anotherPage={false}/>
+                <Blog anotherPage={false} clicked={this.onOpenModal}/>
+                <Offers anotherPage={false} clicked={this.onOpenModal}/>
             </div>
         )
     }
