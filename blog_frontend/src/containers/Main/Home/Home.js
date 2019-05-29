@@ -12,7 +12,8 @@ class Home extends Component {
         pictures: [],
         loading: true,
         open: false,
-        selectedId: ''
+        selectedId: '',
+        modalType: ''
     };
     componentWillMount() {
         axios.get('api/blog/pictures')
@@ -27,17 +28,23 @@ class Home extends Component {
     onOpenModal = (id, type) => {
         console.log(id);
         console.log(type);
-        const homeState = this.state;
+        const homeState = {
+            ...this.state
+        };
         homeState.open = true;
         homeState.selectedId = id;
+        homeState.modalType = type;
         this.setState({
             ...homeState
         });
     };
     onCloseModal = () => {
-        const homeState = this.state;
+        const homeState = {
+            ...this.state
+        };
         homeState.open = false;
         homeState.selectedId = '';
+        homeState.modalType = '';
         this.setState({
             ...homeState
         });
