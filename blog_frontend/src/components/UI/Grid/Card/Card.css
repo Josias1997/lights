@@ -1,0 +1,28 @@
+.Card {
+    width: 33%;
+    text-align: left;
+}
+.Card img, .ModalContent img {
+    width: 95%;
+    border-radius: 20%;
+}
+.Card .CardBody {
+    width: 90%;
+}
+.Card:hover, .Card button {
+    -webkit-filter: opacity(60%);
+    filter: opacity(60%);
+    cursor: pointer;
+}
+.ModalContent {
+    width: 100%
+}
+.ModalContent {
+    color: black;
+    text-align: left;
+}
+.Card button {
+    width: 90%;
+    padding: 5px;
+    border-radius: 5%;
+}

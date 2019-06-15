@@ -3,11 +3,11 @@ import {Carousel} from "react-responsive-carousel";
 import Roll from 'react-reveal/Roll';
 import 'react-responsive-carousel/lib/styles/carousel.css';
 import './MyCarousel.css';
-import truncate from "../../../helpers/truncate";
 import Loader from "../Loader/Loader";
+import Banner from "../Slogans/Banner";
 
 const MyCarousel = props => {
-    const {elements, title} = props;
+    const {elements, title, carouselClicked} = props;
     let div = <Loader/>;
     let newTitle = null;
     if (title === 'Blog') {
@@ -17,15 +17,10 @@ const MyCarousel = props => {
         newTitle = 'Last Offer';
     }
     if(elements.length !== 0) {
-        let {elementTitle, created_at, content} = elements[0];
-        let date = new Date(created_at).toString();
-        let truncatedContent = truncate(content, null, null);
-        div = <div className={"Offers-text"}>
-                <h1>{newTitle}</h1>
-                <h3>{elementTitle}</h3>
-                <i>{date}</i>
-                <p>{truncatedContent}</p>
-            {title === 'Offers' ? <h1>Price : {elements[0].price}</h1>:null}
+        div = <div className={"Offers-text"} onClick={carouselClicked}>
+            <Banner element={elements[0]}
+                    newTitle={newTitle}
+            />
             </div>
     }
     return (

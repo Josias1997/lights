@@ -5,14 +5,15 @@ import Blog from "./Blog/Blog";
 import Offers from "./Offers/Offers";
 import './Home.css';
 import axios from "axios";
-import CategoryModal from "../../../components/UI/CategoryModal/CategoryModal";
+import CustomModal from "../../../components/UI/Modals/CustomModal/CustomModal";
 
 class Home extends Component {
     state = {
         pictures: [],
         loading: true,
         open: false,
-        currentId: ''
+        selectedId: '',
+        modalType: ''
     };
     componentWillMount() {
         axios.get('api/blog/pictures')
@@ -24,40 +25,51 @@ class Home extends Component {
                 this.setState({loading: false});
         });
     }
-    onOpenCategoryModal = id => {
+    onOpenModal = (id, type) => {
         console.log(id);
-        const homeState = this.state;
+        console.log(type);
+        const homeState = {
+            ...this.state
+        };
         homeState.open = true;
-        homeState.currentId = id;
+        homeState.selectedId = id;
+        homeState.modalType = type;
         this.setState({
             ...homeState
         });
     };
-    onCloseCategoryModal = () => {
-        const homeState = this.state;
+    onCloseModal = () => {
+        const homeState = {
+            ...this.state
+        };
         homeState.open = false;
-        homeState.currentId = '';
+        homeState.selectedId = '';
+        homeState.modalType = '';
         this.setState({
             ...homeState
-        })
+        });
     };
+
     render() {
         return (
             <div>
                 <div className={"Home"}>
                     <SimpleCarousel
                         pictures={this.state.pictures}
-                        loading={this.state.loading}/>
+                        loading={this.state.loading}
+                        banner={true}
+                    />
                 </div>
-                <Galleries galleryClicked={this.onOpenCategoryModal}/>
+                <Galleries galleryClicked={this.onOpenModal}/>
 
-                <CategoryModal
+                <CustomModal
                     open={this.state.open}
-                    close={this.onCloseCategoryModal}
-                    id={this.state.currentId}
+                    close={this.onCloseModal}
+                    id={this.state.selectedId}
+                    type={"pictures"}
                 />
-                <Blog anotherPage={false}/>
-                <Offers anotherPage={false}/>
+                <Blog anotherPage={false} clicked={this.onOpenModal}/>
+                <Offers anotherPage={false} clicked={this.onOpenModal}/>
             </div>
         )
     }

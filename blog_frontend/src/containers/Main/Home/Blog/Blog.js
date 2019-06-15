@@ -6,6 +6,7 @@ class Blog extends Component {
     state = {
         articles: []
     };
+
     componentDidMount() {
         axios.get('api/blog/articles')
             .then(response => {
@@ -14,13 +15,16 @@ class Blog extends Component {
                     articles: updatedArticles
                 })
             }).catch(error => {
-                console.log(error)
+            console.log(error)
         })
     }
+
     render() {
+        const {anotherPage, clicked} = this.props;
         return (<div className={"Blog"}>
             <Posts articles={this.state.articles}
-                   anotherPage={this.props.anotherPage}
+                   anotherPage={anotherPage}
+                   clicked={clicked}
             />
         </div>);
     }
