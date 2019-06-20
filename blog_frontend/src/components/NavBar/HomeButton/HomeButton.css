@@ -1,0 +1,11 @@
+.HomeButton {
+    display: none;
+}
+
+@media screen and (max-width: 550px) {
+    .HomeButton {
+        display: block;
+        cursor: pointer;
+        margin-top: 5px;
+    }
+}

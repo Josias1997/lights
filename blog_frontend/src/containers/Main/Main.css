@@ -1,0 +1,16 @@
+.Container {
+    margin-top: 100px;
+}
+.blur {
+    margin-top: 100px;
+    -webkit-filter: opacity(50%);
+    filter: opacity(50%);
+    -webkit-transition: -webkit-filter 0.8s linear;
+    transition: filter 0.8s linear;
+}
+
+@media screen and (max-width: 550px) {
+    .Container {
+        margin-top: 50px;
+    }
+}

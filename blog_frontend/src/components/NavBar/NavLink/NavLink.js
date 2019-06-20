@@ -4,7 +4,7 @@ import './NavLink.css';
 
  const NavLink = props => {
      return (
-            <li className={"NavLink"}>
+            <li className={"NavLink"} onClick={props.clicked}>
                  <Link to={props.link}>
                       {props.content}
                  </Link>

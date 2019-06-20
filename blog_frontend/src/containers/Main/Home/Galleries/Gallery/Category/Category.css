@@ -3,9 +3,13 @@
     justify-content: center;
     align-items: center;
     align-self: center;
+    height: 100%;
 }
 .Category {
     width: 33%;
+}
+.Category > div:first-child {
+    height: 90%;
 }
 .Category img {
     width: 95%;
@@ -20,8 +24,13 @@
     filter: blur(3px);
 }
 .Multiple:hover {
-    filter: opacity(50%);
+    -webkit-filter: opacity(90%);
+    filter: opacity(90%);
 }
+.MultipleCategory:hover > .MultipleCategoryTitle {
+    visibility: hidden;
+}
+
 .FirstLineCategoryTitle,
 .SecondLineCategoryTitle,
 .MultipleCategoryTitle {
@@ -40,10 +49,9 @@
     align-items: center;
 }
 .MultipleCategoryTitle{
-    margin-top: 200px;
     left: 50%;
-    height: 6%;
-    width: 30%;
+    height: 2%;
+    width: 15%;
     padding: 20px;
 }
 .FirstLineCategoryTitle, .SecondLineCategoryTitle{
@@ -65,4 +73,16 @@
 
 #category-3, #category-6 {
     left: 83%;
+}
+@media screen and (min-width: 600px) {
+    .FirstLineCategoryTitle,
+    .SecondLineCategoryTitle{
+        font-size: 10px;
+    }
+}
+@media screen and (max-width: 599px) {
+    .FirstLineCategoryTitle,
+    .SecondLineCategoryTitle{
+        font-size: 9px;
+    }
 }

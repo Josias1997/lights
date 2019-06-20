@@ -10,7 +10,7 @@ class Blog extends Component {
     componentDidMount() {
         axios.get('api/blog/articles')
             .then(response => {
-                let updatedArticles = response.data.reverse();
+                let updatedArticles = response.data;
                 this.setState({
                     articles: updatedArticles
                 })

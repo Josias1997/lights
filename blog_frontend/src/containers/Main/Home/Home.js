@@ -13,7 +13,7 @@ class Home extends Component {
         loading: true,
         open: false,
         selectedId: '',
-        modalType: ''
+        type: 'categories'
     };
     componentWillMount() {
         axios.get('api/blog/pictures')
@@ -25,15 +25,13 @@ class Home extends Component {
                 this.setState({loading: false});
         });
     }
-    onOpenModal = (id, type) => {
+    onOpenModal = (id) => {
         console.log(id);
-        console.log(type);
         const homeState = {
             ...this.state
         };
         homeState.open = true;
         homeState.selectedId = id;
-        homeState.modalType = type;
         this.setState({
             ...homeState
         });
@@ -44,10 +42,15 @@ class Home extends Component {
         };
         homeState.open = false;
         homeState.selectedId = '';
-        homeState.modalType = '';
         this.setState({
             ...homeState
         });
+    };
+    goToOffers = () => {
+        this.props.history.push("/offers");
+    };
+    gotToBlog = () => {
+        this.props.history.push("/blog");
     };
 
     render() {
@@ -66,10 +69,10 @@ class Home extends Component {
                     open={this.state.open}
                     close={this.onCloseModal}
                     id={this.state.selectedId}
-                    type={"pictures"}
+                    type={this.state.type}
                 />
-                <Blog anotherPage={false} clicked={this.onOpenModal}/>
-                <Offers anotherPage={false} clicked={this.onOpenModal}/>
+                <Blog anotherPage={false} clicked={this.gotToBlog}/>
+                <Offers anotherPage={false} clicked={this.goToOffers}/>
             </div>
         )
     }

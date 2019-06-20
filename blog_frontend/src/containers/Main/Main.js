@@ -6,6 +6,8 @@ import Aux from '../../hoc/Auxiliary/Auxiliary';
 import Home from "./Home/Home";
 import Offers from "./Home/Offers/Offers";
 import Blog from "./Home/Blog/Blog";
+import About from "../About/About";
+import './Main.css';
 
 class Main extends Component {
     state = {
@@ -15,18 +17,34 @@ class Main extends Component {
             {value: 'Offers', link: '/offers'},
             {value: 'Blog', link: '/blog'},
             {value: 'About Us', link: '/about-us'}
-        ]
+        ],
+        isOpen: false
+    };
+    toggleNavBar = () => {
+        this.setState( prevState => ({
+            isOpen: window.innerWidth <= 480 ? !prevState.isOpen:false
+        }))
+    };
+    closeNavBar = () => {
+        this.setState({
+            isOpen: false
+        })
     };
     render() {
         return (
                 <Aux>
-                    <nav>
-                        <NavBar links={this.state.links}/>
-                    </nav>
-                    <Route path={"/"} exact component={Home}/>
-                    <Route path={"/gallery"} component={() => <Gallery single={false}/>} />
-                    <Route path={"/offers"} component={() => <Offers anotherPage={true}/>} />
-                    <Route path={"/blog"} component={() => <Blog anotherPage={true}/>} />
+                       <NavBar
+                           links={this.state.links}
+                           open={this.state.isOpen}
+                           clicked={this.toggleNavBar}
+                       />
+                    <div className={!this.state.isOpen ? "Container": "Container blur"}>
+                        <Route path={"/"} exact component={Home}/>
+                        <Route path={"/gallery"} component={() => <Gallery single={false}/>} />
+                        <Route path={"/offers"} component={() => <Offers anotherPage={true}/>} />
+                        <Route path={"/blog"} component={() => <Blog anotherPage={true}/>} />
+                        <Route path={"/about-us"} component={About}/>
+                    </div>
                 </Aux>
         );
     }

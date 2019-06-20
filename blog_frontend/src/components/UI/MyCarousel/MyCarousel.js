@@ -11,10 +11,10 @@ const MyCarousel = props => {
     let div = <Loader/>;
     let newTitle = null;
     if (title === 'Blog') {
-        newTitle = 'Last Article';
+        newTitle = 'Last Articles';
     }
     else {
-        newTitle = 'Last Offer';
+        newTitle = 'Last Offers';
     }
     if(elements.length !== 0) {
         div = <div className={"Offers-text"} onClick={carouselClicked}>
