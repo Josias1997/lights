@@ -3,6 +3,7 @@ from django.utils import timezone
 from django.db.models.signals import pre_save, pre_delete
 from django.dispatch import receiver
 import os
+from .helpers import set_path, remove_file
 # Create your models here.
 
 
@@ -38,54 +39,29 @@ class Category(models.Model):
         return self.name
 
 
+class AboutMe(models.Model):
+    firstName = models.CharField(max_length=100)
+    lastName = models.CharField(max_length=100)
+    phoneNumber = models.IntegerField()
+    email = models.EmailField(max_length=100)
+    overview = models.TextField()
+    image = models.ImageField(upload_to="profile/pictures")
+    url = models.CharField(max_length=100, null=True, default="none")
+
+
 @receiver(pre_save)
 def save_handler(sender, instance, **kwargs):
     if isinstance(instance, Article):
-        instance.url = ""
-        url_list = instance.image.url.split('/')
-        url_list.insert(1, '/articles/pictures/')
-        instance.url = "".join(url_list)
+        set_path(instance, "articles")
     elif isinstance(instance, Picture):
-        instance.url = ""
-        url_list = instance.image.url.split('/')
-        url_list.insert(1, '/pictures/pictures/')
-        instance.url = "".join(url_list)
+        set_path(instance, "pictures")
     elif isinstance(instance, Offer):
-        instance.url = ""
-        url_list = instance.image.url.split('/')
-        url_list.insert(1, '/offers/pictures/')
-        instance.url = "".join(url_list)
+        set_path(instance, "offers")
+    elif isinstance(instance, AboutMe):
+        set_path(instance, "profile")
 
 
-@receiver(pre_delete, sender=Article)
-def delete_handler(sender, instance, **kwargs):
-    if os.path.exists(instance.image.url):
-        os.remove(instance.image.url)
-
-
-# @receiver(pre_save, sender=Picture)
-# def save_handler(sender, instance, **kwargs):
-#     instance.url = ""
-#     url_list = instance.image.url.split('/')
-#     url_list.insert(1, '/pictures/pictures/')
-#     instance.url = "".join(url_list)
-
-
-@receiver(pre_delete, sender=Picture)
-def delete_handler(sender, instance, **kwargs):
-    if os.path.exists(instance.image.url):
-        os.remove(instance.image.url)
-
-#
-# @receiver(pre_save, sender=Offer)
-# def save_handler(sender, instance, **kwargs):
-#     instance.url = ""
-#     url_list = instance.image.url.split('/')
-#     url_list.insert(1, '/offers/pictures/')
-#     instance.url = "".join(url_list)
-
-
-@receiver(pre_delete, sender=Offer)
+@receiver(pre_delete)
 def delete_handler(sender, instance, **kwargs):
     if os.path.exists(instance.image.url):
         os.remove(instance.image.url)

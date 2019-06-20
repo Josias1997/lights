@@ -13,12 +13,9 @@ class Category extends Component {
 
     componentDidMount() {
         const {category, single} = this.props;
-        axios.get('api/blog/pictures')
+        axios.get('api/blog/categories/' + category.id)
             .then(response => {
-                const updatedPictures = response.data.filter(picture => {
-                    return picture.category.id === category.id
-                });
-                updatedPictures.reverse();
+                const updatedPictures = response.data;
                 this.setState({
                     name: category.name,
                     pictures: single ? Array(updatedPictures[0]) : updatedPictures
@@ -72,12 +69,11 @@ class Category extends Component {
                         emulateTouch
                         infiniteLoop
                         autoPlay
-                        interval={4000}
+                        interval={2000}
                     >
                         {this.state.pictures.map(picture => {
                             return (
                                 <div key={picture.id}
-                                     onClick={() => imageClicked(picture.id)}
                                      className={"Multiple"}
                                 >
                                     <img

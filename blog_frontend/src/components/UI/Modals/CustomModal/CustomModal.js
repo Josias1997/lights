@@ -17,17 +17,13 @@ class CustomModal extends Component {
     componentDidUpdate() {
         const {id, type} = this.props;
         if (id !== '') {
-            axios.get('api/blog/' + type)
+            axios.get('api/blog/' + type + '/' + id)
                 .then(response => {
                     let updatedElements = '';
                     if (type === 'offers' || type === 'articles') {
-                        updatedElements = response.data.filter(element => {
-                            return element.id === id;
-                        })[0]
+                        updatedElements = response.data
                     } else {
-                        updatedElements = response.data.filter(picture => {
-                            return picture.category.id === id;
-                        }).reverse();
+                        updatedElements = response.data.reverse();
                     }
                     this.setState({
                         elements: updatedElements,
@@ -42,12 +38,12 @@ class CustomModal extends Component {
         }
     }
     render() {
-        const {open, close} = this.props;
+        const {open, close, type} = this.props;
         let content = null;
-        if (this.props.type === 'offers' || this.props.type === 'articles') {
+        if (type === 'offers' || type === 'articles') {
             content = <Card card={this.state.elements} single={true}/>
         }
-        else {
+        else if (type === 'categories') {
             content = <SimpleCarousel
             pictures={this.state.elements}
             loading={this.state.loading}

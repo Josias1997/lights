@@ -12,6 +12,7 @@ const Card = props => {
             <img src={card.url} alt={card.url}/>
             <div className={"CardBody"}>
                 <h2>{card.title}</h2>
+                {card.price !== null ? (<h3>Price: {card.price}</h3>):null}
                 <p>{truncatedContent}</p>
                 <button onClick={() => handleClick(card.id)}>More</button>
             </div>

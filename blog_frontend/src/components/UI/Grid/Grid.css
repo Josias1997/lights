@@ -2,3 +2,11 @@
     display: flex;
     flex-flow: row wrap;
 }
+@media screen and (max-width: 550px) {
+    .Grid {
+        flex-flow: column;
+        justify-content: center;
+        align-self: center;
+        align-items: center;
+    }
+}

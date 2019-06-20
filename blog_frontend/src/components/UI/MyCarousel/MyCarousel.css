@@ -22,3 +22,9 @@
     -webkit-filter: opacity(60%);
     filter: opacity(60%);
 }
+@media screen and (max-width: 550px) {
+    .Offers-text {
+        width: 50%;
+        font-size: 10px;
+    }
+}

@@ -13,7 +13,7 @@ class Offers extends Component {
     componentDidMount() {
         axios.get('api/blog/offers')
             .then(response => {
-                let updatedOffers = response.data.reverse();
+                let updatedOffers = response.data;
                 this.setState({
                     offers: updatedOffers,
                     loading: false
@@ -29,7 +29,7 @@ class Offers extends Component {
                 <MyCarousel
                     elements={this.state.offers}
                     title={"Offers"}
-                    carouselClicked={() => clicked(this.state.offers[0].id, "offers")}
+                    carouselClicked={clicked}
                 />
             </div>;
         if(anotherPage) {
