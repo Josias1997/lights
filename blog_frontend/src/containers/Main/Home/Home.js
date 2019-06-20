@@ -66,7 +66,7 @@ class Home extends Component {
                     open={this.state.open}
                     close={this.onCloseModal}
                     id={this.state.selectedId}
-                    type={"pictures"}
+                    type={this.state.modalType}
                 />
                 <Blog anotherPage={false} clicked={this.onOpenModal}/>
                 <Offers anotherPage={false} clicked={this.onOpenModal}/>
