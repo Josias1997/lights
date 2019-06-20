@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import axios from 'axios';
-import './About.css';
+import styles from './About.less';
 
 class About extends Component {
     state = {
@@ -17,11 +17,11 @@ class About extends Component {
     render() {
         const { firstName, lastName, phoneNumber, email, overview, url } = this.state.profile;
         return (
-            <div className={"BlurContainer"}>
-                <div className={"Profile"}>
+            <div className={styles.BlurContainer}>
+                <div className={styles.Profile}>
                     <img src={url} alt={url}/>
                 </div>
-                <div className={"Description"}>
+                <div className={styles.Description}>
                     <h1>Owner : {firstName} {lastName}</h1>
                     <p>Contact : +212 {phoneNumber}</p>
                     <p>Email : {email}</p>

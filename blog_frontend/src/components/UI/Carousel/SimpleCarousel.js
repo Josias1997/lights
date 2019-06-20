@@ -1,9 +1,9 @@
 import React from 'react';
 import {Carousel} from 'react-responsive-carousel'
 import 'react-responsive-carousel/lib/styles/carousel.css';
-import './SimpleCarousel.css';
+import styles from './SimpleCarousel.less';
 import Loader from '../Loader/Loader';
-import Slogan from "../Slogans/Slogan";
+import Slogan from "../Slogans/Slogan/Slogan";
 
 const SimpleCarousel = props => {
     let content = <Loader/>;
@@ -30,7 +30,7 @@ const SimpleCarousel = props => {
         />
     }
     return (
-        <div className={"Carousel"}>
+        <div className={styles.Carousel}>
             {slogan}
             {content}
         </div>

@@ -1,6 +1,6 @@
 import React, {Component} from 'react'
 import { BrowserRouter } from "react-router-dom";
-import './App.css';
+import styles from './App.less';
 import { library } from "@fortawesome/fontawesome-svg-core";
 import { faHome } from "@fortawesome/free-solid-svg-icons";
 import Main from "./containers/Main/Main";

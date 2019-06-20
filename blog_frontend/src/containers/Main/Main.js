@@ -7,7 +7,7 @@ import Home from "./Home/Home";
 import Offers from "./Home/Offers/Offers";
 import Blog from "./Home/Blog/Blog";
 import About from "../About/About";
-import './Main.css';
+import styles from './Main.less';
 
 class Main extends Component {
     state = {
@@ -20,9 +20,10 @@ class Main extends Component {
         ],
         isOpen: false
     };
+
     toggleNavBar = () => {
         this.setState( prevState => ({
-            isOpen: window.innerWidth <= 480 ? !prevState.isOpen:false
+            isOpen: window.innerWidth <= 550 ? !prevState.isOpen:false
         }))
     };
     closeNavBar = () => {
@@ -31,6 +32,7 @@ class Main extends Component {
         })
     };
     render() {
+        console.log("Home render");
         return (
                 <Aux>
                        <NavBar
@@ -38,7 +40,7 @@ class Main extends Component {
                            open={this.state.isOpen}
                            clicked={this.toggleNavBar}
                        />
-                    <div className={!this.state.isOpen ? "Container": "Container blur"}>
+                    <div className={!this.state.isOpen ? styles.Container: styles.Container + " " + styles.Blur }>
                         <Route path={"/"} exact component={Home}/>
                         <Route path={"/gallery"} component={() => <Gallery single={false}/>} />
                         <Route path={"/offers"} component={() => <Offers anotherPage={true}/>} />

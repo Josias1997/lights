@@ -1,6 +1,6 @@
 import React, {Component} from 'react';
 import axios from 'axios';
-import './Offers.css';
+import styles from './Offers.less';
 import MyCarousel from "../../../../components/UI/MyCarousel/MyCarousel";
 import Grid from "../../../../components/UI/Grid/Grid";
 
@@ -25,7 +25,7 @@ class Offers extends Component {
 
     render() {
         const {anotherPage, clicked} = this.props;
-        let content =  <div className={"Offers"}>
+        let content =  <div className={styles.Offers}>
                 <MyCarousel
                     elements={this.state.offers}
                     title={"Offers"}

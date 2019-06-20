@@ -1,8 +1,8 @@
 import React from 'react';
-import './Loader.css';
+import styles from './Loader.less';
 
 const Loader = props => (
-    <div className={"Loader"}>
+    <div className={styles.Loader}>
         <div>-</div>
     </div>
 );

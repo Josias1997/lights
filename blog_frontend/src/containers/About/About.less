@@ -1,3 +1,4 @@
+@import "../../less/variables";
 .BlurContainer {
   position: relative;
 }
@@ -33,7 +34,17 @@
   width: 80%;
   padding: 20px;
   text-align: center;
+  transition: transform 2s linear;
 }
 .Description #overview {
   text-align: left;
+}
+
+@media screen and (max-width: @mobileBreakPoint) {
+  .Description {
+    width: 60%;
+    top: 0;
+    font-size: 10px;
+    transform: translate(-50%, 0);
+  }
 }

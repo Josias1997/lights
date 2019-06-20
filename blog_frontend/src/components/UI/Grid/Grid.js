@@ -1,7 +1,7 @@
 import React, {Component} from 'react';
 import Card from "./Card/Card";
 import Roll from 'react-reveal/Roll';
-import './Grid.css';
+import styles from './Grid.less';
 import CustomModal from "../Modals/CustomModal/CustomModal";
 
 
@@ -27,7 +27,7 @@ class Grid extends Component {
     render() {
         return (
             <Roll left>
-                <div className={"Grid"}>
+                <div className={styles.Grid}>
                     {this.props.elements.map(element => (
                         <Card key={element.id}
                               card={element}

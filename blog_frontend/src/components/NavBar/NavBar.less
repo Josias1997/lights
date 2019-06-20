@@ -1,3 +1,5 @@
+@import "../../less/variables";
+
 nav {
     position: fixed;
     top: 0;
@@ -12,13 +14,13 @@ nav {
 .NavBarOpen {
     display: block;
     background: black;
-    transform: translate(0, 200px);
+    transform: translate(0, 60%);
     -webkit-animation: fadeIn 1s;
     animation: fadeIn 1s;
     padding: 20px;
     border-radius: 5px;
 }
-@media screen and (max-width: 550px) {
+@media screen and (max-width: @mobileBreakPoint) {
     .NavBar {
         display: none;
         flex-flow: row;

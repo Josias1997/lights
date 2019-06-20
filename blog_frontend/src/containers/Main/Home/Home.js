@@ -3,7 +3,7 @@ import SimpleCarousel from "../../../components/UI/Carousel/SimpleCarousel";
 import Galleries from "./Galleries/Galleries";
 import Blog from "./Blog/Blog";
 import Offers from "./Offers/Offers";
-import './Home.css';
+import styles from './Home.less';
 import axios from "axios";
 import CustomModal from "../../../components/UI/Modals/CustomModal/CustomModal";
 
@@ -56,7 +56,7 @@ class Home extends Component {
     render() {
         return (
             <div>
-                <div className={"Home"}>
+                <div className={styles.Home}>
                     <SimpleCarousel
                         pictures={this.state.pictures}
                         loading={this.state.loading}

@@ -2,8 +2,8 @@ import React, {Component} from 'react';
 import {Carousel} from 'react-responsive-carousel';
 import 'react-responsive-carousel/lib/styles/carousel.css';
 import axios from 'axios/index';
-import './Category.css';
-import Title from "../../../../../../components/UI/Slogans/Title";
+import styles from './Category.less';
+import Title from "../../../../../../components/UI/Slogans/Title/Title";
 
 class Category extends Component {
     state = {
@@ -32,19 +32,19 @@ class Category extends Component {
             if (single) {
                 content = (
                     <div key={category.id}
-                         className={"Category"}
+                         className={styles.Category}
                          onClick={clicked}>
                         <Title
                             name={this.state.name}
                             type={"Category"}
-                            styleClass={["FirstLineCategoryTitle",
-                                "SecondLineCategoryTitle"]}
+                            styleClass={[styles.FirstLineCategoryTitle,
+                                styles.SecondLineCategoryTitle]}
                             id={category.id}
                         />
                         {this.state.pictures.map(picture => {
                             return (
                                 <div key={picture.id}
-                                     className={"Single"}
+                                     className={styles.Single}
                                 >
                                     <img
                                         src={picture.url}
@@ -57,12 +57,12 @@ class Category extends Component {
                 )
             } else {
                 content = (<div key={category.id}
-                                className={"MultipleCategory"}
+                                className={styles.MultipleCategory}
                                 onClick={imageClicked}
                 >
                     <Title name={this.state.name}
                            type={"MultipleCategory"}
-                           styleClass={"MultipleCategoryTitle"}
+                           styleClass={styles.MultipleCategoryTitle}
                     />
                     <Carousel
                         showArrows
@@ -74,7 +74,7 @@ class Category extends Component {
                         {this.state.pictures.map(picture => {
                             return (
                                 <div key={picture.id}
-                                     className={"Multiple"}
+                                     className={styles.Multiple}
                                 >
                                     <img
                                         src={picture.url}

@@ -1,7 +1,7 @@
 import React from 'react';
 import NavLink from './NavLink/NavLink';
 import Aux from '../../hoc/Auxiliary/Auxiliary';
-import './NavBar.css';
+import styles from './NavBar.less';
 import HomeButton from "./HomeButton/HomeButton";
 
 const NavBar = (props) => {
@@ -10,7 +10,7 @@ const NavBar = (props) => {
         <Aux>
             <nav>
                 <HomeButton clicked={clicked}/>
-                <ul className={open ? "NavBarOpen":"NavBar"}>
+                <ul className={open ? styles.NavBarOpen:styles.NavBar}>
                      {links.map((link, index) => (
                         <NavLink
                             key={index}

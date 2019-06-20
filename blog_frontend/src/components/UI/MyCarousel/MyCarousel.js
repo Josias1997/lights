@@ -2,9 +2,9 @@ import React from 'react';
 import {Carousel} from "react-responsive-carousel";
 import Roll from 'react-reveal/Roll';
 import 'react-responsive-carousel/lib/styles/carousel.css';
-import './MyCarousel.css';
+import styles from './MyCarousel.less';
 import Loader from "../Loader/Loader";
-import Banner from "../Slogans/Banner";
+import Banner from "../Slogans/Banner/Banner";
 
 const MyCarousel = props => {
     const {elements, title, carouselClicked} = props;
@@ -17,7 +17,7 @@ const MyCarousel = props => {
         newTitle = 'Last Offers';
     }
     if(elements.length !== 0) {
-        div = <div className={"Offers-text"} onClick={carouselClicked}>
+        div = <div className={styles.OffersText} onClick={carouselClicked}>
             <Banner element={elements[0]}
                     newTitle={newTitle}
             />
@@ -35,7 +35,7 @@ const MyCarousel = props => {
             >
                 {elements.map(element =>{
                     return (
-                       <div key={element.id} className={"single-carousel"}>
+                       <div key={element.id} className={styles.singleCarousel}>
                             <img src={element.url} alt={element.url}/>
                        </div>
                     )

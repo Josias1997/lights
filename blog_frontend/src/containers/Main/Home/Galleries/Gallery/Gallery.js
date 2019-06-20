@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import axios from 'axios';
 import Category from './Category/Category';
 import Roll from 'react-reveal/Roll';
-import './Gallery.css';
+import styles from './Gallery.less';
 
 class Gallery extends Component {
     state = {
@@ -37,7 +37,7 @@ class Gallery extends Component {
         }
         return(
             <Roll>
-                <div className={single ? "Gallery":"Slider"}>
+                <div className={single ? styles.Gallery:styles.Slider}>
                     {content}
                 </div>
             </Roll>
