@@ -1,11 +1,9 @@
-.Offers {
-    display: flex;
-    flex-flow: row nowrap;
-    justify-content: center;
-    align-items: center;
-    color: white;
-}
+@import "../../../../less/mixins";
 
-.Offers [class="carousel"] {
-    display: none;
+.Offers {
+    .display_flex(row, wrap);
+    color: @textColor;
+    [class="carousel"] {
+        display: none;
+    }
 }

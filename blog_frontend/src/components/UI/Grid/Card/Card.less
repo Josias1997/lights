@@ -1,38 +1,42 @@
+@import "../../../../less/mixins";
+@import "../../../../less/functions";
+
+.sharedStyle {
+    .set_width(95%);
+    .set_border_radius(20%);
+}
 .Card {
-    width: 33%;
-    text-align: left;
-}
-.Card img, .ModalContent img {
-    width: 95%;
-    border-radius: 20%;
-}
-.Card .CardBody {
-    width: 90%;
-}
-.Card:hover, .Card button {
-    -webkit-filter: opacity(60%);
-    filter: opacity(60%);
-    cursor: pointer;
-}
-.ModalContent {
-    width: 100%
-}
-.ModalContent {
-    color: black;
-    text-align: left;
-}
-.Card button {
-    width: 90%;
-    padding: 5px;
-    border-radius: 5%;
-}
-@media screen and (max-width: 480px) {
-    .Card {
-        width: 100%;
-        text-align: center;
+    .set_width(33%);
+    text-align: @alignLeft;
+    .CardBody {
+        width: 90%;
+        @media screen and (max-width: @mobileBreakPoint) {
+            .set_width(@fullWidth);
+        }
+    }
+    img {
+        &:extend(.sharedStyle);
+    }
+    button {
+        .set_width(90%);
+        padding: 5px;
+        border-radius: 5%;
+        cursor: @cursorTypePointer;
+        &:hover {
+            .filter_opacity(60%);
+        }
+    }
+    @media screen and (max-width: @mobileBreakPoint) {
+        .set_width(@fullWidth);
+        text-align: @alignCenter;
         margin-top: 10px;
     }
-    .Card .CardBody {
-        width: 100%;
+}
+.ModalContent {
+    .set_width(100%);
+    color: @bgColor;
+    text-align: @alignLeft;
+    img {
+        &:extend(.sharedStyle);
     }
 }

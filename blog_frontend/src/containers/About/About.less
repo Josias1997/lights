@@ -1,50 +1,36 @@
-@import "../../less/variables";
+@import "../../less/mixins";
+@import "../../less/components/img";
+
 .BlurContainer {
   position: relative;
 }
 .Profile{
-  filter: blur(8px);
-  -webkit-filter: blur(8px);
-
-  /* Full height */
+  .filter_blur(8px);
   height: 100%;
-
-  /* Center and scale the image nicely */
-  background-position: center;
+  background-position: @alignCenter;
   background-repeat: no-repeat;
   background-size: cover;
-}
-.Profile img {
-  width: 100%;
-  height: 75%;
-}
-
-/* Position text in the middle of the page/image */
-.Description {
-  background-color: rgb(0,0,0); /* Fallback color */
-  background-color: rgba(0,0,0, 0.4); /* Black w/opacity/see-through */
-  color: white;
-  font-weight: bold;
-  border: 3px solid #f1f1f1;
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  z-index: 2;
-  width: 80%;
-  padding: 20px;
-  text-align: center;
-  transition: transform 2s linear;
-}
-.Description #overview {
-  text-align: left;
-}
-
-@media screen and (max-width: @mobileBreakPoint) {
-  .Description {
-    width: 60%;
-    top: 0;
-    font-size: 10px;
-    transform: translate(-50%, 0);
+  img {
+    .set_dimensions(100%; 75%);
   }
 }
+/* Position text in the middle of the page/image */
+.Description {
+  .put_on_top(0.4);
+  .set_top_left(50%, 50%);
+  border: 3px solid #f1f1f1;
+  width: @containerWidth;
+  padding: @containerPadding;
+  transition: transform 2s linear;
+  #overview {
+    text-align: @alignLeft;
+  }
+  @media screen and (max-width: @mobileBreakPoint) {
+      width: 60%;
+      top: 0;
+      font-size: 10px;
+      transform: translate(-50%, 0);
+  }
+}
+
+

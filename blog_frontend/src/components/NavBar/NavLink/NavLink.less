@@ -1,25 +1,26 @@
+@import "../../../less/variables";
+
 .NavLink {
     margin: 10px 0;
     box-sizing: border-box;
     display: block;
-    text-align: center;
-    width: 100%;
-}
-
-.NavLink > a {
-    color: white;
-    text-decoration: none;
-    font-weight: bold;
-}
-
-.NavLink > a:hover,
-.NavLink > .active {
-    color: orange;
-}
-@media screen and (max-width: 550px) {
-    .NavLink {
+    text-align: @alignCenter;
+    width: @fullWidth;
+    > a {
+        color: @textColor;
+        text-decoration: none;
+        font-weight: @boldWeight;
+        &:hover{
+           color: orange;
+        }
+    }
+    .active {
+        color: orange;
+    }
+    @media screen and (max-width: 550px) {
         margin: 5px 0;
-        text-align: left;
+        text-align: @alignLeft;
         transform: translate(100px, 0);
     }
 }
+

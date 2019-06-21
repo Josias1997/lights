@@ -1,8 +1,10 @@
-.Home .carousel.carousel-slider {
-    height: 600px;
-}
-@media screen and (max-width: 550px) {
-    .Home .carousel.carousel-slider {
-        height: 250px;
+@import "../../../less/variables";
+
+.Home  {
+    .carousel.carousel-slider {
+        height: 600px;
+        @media screen and (max-width: @mobileBreakPoint) {
+            height: 250px;
+        }
     }
 }

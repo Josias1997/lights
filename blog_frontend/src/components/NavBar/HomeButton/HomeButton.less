@@ -1,11 +1,11 @@
+@import "../../../less/variables";
+
 .HomeButton {
     display: none;
-}
 
-@media screen and (max-width: 550px) {
-    .HomeButton {
+    @media screen and (max-width: @mobileBreakPoint) {
         display: block;
-        cursor: pointer;
+        cursor: @cursorTypePointer;
         margin-top: 5px;
     }
 }

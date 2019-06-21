@@ -1,0 +1,33 @@
+@import "./variables";
+
+.filter_opacity(@percentage) {
+  -webkit-filter: opacity(@percentage);
+  filter: opacity(@percentage);
+}
+.filter_blur(@percentage) {
+  -webkit-filter: blur(@percentage);
+  filter: blur(@percentage);
+}
+.display_flex() {
+    display: @displayTypeFlex;
+    justify-content: @alignCenter;
+    align-items: @alignCenter;
+    align-self: @alignCenter;
+}
+.display_flex(@type, @wrap) {
+  .display_flex();
+  flex-flow: @type @wrap;
+}
+.put_on_top(@opacity) {
+  background-color: rgba(0, 0, 0, @opacity);
+  color: @textColor;
+  font-weight:  @boldWeight;
+  position: @absolutePosition;
+  transform: translate(-50%, -50%);
+  z-index: 2;
+  text-align: @alignCenter;
+}
+.set_top_left(@top, @left) {
+  top: @top;
+  left: @left;
+}

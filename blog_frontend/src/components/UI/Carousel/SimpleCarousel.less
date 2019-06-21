@@ -1,6 +1,10 @@
+@import "../../../less/mixins";
+@import "../../../less/functions";
+
 .Carousel {
-    position: relative;
+    position: @relativePosition;
+    img {
+        .set_border_radius(10%);
+    }
 }
-.Carousel img {
-    border-radius: 10%;
-}
+

@@ -1,15 +1,13 @@
+@import "../../../../../less/mixins";
 .Gallery {
-    display: flex;
-    flex-flow: row wrap;
-    justify-content: center;
-    align-items: center;
-    text-align: center;
-    cursor: pointer
+    .display_flex(row, wrap);
+    text-align: @alignCenter;
+    cursor: @cursorTypePointer;
 }
 .Slider {
-    text-align: center;
+    text-align: @alignCenter;
     font-size: 14px;
     text-transform: uppercase;
-    font-weight: bold;
-    cursor: pointer;
+    font-weight: @boldWeight;
+    cursor: @cursorTypePointer;
 }

@@ -18,7 +18,6 @@ const SimpleCarousel = props => {
             {props.pictures.map(picture => (
                 <div key={picture.id}>
                     <img src={picture.url} alt={picture.url}/>
-                    <p className={"legend"}>{picture.title}</p>
                 </div>
             ))}
         </Carousel>

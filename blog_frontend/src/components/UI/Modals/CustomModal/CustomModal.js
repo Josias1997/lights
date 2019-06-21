@@ -1,7 +1,6 @@
 import React, {Component} from 'react';
 import Modal from 'react-responsive-modal'
 import axios from 'axios/index';
-import styles from './CustomModal.less';
 import SimpleCarousel from "../../Carousel/SimpleCarousel";
 import Card from "../../Grid/Card/Card";
 
@@ -56,9 +55,7 @@ class CustomModal extends Component {
                 onClose={close}
                 center
             >
-                <div className={"CustomModal"}>
-                    {content}
-                </div>
+                {content}
             </Modal>
         )
     }

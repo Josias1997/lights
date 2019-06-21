@@ -1,12 +1,7 @@
+@import "../../../less/mixins";
 .Grid {
-    display: flex;
-    flex-flow: row wrap;
-}
-@media screen and (max-width: 550px) {
-    .Grid {
-        flex-flow: column;
-        justify-content: center;
-        align-self: center;
-        align-items: center;
+    .display_flex(row, wrap);
+    @media screen and (max-width: 550px) {
+        .display_flex(column, nowrap);
     }
 }

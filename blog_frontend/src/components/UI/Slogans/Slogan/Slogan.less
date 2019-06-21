@@ -1,14 +1,9 @@
+@import "../../../../less/mixins";
+
 .Slogan {
-    background-color: rgba(0,0,0, 0.5); /* Black w/opacity/see-through */
-    color: white;
-    font-weight: bold;
-    position: absolute;
-    top: 40%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    z-index: 2;
+    .put_on_top(0.5);
+    .set_top_left(40%, 50%);
     width: 80%;
-    text-align: center;
 }
 .Slogan .title {
     text-transform: uppercase;
