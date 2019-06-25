@@ -6,10 +6,17 @@ nav {
     z-index: 200;
     width: 100%;
     background: @bgColor;
+    @media screen and (max-width: @mobileBreakPoint) {
+        height: 30px;
+    }
 }
 .NavBar {
     display: flex;
     flex-flow: row;
+    @media screen and (max-width: @mobileBreakPoint) {
+        display: none;
+        flex-flow: row;
+    }
 }
 .NavBarOpen {
     display: block;

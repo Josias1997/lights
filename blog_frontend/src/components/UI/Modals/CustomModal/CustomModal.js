@@ -1,8 +1,8 @@
 import React, {Component} from 'react';
 import Modal from 'react-responsive-modal'
 import axios from 'axios/index';
-import SimpleCarousel from "../../Carousel/SimpleCarousel";
 import Card from "../../Grid/Card/Card";
+import CustomCarousel from "../../CustomCarousel/CustomCarousel";
 
 class CustomModal extends Component {
     state = {
@@ -43,11 +43,7 @@ class CustomModal extends Component {
             content = <Card card={this.state.elements} single={true}/>
         }
         else if (type === 'categories') {
-            content = <SimpleCarousel
-            pictures={this.state.elements}
-            loading={this.state.loading}
-            banner={false}
-        />;
+            content = <CustomCarousel images={this.state.elements} auto={true} interval={2000}/>
         }
         return (
             <Modal

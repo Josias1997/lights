@@ -1,3 +1,17 @@
-.Carousel {
+@import "../../../less/mixins";
+@import "../../../less/components/img";
+@import "../../../less/functions";
 
+.Carousel {
+  .set_height(60%);
+    .Slides {
+      .set_dimensions(100%, 60%);
+      .set_border_radius(10%);
+    }
+}
+.DisplayNone {
+  display: none;
+}
+.DisplayBlock {
+  display: block;
 }

@@ -6,6 +6,7 @@ import Offers from "./Offers/Offers";
 import styles from './Home.less';
 import axios from "axios";
 import CustomModal from "../../../components/UI/Modals/CustomModal/CustomModal";
+import CustomCarousel from "../../../components/UI/CustomCarousel/CustomCarousel";
 
 class Home extends Component {
     state = {
@@ -62,6 +63,10 @@ class Home extends Component {
                         loading={this.state.loading}
                         banner={true}
                     />
+                    {/*<CustomCarousel images={this.state.pictures}*/}
+                    {/*                auto={true}*/}
+                    {/*                interval={2000}*/}
+                    {/*                />*/}
                 </div>
                 <Galleries galleryClicked={this.onOpenModal}/>
 
