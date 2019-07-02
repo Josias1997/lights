@@ -13,10 +13,10 @@ const MyCarousel = props => {
     let div = <Loader/>;
     let newTitle = null;
     if (title === 'Blog') {
-        newTitle = 'Last Articles';
+        newTitle = 'Derniers Articles';
     }
     else {
-        newTitle = 'Last Offers';
+        newTitle = 'Dernières offres';
         elements = props.offers;
     }
     if(elements.length !== 0) {

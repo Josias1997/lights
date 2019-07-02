@@ -8,6 +8,10 @@
     "dev": "webpack --mode development ./blog_frontend/src/index.js --output ./blog_frontend/static/frontend/js/main.js",
     "build": "webpack --mode production ./blog_frontend/src/index.js --output ./blog_frontend/static/frontend/js/main.js"
   },
+  "engines": {
+    "node": "10.11.0",
+    "npm": "6.4.1"
+  },
   "keywords": [],
   "author": "",
   "license": "ISC",

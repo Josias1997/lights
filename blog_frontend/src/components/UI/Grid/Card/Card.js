@@ -12,7 +12,7 @@ const Card = props => {
             <img src={card.url} alt={card.url}/>
             <div className={styles.CardBody}>
                 <h2>{card.title}</h2>
-                {card.price !== undefined ? (<h3>Price: {card.price}</h3>):null}
+                {card.price !== undefined ? (<h3>Prix: {card.price}</h3>):null}
                 <p>{truncatedContent}</p>
                 <button onClick={() => handleClick(card.id)}>More</button>
             </div>
@@ -22,7 +22,7 @@ const Card = props => {
             <img src={card.url} alt={card.url}/>
             <div className={styles.CardBody}>
                 <h2>{card.title}</h2>
-                {card.price !== undefined ? (<h3>Price: {card.price}</h3>):null}
+                {card.price !== undefined ? (<h3>Prix: {card.price}</h3>):null}
                 <p>{card.content}</p>
             </div>
         </div>

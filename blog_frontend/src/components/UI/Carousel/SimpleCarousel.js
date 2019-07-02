@@ -26,7 +26,7 @@ const SimpleCarousel = props => {
     let slogan = null;
     if (props.banner && !props.loading) {
         slogan =  <Slogan title={"Lights Photography"}
-                          subtitle={"\"Because your moments are valuable to us\""}
+                          subtitle={"\"Parce que vos instants ont de la valeur pour nous\""}
         />
     }
     return (

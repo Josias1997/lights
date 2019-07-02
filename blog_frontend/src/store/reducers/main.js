@@ -3,10 +3,10 @@ import * as actionTypes from '../actions/actionTypes';
 let initialState = {
     links : [
             {value: 'LightsPhotography', link: '/'},
-            {value: 'Gallery', link: '/gallery'},
-            {value: 'Offers', link: '/offers'},
+            {value: 'Gallerie', link: '/gallery'},
+            {value: 'Offres', link: '/offers'},
             {value: 'Blog', link: '/blog'},
-            {value: 'About Us', link: '/about-us'}
+            {value: 'A propos', link: '/about-us'}
         ],
     isOpen: false
 };
