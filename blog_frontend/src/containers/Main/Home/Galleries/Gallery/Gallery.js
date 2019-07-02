@@ -1,20 +1,15 @@
 import React, { Component } from 'react';
-import axios from 'axios';
 import Category from './Category/Category';
 import Roll from 'react-reveal/Roll';
 import styles from './Gallery.less';
+import { connect } from 'react-redux';
+import {
+    initCategories
+} from "../../../../../store/actions";
 
 class Gallery extends Component {
-    state = {
-        categories: []
-    };
     componentDidMount() {
-        axios.get('api/blog/categories')
-            .then(response => {
-                this.setState({
-                    categories: response.data
-                })
-            })
+        this.props.onInitCategories();
     }
     handleImageClick = id => {
         console.log(id);
@@ -22,8 +17,8 @@ class Gallery extends Component {
     render() {
         const {single, categoryClicked} = this.props;
         let content = <p>Loading</p>;
-        if(this.state.categories) {
-            content =  this.state.categories.map(category => {
+        if(this.props.categories) {
+            content =  this.props.categories.map(category => {
                     return(
                         <Category
                             key={category.id}
@@ -44,5 +39,18 @@ class Gallery extends Component {
         );
     }
 }
+const mapStateToProps = state => {
+    return {
+        categories: state.gallery.categories,
+        error: state.gallery.error,
+        loading: state.gallery.loading
+    }
+};
 
-export default Gallery;
+const mapDispatchToProps = dispatch => {
+    return {
+        onInitCategories: () => dispatch(initCategories())
+    }
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)(Gallery);

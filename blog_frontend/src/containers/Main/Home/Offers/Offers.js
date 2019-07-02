@@ -1,39 +1,26 @@
 import React, {Component} from 'react';
-import axios from 'axios';
 import styles from './Offers.less';
 import MyCarousel from "../../../../components/UI/MyCarousel/MyCarousel";
 import Grid from "../../../../components/UI/Grid/Grid";
+import { initOffers } from "../../../../store/actions";
+import { connect } from "react-redux";
 
 class Offers extends Component {
-    state = {
-        offers: [],
-        loading: true
-    };
 
     componentDidMount() {
-        axios.get('api/blog/offers')
-            .then(response => {
-                let updatedOffers = response.data;
-                this.setState({
-                    offers: updatedOffers,
-                    loading: false
-                })
-            }).catch(error => {
-                console.log(error);
-        })
+        this.props.onInitOffers();
     }
 
     render() {
         const {anotherPage, clicked} = this.props;
         let content =  <div className={styles.Offers}>
                 <MyCarousel
-                    elements={this.state.offers}
                     title={"Offers"}
                     carouselClicked={clicked}
                 />
             </div>;
         if(anotherPage) {
-            content = <Grid elements={this.state.offers} type={"offers"}/>
+            content = <Grid type={"offers"}/>
         }
         return (
             content
@@ -41,4 +28,10 @@ class Offers extends Component {
     }
 }
 
-export default Offers;
+const mapDispatchToProps = dispatch => {
+    return {
+        onInitOffers: () => dispatch(initOffers())
+    }
+};
+
+export default connect(null, mapDispatchToProps)(Offers);

@@ -4,6 +4,7 @@ import 'react-responsive-carousel/lib/styles/carousel.css';
 import styles from './SimpleCarousel.less';
 import Loader from '../Loader/Loader';
 import Slogan from "../Slogans/Slogan/Slogan";
+import { connect } from 'react-redux';
 
 const SimpleCarousel = props => {
     let content = <Loader/>;
@@ -23,7 +24,7 @@ const SimpleCarousel = props => {
         </Carousel>
     }
     let slogan = null;
-    if (props.banner) {
+    if (props.banner && !props.loading) {
         slogan =  <Slogan title={"Lights Photography"}
                           subtitle={"\"Because your moments are valuable to us\""}
         />
@@ -35,5 +36,12 @@ const SimpleCarousel = props => {
         </div>
     )
 };
+const mapStateToProps = state => {
+    return {
+        pictures: state.home.pictures,
+        loading: state.home.loading,
+        error: state.home.error
+    }
+};
 
-export default SimpleCarousel;
+export default connect(mapStateToProps)(SimpleCarousel);

@@ -8,39 +8,17 @@ import Offers from "./Home/Offers/Offers";
 import Blog from "./Home/Blog/Blog";
 import About from "../About/About";
 import styles from './Main.less';
+import { connect } from 'react-redux';
+import {toggleNavBar} from "../../store/actions";
 
 class Main extends Component {
-    state = {
-        links : [
-            {value: 'LightsPhotography', link: '/'},
-            {value: 'Gallery', link: '/gallery'},
-            {value: 'Offers', link: '/offers'},
-            {value: 'Blog', link: '/blog'},
-            {value: 'About Us', link: '/about-us'}
-        ],
-        isOpen: false
-    };
-
-    toggleNavBar = () => {
-        this.setState( prevState => ({
-            isOpen: window.innerWidth <= 550 ? !prevState.isOpen:false
-        }))
-    };
-    closeNavBar = () => {
-        this.setState({
-            isOpen: false
-        })
-    };
     render() {
-        console.log("Home render");
         return (
                 <Aux>
                        <NavBar
-                           links={this.state.links}
-                           open={this.state.isOpen}
-                           clicked={this.toggleNavBar}
+                           clicked={this.props.onToggleNavBar}
                        />
-                    <div className={!this.state.isOpen ? styles.Container: styles.Container + " " + styles.Blur }>
+                    <div className={!this.props.isOpen ? styles.Container: styles.Container + " " + styles.Blur }>
                         <Route path={"/"} exact component={Home}/>
                         <Route path={"/gallery"} component={() => <Gallery single={false}/>} />
                         <Route path={"/offers"} component={() => <Offers anotherPage={true}/>} />
@@ -52,4 +30,16 @@ class Main extends Component {
     }
 }
 
-export default Main;
+const mapStateToProps = state => {
+    return {
+        isOpen: state.main.isOpen
+    }
+};
+
+const mapDispatchToProps = dispatch => {
+    return {
+        onToggleNavBar: () => dispatch(toggleNavBar())
+    }
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)(Main);

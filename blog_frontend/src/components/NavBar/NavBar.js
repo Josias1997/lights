@@ -3,15 +3,16 @@ import NavLink from './NavLink/NavLink';
 import Aux from '../../hoc/Auxiliary/Auxiliary';
 import styles from './NavBar.less';
 import HomeButton from "./HomeButton/HomeButton";
+import { connect } from 'react-redux';
 
 const NavBar = (props) => {
-    const { links, open, clicked} = props;
+    const {clicked} = props;
     return (
         <Aux>
             <nav>
                 <HomeButton clicked={clicked}/>
-                <ul className={open ? styles.NavBarOpen:styles.NavBar}>
-                     {links.map((link, index) => (
+                <ul className={props.isOpen ? styles.NavBarOpen:styles.NavBar}>
+                     {props.links.map((link, index) => (
                         <NavLink
                             key={index}
                             content={link.value}
@@ -24,4 +25,11 @@ const NavBar = (props) => {
         </Aux>
     )
 };
-export default NavBar;
+const mapStateToProps = state => {
+     return {
+         links: state.main.links,
+         isOpen: state.main.isOpen
+    }
+};
+
+export default connect(mapStateToProps)(NavBar);

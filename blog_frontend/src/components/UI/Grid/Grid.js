@@ -2,6 +2,7 @@ import React, {Component} from 'react';
 import Card from "./Card/Card";
 import Roll from 'react-reveal/Roll';
 import styles from './Grid.less';
+import { connect } from 'react-redux';
 import CustomModal from "../Modals/CustomModal/CustomModal";
 
 
@@ -25,10 +26,14 @@ class Grid extends Component {
     };
 
     render() {
+        let elements = this.props.articles;
+        if (this.props.type !== 'articles') {
+           elements = this.props.offers;
+        }
         return (
             <Roll left>
                 <div className={styles.Grid}>
-                    {this.props.elements.map(element => (
+                    {elements.map(element => (
                         <Card key={element.id}
                               card={element}
                               single={false}
@@ -45,5 +50,13 @@ class Grid extends Component {
         )
     }
 }
+const mapStateToProps = state => {
+    return {
+        articles: state.blog.articles,
+        offers: state.offer.offers,
+        error: state.blog.error,
+        loading: state.blog.loading
+    }
+};
 
-export default Grid;
+export default connect(mapStateToProps)(Grid);

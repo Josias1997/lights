@@ -9,9 +9,6 @@ class CustomModal extends Component {
         elements: [],
         loading: true
     };
-    // shouldComponentUpdate(nextProps, nextState, nextContext) {
-    //    return this.props.open && this.props.id !== '';
-    // }
 
     componentDidUpdate() {
         const {id, type} = this.props;

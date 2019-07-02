@@ -5,9 +5,11 @@ import 'react-responsive-carousel/lib/styles/carousel.css';
 import styles from './MyCarousel.less';
 import Loader from "../Loader/Loader";
 import Banner from "../Slogans/Banner/Banner";
+import { connect } from 'react-redux';
 
 const MyCarousel = props => {
-    const {elements, title, carouselClicked} = props;
+    const {title, carouselClicked} = props;
+    let elements = props.articles;
     let div = <Loader/>;
     let newTitle = null;
     if (title === 'Blog') {
@@ -15,6 +17,7 @@ const MyCarousel = props => {
     }
     else {
         newTitle = 'Last Offers';
+        elements = props.offers;
     }
     if(elements.length !== 0) {
         div = <div className={styles.OffersText} onClick={carouselClicked}>
@@ -46,4 +49,11 @@ const MyCarousel = props => {
     )
 };
 
-export default MyCarousel;
+const mapStateToProps = state => {
+    return {
+        articles: state.blog.articles,
+        offers: state.offer.offers
+    }
+};
+
+export default connect(mapStateToProps)(MyCarousel);

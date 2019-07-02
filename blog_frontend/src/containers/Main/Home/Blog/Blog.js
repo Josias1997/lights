@@ -1,28 +1,19 @@
 import React, {Component} from 'react';
-import axios from 'axios';
+import { connect } from 'react-redux';
 import Posts from "../../../../components/Posts/Posts";
+import {
+    initArticles
+} from "../../../../store/actions";
 
 class Blog extends Component {
-    state = {
-        articles: []
-    };
-
     componentDidMount() {
-        axios.get('api/blog/articles')
-            .then(response => {
-                let updatedArticles = response.data;
-                this.setState({
-                    articles: updatedArticles
-                })
-            }).catch(error => {
-            console.log(error)
-        })
+        this.props.onInitArticles();
     }
 
     render() {
         const {anotherPage, clicked} = this.props;
         return (<div className={"Blog"}>
-            <Posts articles={this.state.articles}
+            <Posts
                    anotherPage={anotherPage}
                    clicked={clicked}
             />
@@ -30,4 +21,10 @@ class Blog extends Component {
     }
 }
 
-export default Blog;
+const mapDispatchToProps = dispatch => {
+    return {
+        onInitArticles: () => dispatch(initArticles())
+    }
+};
+
+export default connect(null, mapDispatchToProps)(Blog);

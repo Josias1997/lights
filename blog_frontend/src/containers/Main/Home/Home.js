@@ -4,49 +4,19 @@ import Galleries from "./Galleries/Galleries";
 import Blog from "./Blog/Blog";
 import Offers from "./Offers/Offers";
 import styles from './Home.less';
-import axios from "axios";
+import { connect } from 'react-redux';
 import CustomModal from "../../../components/UI/Modals/CustomModal/CustomModal";
-import CustomCarousel from "../../../components/UI/CustomCarousel/CustomCarousel";
+import {
+    initPictures, closeModal, openModal
+} from "../../../store/actions";
 
 class Home extends Component {
     state = {
-        pictures: [],
-        loading: true,
-        open: false,
-        selectedId: '',
         type: 'categories'
     };
     componentWillMount() {
-        axios.get('api/blog/pictures')
-            .then(response => {
-                let updatedPictures = response.data.slice(0, 9);
-                this.setState({pictures: updatedPictures, loading: false});
-            }).catch(error => {
-                console.log(error);
-                this.setState({loading: false});
-        });
+        this.props.onInitPictures();
     }
-    onOpenModal = (id) => {
-        console.log(id);
-        const homeState = {
-            ...this.state
-        };
-        homeState.open = true;
-        homeState.selectedId = id;
-        this.setState({
-            ...homeState
-        });
-    };
-    onCloseModal = () => {
-        const homeState = {
-            ...this.state
-        };
-        homeState.open = false;
-        homeState.selectedId = '';
-        this.setState({
-            ...homeState
-        });
-    };
     goToOffers = () => {
         this.props.history.push("/offers");
     };
@@ -59,21 +29,15 @@ class Home extends Component {
             <div>
                 <div className={styles.Home}>
                     <SimpleCarousel
-                        pictures={this.state.pictures}
-                        loading={this.state.loading}
                         banner={true}
                     />
-                    {/*<CustomCarousel images={this.state.pictures}*/}
-                    {/*                auto={true}*/}
-                    {/*                interval={2000}*/}
-                    {/*                />*/}
                 </div>
-                <Galleries galleryClicked={this.onOpenModal}/>
+                <Galleries galleryClicked={this.props.onOpenModal}/>
 
                 <CustomModal
-                    open={this.state.open}
-                    close={this.onCloseModal}
-                    id={this.state.selectedId}
+                    open={this.props.open}
+                    close={this.props.onCloseModal}
+                    id={this.props.id}
                     type={this.state.type}
                 />
                 <Blog anotherPage={false} clicked={this.gotToBlog}/>
@@ -83,4 +47,19 @@ class Home extends Component {
     }
 }
 
-export default Home;
+const mapStateToProps = state => {
+    return {
+        open: state.home.open,
+        id: state.home.id
+    }
+};
+
+const mapDispatchToProps = dispatch => {
+    return {
+        onInitPictures: () => dispatch(initPictures()),
+        onOpenModal: id => dispatch(openModal(id)),
+        onCloseModal: () => dispatch(closeModal())
+    }
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)(Home);
