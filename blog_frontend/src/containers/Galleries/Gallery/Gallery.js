@@ -5,7 +5,7 @@ import styles from './Gallery.less';
 import { connect } from 'react-redux';
 import {
     initCategories
-} from "../../../../../store/actions";
+} from "../../../store/actions";
 
 class Gallery extends Component {
     componentDidMount() {

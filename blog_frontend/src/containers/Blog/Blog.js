@@ -1,9 +1,9 @@
 import React, {Component} from 'react';
 import { connect } from 'react-redux';
-import Posts from "../../../../components/Posts/Posts";
+import Posts from "../../components/Posts/Posts";
 import {
     initArticles
-} from "../../../../store/actions";
+} from "../../store/actions";
 
 class Blog extends Component {
     componentDidMount() {
