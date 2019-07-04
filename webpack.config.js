@@ -42,5 +42,8 @@ module.exports = {
             },
         ]
     },
-    watch: true
+    watch: true,
+    performance: {
+        hints: false
+    }
 };

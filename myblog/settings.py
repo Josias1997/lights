@@ -25,9 +25,7 @@ SECRET_KEY = '2i8+l9+&nl!&p5@f^ouo*fqrc7!&^zo*u#$2zpv3v$4354cocx'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['lights-photography.herokuapp.com/',
-                 'localhost'
-                 ]
+ALLOWED_HOSTS = ['*']
 
 
 # Application definition
@@ -41,7 +39,8 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'blog',
     'rest_framework',
-    'blog_frontend'
+    'blog_frontend',
+    'django_cleanup'
 ]
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
@@ -126,5 +125,6 @@ USE_TZ = True
 STATIC_URL = '/static/'
 STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
+
 MEDIA_URL = 'medias/'
 MEDIA_ROOT = 'blog/medias'

@@ -22,10 +22,10 @@ class About extends Component {
                     <img src={url} alt={url}/>
                 </div>
                 <div className={styles.Description}>
-                    <h1>Owner : {firstName} {lastName}</h1>
+                    <h1>{firstName} {lastName}</h1>
                     <p>Contact : +212 {phoneNumber}</p>
                     <p>Email : {email}</p>
-                    <h3>LightPhotography's Goals :</h3>
+                    <h3>Vision :</h3>
                     <p id={"overview"}>
                         {overview}
                     </p>

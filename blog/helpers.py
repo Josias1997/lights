@@ -1,4 +1,6 @@
 import os
+from django.core.files.storage import default_storage
+from django.db.models import ImageField
 
 
 def set_path(instance, path):
@@ -14,6 +16,3 @@ def set_path(instance, path):
     instance.url = "".join(url_list)
 
 
-def remove_file(instance):
-    if os.path.exists(instance.image.url):
-        os.remove(instance.image.url)
