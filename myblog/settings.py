@@ -81,11 +81,11 @@ WSGI_APPLICATION = 'myblog.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',
-        'NAME': 'lightsPhotography',
-        'HOST': '127.0.0.1',
+        'NAME': 'lightsphotography',
+        'HOST': 'lightsphotography.mysql.database.azure.com',
         'PORT': '3306',
-        'USER': 'root',
-        'PASSWORD': '',
+        'USER': 'myadmin@lightsphotography',
+        'PASSWORD': 'Kngyjb199*#',
     }
 }
 
