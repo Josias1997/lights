@@ -4,6 +4,7 @@ import { connect } from 'react-redux';
 import {initProfile} from "../../store/actions";
 
 class About extends Component {
+
     componentDidMount() {
         this.props.onInitProfile()
     }

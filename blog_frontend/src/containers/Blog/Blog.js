@@ -6,6 +6,9 @@ import {
 } from "../../store/actions";
 
 class Blog extends Component {
+    shouldComponentUpdate(nextProps, nextState, nextContext) {
+        return this.props.children !== nextProps.children;
+    }
     componentDidMount() {
         this.props.onInitArticles();
     }

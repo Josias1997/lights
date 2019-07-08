@@ -17,6 +17,7 @@ class Offers extends Component {
                 <MyCarousel
                     title={"Offers"}
                     carouselClicked={clicked}
+                    loading={this.props.loading}
                 />
             </div>;
         if(anotherPage) {
@@ -27,6 +28,11 @@ class Offers extends Component {
         )
     }
 }
+const mapStateToProps = state => {
+    return {
+        loading: state.offer.loading,
+    }
+};
 
 const mapDispatchToProps = dispatch => {
     return {
@@ -34,4 +40,4 @@ const mapDispatchToProps = dispatch => {
     }
 };
 
-export default connect(null, mapDispatchToProps)(Offers);
+export default connect(mapStateToProps, mapDispatchToProps)(Offers);
