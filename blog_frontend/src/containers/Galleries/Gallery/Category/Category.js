@@ -11,7 +11,7 @@ class Category extends Component {
         pictures: []
     };
 
-    componentDidMount() {
+    componentDidUpdate() {
         const {category, single} = this.props;
         axios.get('api/blog/categories/' + category.id)
             .then(response => {
