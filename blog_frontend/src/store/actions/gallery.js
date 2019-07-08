@@ -15,6 +15,13 @@ export const fetchCategoriesFailed = () => {
     }
 };
 
+export const toggleSingle = single => {
+    return {
+        type: actionTypes.TOGGLE_SINGLE,
+        single: single
+    }
+};
+
 export const initCategories = () => {
     return dispatch => {
        axios.get('api/blog/categories')

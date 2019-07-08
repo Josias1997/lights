@@ -9,7 +9,8 @@ export {
 export {
     setCategories,
     fetchCategoriesFailed,
-    initCategories
+    initCategories,
+    toggleSingle
 } from './gallery'
 
 export {
@@ -28,3 +29,15 @@ export {
 export {
     toggleNavBar
 } from './main';
+
+export {
+    setProfile,
+    setProfileFailed,
+    initProfile
+} from './about';
+
+export {
+    setCategoryPictures,
+    setCategoryPicturesFailed,
+    initCategoryPictures
+} from './category'

@@ -1,47 +1,35 @@
 import React, {Component} from 'react';
 import {Carousel} from 'react-responsive-carousel';
 import 'react-responsive-carousel/lib/styles/carousel.css';
-import axios from 'axios/index';
 import styles from './Category.less';
+import { connect } from 'react-redux';
 import Title from "../../../../components/UI/Slogans/Title/Title";
+import {initCategoryPictures} from "../../../../store/actions";
 
 class Category extends Component {
-    state = {
-        name: 'Category',
-        pictures: []
-    };
 
-    componentDidUpdate() {
+    componentDidMount() {
         const {category, single} = this.props;
-        axios.get('api/blog/categories/' + category.id)
-            .then(response => {
-                const updatedPictures = response.data;
-                this.setState({
-                    name: category.name,
-                    pictures: single ? Array(updatedPictures[0]) : updatedPictures
-                })
-            }).catch(error => {
-            console.log(error)
-        });
+        this.props.onInitCategoryPictures(category, single);
     }
 
     render() {
         const {category, single, clicked, imageClicked} = this.props;
         let content = null;
-        if (this.state.pictures.length !== 0) {
+        if (this.props.pictures.length !== 0) {
             if (single) {
                 content = (
                     <div key={category.id}
                          className={styles.Category}
                          onClick={clicked}>
                         <Title
-                            name={this.state.name}
+                            name={this.props.name}
                             type={"Category"}
                             styleClass={[styles.FirstLineCategoryTitle,
                                 styles.SecondLineCategoryTitle]}
                             id={category.id}
                         />
-                        {this.state.pictures.map(picture => {
+                        {this.props.pictures.map(picture => {
                             return (
                                 <div key={picture.id}
                                      className={styles.Single}
@@ -60,7 +48,7 @@ class Category extends Component {
                                 className={styles.MultipleCategory}
                                 onClick={imageClicked}
                 >
-                    <Title name={this.state.name}
+                    <Title name={this.props.name}
                            type={"MultipleCategory"}
                            styleClass={styles.MultipleCategoryTitle}
                     />
@@ -71,7 +59,7 @@ class Category extends Component {
                         autoPlay
                         interval={2000}
                     >
-                        {this.state.pictures.map(picture => {
+                        {this.props.pictures.map(picture => {
                             return (
                                 <div key={picture.id}
                                      className={styles.Multiple}
@@ -92,5 +80,18 @@ class Category extends Component {
         );
     }
 }
+const mapStateToProps = state => {
+    return {
+        name: state.category.name,
+        pictures: state.category.pictures,
+        error: state.category.error
+    }
+};
 
-export default Category;
+const mapDispatchToProps = dispatch => {
+    return {
+        onInitCategoryPictures: (category, single) => dispatch(initCategoryPictures(category, single))
+    }
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)(Category);

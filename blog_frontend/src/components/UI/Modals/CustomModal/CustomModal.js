@@ -3,6 +3,7 @@ import Modal from 'react-responsive-modal'
 import axios from 'axios/index';
 import Card from "../../Grid/Card/Card";
 import CustomCarousel from "../../CustomCarousel/CustomCarousel";
+import Loader from "../../Loader/Loader";
 
 class CustomModal extends Component {
     state = {
@@ -35,12 +36,14 @@ class CustomModal extends Component {
     }
     render() {
         const {open, close, type} = this.props;
-        let content = null;
-        if (type === 'offers' || type === 'articles') {
-            content = <Card card={this.state.elements} single={true}/>
-        }
-        else if (type === 'categories') {
-            content = <CustomCarousel images={this.state.elements} auto={true} interval={2000}/>
+        let content = <Loader/>;
+        if(!this.state.loading) {
+            if (type === 'offers' || type === 'articles') {
+                content = <Card card={this.state.elements} single={true}/>
+            }
+            else if (type === 'categories') {
+                content = <CustomCarousel images={this.state.elements} auto={true} interval={2000}/>
+            }
         }
         return (
             <Modal

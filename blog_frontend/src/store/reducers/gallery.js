@@ -4,6 +4,7 @@ let initialState = {
     categories: [],
     error: false,
     loading: true,
+    single: true
 };
 
 const blog = (state = initialState, action) => {
@@ -18,6 +19,11 @@ const blog = (state = initialState, action) => {
             return {
                 ...state,
                 error: true
+            };
+        case actionTypes.TOGGLE_SINGLE:
+            return {
+                ...state,
+                single: action.single
             };
         default:
             return state;

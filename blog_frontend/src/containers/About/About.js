@@ -1,21 +1,14 @@
 import React, { Component } from 'react';
-import axios from 'axios';
 import styles from './About.less';
+import { connect } from 'react-redux';
+import {initProfile} from "../../store/actions";
 
 class About extends Component {
-    state = {
-        profile: {}
-    };
     componentDidMount() {
-        axios.get('api/blog/about-us/2')
-            .then(response => {
-                this.setState({
-                    profile: response.data
-                })
-            })
+        this.props.onInitProfile()
     }
     render() {
-        const { firstName, lastName, phoneNumber, email, overview, url } = this.state.profile;
+        const { firstName, lastName, phoneNumber, email, overview, url } = this.props.profile;
         return (
             <div className={styles.BlurContainer}>
                 <div className={styles.Profile}>
@@ -35,4 +28,17 @@ class About extends Component {
     }
 }
 
-export default About;
+const mapStateToProps = state => {
+    return {
+        profile: state.about.profile,
+        error: state.about.error
+    }
+};
+
+const mapDispatchToProps = dispatch => {
+    return {
+        onInitProfile: () => dispatch(initProfile())
+    }
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)(About);
