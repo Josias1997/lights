@@ -82,10 +82,13 @@ DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',
         'NAME': 'lightsphotography',
-        'HOST': 'lightsphotography.mysql.database.azure.com',
-        'PORT': '3306',
         'USER': 'myadmin@lightsphotography',
         'PASSWORD': 'Kngyjb199*#',
+        'HOST': 'lightsphotography.mysql.database.azure.com',
+        'PORT': '3306',
+        'OPTIONS': {
+            'ssl': {'ssl-ca': '/var/www/html/BaltimoreCyberTrustRoot.crt.pem'}
+        }
     }
 }
 

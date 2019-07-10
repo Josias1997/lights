@@ -8,7 +8,7 @@ import Banner from "../Slogans/Banner/Banner";
 import { connect } from 'react-redux';
 
 const MyCarousel = props => {
-    const {title, carouselClicked, loading} = props;
+    const {title, carouselClicked} = props;
     let elements = props.articles;
     let div = <Loader/>;
     let newTitle = null;

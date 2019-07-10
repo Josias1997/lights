@@ -9,6 +9,7 @@ const initialState = {
 const category = (state = initialState, action) => {
     switch(action.type) {
         case actionTypes.SET_CATEGORY_PICTURES:
+            let newState = Object.assign(state);
             return  {
                 ...state,
                 name: action.name,

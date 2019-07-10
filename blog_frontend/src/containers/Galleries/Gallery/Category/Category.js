@@ -5,17 +5,25 @@ import styles from './Category.less';
 import { connect } from 'react-redux';
 import Title from "../../../../components/UI/Slogans/Title/Title";
 import {initCategoryPictures} from "../../../../store/actions";
+import axios from "axios";
 
 class Category extends Component {
-
     componentDidMount() {
         const {category, single} = this.props;
         this.props.onInitCategoryPictures(category, single);
+        axios.get('api/blog/categories/' + category.id)
+            .then(response => {
+                 this.setState({
+
+                 })
+            }).catch(error => {
+        })
     }
 
     render() {
         const {category, single, clicked, imageClicked} = this.props;
         let content = null;
+        console.log("Pictures", this.props.pictures);
         if (this.props.pictures.length !== 0) {
             if (single) {
                 content = (
