@@ -1,9 +1,9 @@
 from django.db import models
 from django.utils import timezone
-from django.db.models.signals import pre_save, pre_delete
+from django.db.models.signals import pre_save, post_delete
 from django.dispatch import receiver
 import os
-from .helpers import set_path, remove_file
+from .helpers import set_path
 # Create your models here.
 
 
@@ -60,8 +60,3 @@ def save_handler(sender, instance, **kwargs):
     elif isinstance(instance, AboutMe):
         set_path(instance, "profile")
 
-
-@receiver(pre_delete)
-def delete_handler(sender, instance, **kwargs):
-    if os.path.exists(instance.image.url):
-        os.remove(instance.image.url)

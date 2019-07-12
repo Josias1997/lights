@@ -1,11 +1,11 @@
 import React, {Component} from 'react';
 import { Route } from "react-router";
-import Gallery from './Home/Galleries/Gallery/Gallery';
+import Gallery from '../Galleries/Gallery/Gallery';
 import NavBar from "../../components/NavBar/NavBar";
 import Aux from '../../hoc/Auxiliary/Auxiliary';
-import Home from "./Home/Home";
-import Offers from "./Home/Offers/Offers";
-import Blog from "./Home/Blog/Blog";
+import Home from "../Home/Home";
+import Offers from "../Offers/Offers";
+import Blog from "../Blog/Blog";
 import About from "../About/About";
 import styles from './Main.less';
 import { connect } from 'react-redux';

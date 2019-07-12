@@ -6,8 +6,8 @@ class Galleries extends Component {
         const {galleryClicked} = this.props;
         return (
             <div>
-                <h1>Galleries</h1>
-                <div className={"Galleries"}>
+                <h1>Gallerie</h1>
+                <div>
                     <Gallery single={true} categoryClicked={galleryClicked}/>
                 </div>
         </div>);

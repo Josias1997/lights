@@ -1,8 +1,8 @@
 import React, {Component} from 'react';
 import styles from './Offers.less';
-import MyCarousel from "../../../../components/UI/MyCarousel/MyCarousel";
-import Grid from "../../../../components/UI/Grid/Grid";
-import { initOffers } from "../../../../store/actions";
+import MyCarousel from "../../components/UI/MyCarousel/MyCarousel";
+import Grid from "../../components/UI/Grid/Grid";
+import { initOffers } from "../../store/actions";
 import { connect } from "react-redux";
 
 class Offers extends Component {

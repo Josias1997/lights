@@ -1,14 +1,14 @@
 import React, {Component} from 'react';
-import SimpleCarousel from "../../../components/UI/Carousel/SimpleCarousel";
-import Galleries from "./Galleries/Galleries";
-import Blog from "./Blog/Blog";
-import Offers from "./Offers/Offers";
+import SimpleCarousel from "../../components/UI/Carousel/SimpleCarousel";
+import Galleries from "../Galleries/Galleries";
+import Blog from "../Blog/Blog";
+import Offers from "../Offers/Offers";
 import styles from './Home.less';
 import { connect } from 'react-redux';
-import CustomModal from "../../../components/UI/Modals/CustomModal/CustomModal";
+import CustomModal from "../../components/UI/Modals/CustomModal/CustomModal";
 import {
     initPictures, closeModal, openModal
-} from "../../../store/actions";
+} from "../../store/actions";
 
 class Home extends Component {
     state = {

@@ -3,7 +3,7 @@ import {Carousel} from 'react-responsive-carousel';
 import 'react-responsive-carousel/lib/styles/carousel.css';
 import axios from 'axios/index';
 import styles from './Category.less';
-import Title from "../../../../../../components/UI/Slogans/Title/Title";
+import Title from "../../../../components/UI/Slogans/Title/Title";
 
 class Category extends Component {
     state = {
