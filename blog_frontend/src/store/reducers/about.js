@@ -2,7 +2,8 @@ import * as actionTypes from '../actions/actionTypes';
 
 let initialState = {
     profile: {},
-    error: false
+    error: false,
+    loading: true
 };
 
 const about = (state = initialState, action) => {
@@ -11,11 +12,13 @@ const about = (state = initialState, action) => {
             return {
                 ...state,
                 profile: action.profile,
+                loading: false
             };
         case actionTypes.FETCH_ARTICLES_FAILED:
             return {
                 ...state,
-                error: true
+                error: true,
+                loading: false
             };
         default:
             return state;

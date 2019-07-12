@@ -1,8 +1,18 @@
-@import "../../../../less/components/title";
-@import "../../../../less/components/img";
-@import "../../../../less/functions";
+@import "../../less/components/title";
+@import "../../less/components/img";
+@import "../../less/functions";
 
-.Category {
+.Single{
+    &:hover {
+        .filter_blur(3px);
+    }
+}
+.Multiple {
+    &:hover {
+        .filter_opacity(90%);
+    }
+}
+.SinglePictureCategory {
     .display_flex();
     width: 33%;
     height: 100%;
@@ -24,16 +34,6 @@
         .MultipleCategoryTitle {
             visibility: hidden;
         }
-    }
-}
-.Single{
-    &:hover {
-        .filter_blur(3px);
-    }
-}
-.Multiple {
-    &:hover {
-        .filter_opacity(90%);
     }
 }
 .shared {

@@ -37,6 +37,7 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'corsheaders',
     'blog',
     'rest_framework',
     'blog_frontend',
@@ -86,9 +87,6 @@ DATABASES = {
         'PASSWORD': 'Kngyjb199*#',
         'HOST': 'lightsphotography.mysql.database.azure.com',
         'PORT': '3306',
-        'OPTIONS': {
-            'ssl': {'ssl-ca': '/var/www/html/BaltimoreCyberTrustRoot.crt.pem'}
-        }
     }
 }
 

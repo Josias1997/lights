@@ -14,12 +14,13 @@ const home = (state = initialState, action) => {
             return {
                 ...state,
                 pictures: action.pictures,
-                loading: action.loading
+                loading: false
             };
         case actionTypes.FETCH_PICTURES_FAILED:
             return {
                 ...state,
-                error: true
+                error: true,
+                loading: false
             };
         case actionTypes.OPEN_MODAL:
             return {

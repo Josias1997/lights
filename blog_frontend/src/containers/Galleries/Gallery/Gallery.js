@@ -1,44 +1,46 @@
-import React, { Component } from 'react';
-import Category from './Category/Category';
+import React, {Component} from 'react';
+import SinglePictureCategory from '../../../components/Category/SinglePictureCategory';
 import Roll from 'react-reveal/Roll';
 import styles from './Gallery.less';
-import { connect } from 'react-redux';
-import {
-    initCategories
-} from "../../../store/actions";
+import {connect} from 'react-redux';
+import MultiplePicturesCategory from "../../../components/Category/MultiplePicturesCategory";
 
 class Gallery extends Component {
-    componentDidMount() {
-        this.props.onInitCategories();
-    }
     handleImageClick = id => {
         console.log(id);
     };
+
     render() {
         const {single, categoryClicked} = this.props;
-        let content = <p>Loading</p>;
-        if(this.props.categories) {
-            content =  this.props.categories.map(category => {
-                    return(
-                        <Category
-                            key={category.id}
-                            category={category}
-                            single={single}
-                            clicked={() => categoryClicked(category.id)}
-                            imageClicked={() => this.handleImageClick(category.id)}
-                        />
-                    );
-                });
+        let content = this.props.categories.map(category => {
+            return (
+                <SinglePictureCategory
+                    key={category.id}
+                    category={category}
+                    clicked={() => categoryClicked(category.id)}
+                />
+            );
+        });
+        if (!single) {
+            content = this.props.categories.map(category => {
+                return (
+                    <MultiplePicturesCategory
+                        key={category.id}
+                        category={category}
+                    />
+                );
+            });
         }
-        return(
+        return (
             <Roll>
-                <div className={single ? styles.Gallery:styles.Slider}>
+                <div className={single ? styles.Gallery : styles.Slider}>
                     {content}
                 </div>
             </Roll>
         );
     }
 }
+
 const mapStateToProps = state => {
     return {
         categories: state.gallery.categories,
@@ -47,10 +49,4 @@ const mapStateToProps = state => {
     }
 };
 
-const mapDispatchToProps = dispatch => {
-    return {
-        onInitCategories: () => dispatch(initCategories())
-    }
-};
-
-export default connect(mapStateToProps, mapDispatchToProps)(Gallery);
+export default connect(mapStateToProps)(Gallery);
