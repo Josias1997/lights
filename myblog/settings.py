@@ -37,6 +37,7 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'corsheaders',
     'blog',
     'rest_framework',
     'blog_frontend',
@@ -82,10 +83,10 @@ DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',
         'NAME': 'lightsphotography',
-        'HOST': 'lightsphotography.mysql.database.azure.com',
-        'PORT': '3306',
         'USER': 'myadmin@lightsphotography',
         'PASSWORD': 'Kngyjb199*#',
+        'HOST': 'lightsphotography.mysql.database.azure.com',
+        'PORT': '3306',
     }
 }
 

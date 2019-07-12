@@ -11,8 +11,8 @@ class Posts extends Component {
         let content = <div>
             <div className={styles.Posts}>
                 <MyCarousel
-                    elements={this.props.articles}
                     title={"Blog"}
+                    loading={this.props.loading}
                     carouselClicked={() => clicked(this.props.articles[0].id, "articles")}
                 />
             </div>

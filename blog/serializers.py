@@ -19,7 +19,7 @@ class PictureSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = Picture
-        fields = '__all__'
+        fields = ('id', 'url', 'is_visible', 'category')
 
 
 class OfferSerializer(serializers.ModelSerializer):

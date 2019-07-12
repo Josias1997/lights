@@ -8,7 +8,6 @@ urlpatterns = [
     path('api/blog/articles/', views.ArticleListView.as_view(), name='index'),
     path('api/blog/articles/<int:pk>', views.SingleArticleView.as_view(), name='article'),
     path('api/blog/categories/', views.CategoryListView.as_view(), name='categories'),
-    path('api/blog/categories/<int:pk>', views.PicturesPerCategoryView.as_view(), name='article'),
     path('api/blog/pictures/', views.PictureListView.as_view(), name='pictures'),
     path('api/blog/pictures/<int:pk>', views.SinglePictureView.as_view(), name='article'),
     path('api/blog/offers/', views.OfferListView.as_view(), name='offers'),

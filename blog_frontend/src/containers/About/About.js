@@ -1,38 +1,35 @@
-import React, { Component } from 'react';
-import axios from 'axios';
+import React, {Component} from 'react';
 import styles from './About.less';
+import {connect} from 'react-redux';
 
 class About extends Component {
-    state = {
-        profile: {}
-    };
-    componentDidMount() {
-        axios.get('api/blog/about-us/2')
-            .then(response => {
-                this.setState({
-                    profile: response.data
-                })
-            })
-    }
     render() {
-        const { firstName, lastName, phoneNumber, email, overview, url } = this.state.profile;
+        const {firstName, lastName, phoneNumber, email, overview, url} = this.props.profile;
+        let content = <div className={styles.Description}>
+            <h1>{firstName} {lastName}</h1>
+            <p>Contact : +212 {phoneNumber}</p>
+            <p>Email : {email}</p>
+            <h3>Vision :</h3>
+            <p id={"overview"}>
+                {overview}
+            </p>
+        </div>;
         return (
             <div className={styles.BlurContainer}>
                 <div className={styles.Profile}>
                     <img src={url} alt={url}/>
                 </div>
-                <div className={styles.Description}>
-                    <h1>{firstName} {lastName}</h1>
-                    <p>Contact : +212 {phoneNumber}</p>
-                    <p>Email : {email}</p>
-                    <h3>Vision :</h3>
-                    <p id={"overview"}>
-                        {overview}
-                    </p>
-                </div>
+                {content}
             </div>
         )
     }
 }
 
-export default About;
+const mapStateToProps = state => {
+    return {
+        profile: state.about.profile,
+        error: state.about.error,
+    }
+};
+
+export default connect(mapStateToProps)(About);

@@ -26,14 +26,6 @@ class CategoryListView(ListModelMixin, GenericAPIView):
         return self.list(request, *args, **kwargs)
 
 
-class PicturesPerCategoryView(ListAPIView):
-    serializer_class = PictureSerializer
-
-    def get_queryset(self):
-        category_id = self.kwargs['pk']
-        return Picture.objects.filter(category__id=category_id).order_by('-created_at')
-
-
 class PictureListView(ListAPIView):
     queryset = Picture.objects.all().order_by('-created_at')
     serializer_class = PictureSerializer

@@ -3,12 +3,18 @@ import styles from './CustomCarousel.less';
 
 class CustomCarousel extends Component {
     state = {
-        currentImageIndex: 1
+        currentImageIndex: 1,
+        timer: null,
     };
     componentDidMount() {
         if (this.props.auto === true) {
-            setInterval(this.changeImage, this.props.interval)
+            this.setState({
+                timer: setInterval(this.changeImage, this.props.interval)
+            });
         }
+    }
+    componentWillUnmount() {
+        clearInterval(this.state.timer);
     }
 
     changeImage = () => {
@@ -32,6 +38,7 @@ class CustomCarousel extends Component {
                 {this.props.images.map((image, index) => {
                     return (
                         <img
+                            key={image.id}
                             alt={image.url}
                             src={image.url}
                             className={index !== this.state.currentImageIndex - 1 ?

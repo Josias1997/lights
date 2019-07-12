@@ -5,18 +5,15 @@ import Blog from "../Blog/Blog";
 import Offers from "../Offers/Offers";
 import styles from './Home.less';
 import { connect } from 'react-redux';
-import CustomModal from "../../components/UI/Modals/CustomModal/CustomModal";
+import MyModal from "../../components/UI/MyModal/MyModal";
 import {
-    initPictures, closeModal, openModal
+    closeModal, openModal
 } from "../../store/actions";
 
 class Home extends Component {
     state = {
         type: 'categories'
     };
-    componentWillMount() {
-        this.props.onInitPictures();
-    }
     goToOffers = () => {
         this.props.history.push("/offers");
     };
@@ -34,7 +31,7 @@ class Home extends Component {
                 </div>
                 <Galleries galleryClicked={this.props.onOpenModal}/>
 
-                <CustomModal
+                <MyModal
                     open={this.props.open}
                     close={this.props.onCloseModal}
                     id={this.props.id}
@@ -56,9 +53,8 @@ const mapStateToProps = state => {
 
 const mapDispatchToProps = dispatch => {
     return {
-        onInitPictures: () => dispatch(initPictures()),
         onOpenModal: id => dispatch(openModal(id)),
-        onCloseModal: () => dispatch(closeModal())
+        onCloseModal: () => dispatch(closeModal()),
     }
 };
 
