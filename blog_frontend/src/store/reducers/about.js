@@ -14,7 +14,7 @@ const about = (state = initialState, action) => {
                 profile: action.profile,
                 loading: false
             };
-        case actionTypes.FETCH_ARTICLES_FAILED:
+        case actionTypes.SET_PROFILE_FAILED:
             return {
                 ...state,
                 error: true,

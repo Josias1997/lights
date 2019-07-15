@@ -16,7 +16,7 @@ export const setProfileFailed = () => {
 
 export const initProfile = () => {
     return dispatch => {
-        axios.get('api/blog/about-us/2')
+        axios.get('api/blog/about-us/1')
             .then(response => {
                 dispatch(setProfile(response.data))
             }).catch(error => {
