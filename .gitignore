@@ -1,7 +1,6 @@
 /__pycache__
 *.pyc
 *~
-/static
 .DS_Store
 /node_modules
 /venv
