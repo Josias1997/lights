@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import { Route } from "react-router";
+import {Route} from "react-router";
 import Gallery from '../Galleries/Gallery/Gallery';
 import NavBar from "../../components/NavBar/NavBar";
 import Aux from '../../hoc/Auxiliary/Auxiliary';
@@ -8,7 +8,7 @@ import Offers from "../Offers/Offers";
 import Blog from "../Blog/Blog";
 import About from "../About/About";
 import styles from './Main.less';
-import { connect } from 'react-redux';
+import {connect} from 'react-redux';
 import {initArticles, initCategories, initOffers, initPictures, initProfile, toggleNavBar} from "../../store/actions";
 import Loader from "../../components/UI/Loader/Loader";
 
@@ -29,22 +29,26 @@ class Main extends Component {
                 <Loader/>
             </div>
         </div>;
-        if (this.props.loading) {
-           content =  <div className={!this.props.isOpen ? styles.Container: styles.Container + " " + styles.Blur }>
-                        <Route path={"/"} exact component={Home}/>
-                        <Route path={"/gallery"} component={() => <Gallery single={false}/>} />
-                        <Route path={"/offers"} component={() => <Offers anotherPage={true}/>} />
-                        <Route path={"/blog"} component={() => <Blog anotherPage={true}/>} />
-                        <Route path={"/about-us"} component={About}/>
-                    </div>
+        if (this.props.loading && !this.props.error) {
+            content = <div className={!this.props.isOpen ? styles.Container : styles.Container + " " + styles.Blur}>
+                <Route path={"/"} exact component={Home}/>
+                <Route path={"/gallery"} component={() => <Gallery single={false}/>}/>
+                <Route path={"/offers"} component={() => <Offers anotherPage={true}/>}/>
+                <Route path={"/blog"} component={() => <Blog anotherPage={true}/>}/>
+                <Route path={"/about-us"} component={About}/>
+            </div>
+        } else {
+            content = <div className={styles.Container}>
+                Oops :( Content Loading Error;
+            </div>
         }
         return (
-                <Aux>
-                       <NavBar
-                           clicked={this.props.onToggleNavBar}
-                       />
-                    {content}
-                </Aux>
+            <Aux>
+                <NavBar
+                    clicked={this.props.onToggleNavBar}
+                />
+                {content}
+            </Aux>
         );
     }
 }
@@ -53,7 +57,9 @@ const mapStateToProps = state => {
     return {
         isOpen: state.main.isOpen,
         loading: !state.home.loading && !state.blog.loading && !state.offer.loading &&
-            !state.about.loading && !state.gallery.loading
+            !state.about.loading && !state.gallery.loading,
+        error: state.home.error || state.blog.error || state.offer.error
+            || state.about.error || state.gallery.error
     }
 };
 
