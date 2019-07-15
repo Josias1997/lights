@@ -12,7 +12,7 @@ import mainReducer from './store/reducers/main';
 import aboutReducer from './store/reducers/about';
 import categoryReducer from './store/reducers/category';
 
-const composeEnhancers = process.env.NODE_ENV === 'development' ? window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ : null || compose;
+// const composeEnhancers = process.env.NODE_ENV === 'development' ? window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ : null || compose;
 
 const rootReducer = combineReducers({
     home: homeReducer,
@@ -24,7 +24,7 @@ const rootReducer = combineReducers({
     category: categoryReducer
 });
 
-export const store = createStore(rootReducer, composeEnhancers(
+export const store = createStore(rootReducer, compose(
     applyMiddleware(thunk)
 ));
 
