@@ -36,10 +36,6 @@ class Main extends Component {
                 <Route path={"/blog"} component={() => <Blog anotherPage={true}/>}/>
                 <Route path={"/about-us"} component={About}/>
             </div>
-        } else {
-            content = <div className={styles.Container}>
-                Oops :( Content Loading Error;
-            </div>
         }
         return (
             <Aux>

@@ -11,6 +11,7 @@ https://docs.djangoproject.com/en/2.2/ref/settings/
 """
 
 import os
+import django_heroku
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
@@ -82,10 +83,11 @@ WSGI_APPLICATION = 'myblog.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',
-        'NAME': 'lightsphotography',
-        'USER': 'root',
-        'PASSWORD': '',
-        'HOST': 'localhost',
+        'NAME': 'Sjzod3Uji2',
+        'USER': 'Sjzod3Uji2',
+        'PASSWORD': 'CcjC75OYNh',
+        'HOST': 'remotemysql.com',
+        'PORT': '3306'
     }
 }
 
@@ -132,3 +134,5 @@ STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
 
 MEDIA_URL = 'medias/'
 MEDIA_ROOT = 'blog/medias'
+
+django_heroku.settings(locals())

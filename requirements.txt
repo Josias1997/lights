@@ -8,3 +8,4 @@ django_cleanup==3.2.0
 mysqlclient==1.4.2
 pillow==6.0.0
 coverage==4.5.3
+django-heroku==0.3.1
