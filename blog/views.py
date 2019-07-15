@@ -49,6 +49,9 @@ class SingleOfferView(RetrieveAPIView):
     serializer_class = OfferSerializer
 
 
-class AboutMeView(RetrieveAPIView):
-    queryset = AboutMe.objects.all()
+class AboutListView(ListModelMixin, GenericAPIView):
+    queryset = AboutMe.objects.all().order_by('-created_at')
     serializer_class = AboutMeSerializer
+
+    def get(self, request, *args, **kwargs):
+        return self.list(request, *args, **kwargs)

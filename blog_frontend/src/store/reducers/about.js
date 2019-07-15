@@ -1,7 +1,7 @@
 import * as actionTypes from '../actions/actionTypes';
 
 let initialState = {
-    profile: {},
+    profile: [],
     error: false,
     loading: true
 };

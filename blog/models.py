@@ -47,6 +47,7 @@ class AboutMe(models.Model):
     overview = models.TextField()
     image = models.ImageField(upload_to="profile/pictures")
     url = models.CharField(max_length=100, null=True, default="none")
+    created_at = models.DateTimeField(default=timezone.now)
 
 
 @receiver(pre_save)
