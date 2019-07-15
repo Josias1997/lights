@@ -83,9 +83,9 @@ DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',
         'NAME': 'lightsphotography',
-        'USER': 'myadmin@lightsphotography',
-        'PASSWORD': 'Kngyjb199*#',
-        'HOST': 'lightsphotography.mysql.database.azure.com',
+        'USER': 'root',
+        'PASSWORD': '',
+        'HOST': 'localhost',
         'PORT': '3306',
     }
 }
