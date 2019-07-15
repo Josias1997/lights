@@ -5,7 +5,6 @@
 /node_modules
 /venv
 /.idea
-/blog_frontend/static/frontend/js
 db.sqlite3
 /blog/medias
 datadump.json
