@@ -6,9 +6,6 @@ import {connect} from 'react-redux';
 import MultiplePicturesCategory from "../../../components/Category/MultiplePicturesCategory";
 
 class Gallery extends Component {
-    handleImageClick = id => {
-        console.log(id);
-    };
 
     render() {
         const {single, categoryClicked} = this.props;

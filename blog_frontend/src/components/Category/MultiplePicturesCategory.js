@@ -12,8 +12,7 @@ class MultiplePicturesCategory extends Component {
         const {category, pictures} = this.props;
         let categoryPictures = pictures.filter(picture =>
             (category.id === picture.category.id));
-
-        return (
+        let content = categoryPictures.length !== 0 ? (
             <div key={category.id}
                  className={styles.MultipleCategory}
             >
@@ -35,6 +34,10 @@ class MultiplePicturesCategory extends Component {
                     })}
                 </Carousel>
             </div>
+        ) : null;
+
+        return (
+            content
         );
     }
 }

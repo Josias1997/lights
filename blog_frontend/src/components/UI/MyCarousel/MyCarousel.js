@@ -10,7 +10,9 @@ import { connect } from 'react-redux';
 const MyCarousel = props => {
     const {title, carouselClicked} = props;
     let elements = props.articles;
-    let div = <Loader/>;
+    let div = <div>
+
+    </div>;
     let newTitle = null;
     if (title === 'Blog') {
         newTitle = 'Derniers Articles';
@@ -19,7 +21,7 @@ const MyCarousel = props => {
         newTitle = 'Dernières offres';
         elements = props.offers;
     }
-    if(elements !== 0) {
+    if(elements.length !== 0) {
         div = <div className={styles.OffersText} onClick={carouselClicked}>
             <Banner element={elements[0]}
                     newTitle={newTitle}

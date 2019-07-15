@@ -20,7 +20,7 @@ const SimpleCarousel = props => {
         ))}
     </Carousel>;
     let slogan = null;
-    if (props.banner) {
+    if (props.banner && props.pictures.length !== 0) {
         slogan = <Slogan title={"Lights Photography"}
                          subtitle={"\"Parce que vos instants ont de la valeur pour nous\""}
         />
@@ -35,7 +35,6 @@ const SimpleCarousel = props => {
 const mapStateToProps = state => {
     return {
         pictures: state.home.pictures,
-        error: state.home.error
     }
 };
 
