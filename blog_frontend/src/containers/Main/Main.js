@@ -17,7 +17,6 @@ class Main extends Component {
         this.props.onInitPictures();
         this.props.onInitCategories();
         this.props.onInitArticles();
-        this.props.onInitCategories();
         this.props.onInitOffers();
         this.props.onInitProfile();
     }
