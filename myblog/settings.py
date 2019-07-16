@@ -136,4 +136,3 @@ MEDIA_URL = 'medias/'
 MEDIA_ROOT = 'blog/medias'
 
 django_heroku.settings(locals())
-del DATABASES['default']['OPTIONS']['sslmode']
