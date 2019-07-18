@@ -3,7 +3,6 @@ import {Carousel} from "react-responsive-carousel";
 import Roll from 'react-reveal/Roll';
 import 'react-responsive-carousel/lib/styles/carousel.css';
 import styles from './MyCarousel.less';
-import Loader from "../Loader/Loader";
 import Banner from "../Banner/Banner";
 import { connect } from 'react-redux';
 

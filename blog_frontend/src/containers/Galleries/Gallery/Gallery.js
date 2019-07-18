@@ -1,25 +1,20 @@
-import React, {Component} from 'react';
+import React from 'react';
 import SinglePictureCategory from '../../../components/Category/SinglePictureCategory';
 import Roll from 'react-reveal/Roll';
 import styles from './Gallery.less';
 import {connect} from 'react-redux';
 import MultiplePicturesCategory from "../../../components/Category/MultiplePicturesCategory";
 
-class Gallery extends Component {
-
-    render() {
-        const {single, categoryClicked} = this.props;
-        let content = this.props.categories.map(category => {
-            return (
-                <SinglePictureCategory
-                    key={category.id}
-                    category={category}
-                    clicked={() => categoryClicked(category.id)}
-                />
-            );
-        });
+const Gallery = props => {
+        const {single, categoryClicked} = props;
+        let content = props.categories.map(category => (
+                    <SinglePictureCategory
+                        key={category.id}
+                        category={category}
+                        clicked={() => categoryClicked(category.id)}
+                    />));
         if (!single) {
-            content = this.props.categories.map(category => {
+            content = props.categories.map(category => {
                 return (
                     <MultiplePicturesCategory
                         key={category.id}
@@ -28,15 +23,14 @@ class Gallery extends Component {
                 );
             });
         }
-        return (
+    return (
             <Roll>
                 <div className={single ? styles.Gallery : styles.Slider}>
                     {content}
                 </div>
             </Roll>
         );
-    }
-}
+};
 
 const mapStateToProps = state => {
     return {

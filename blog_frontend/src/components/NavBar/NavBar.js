@@ -1,5 +1,5 @@
 import React from 'react';
-import NavLink from './NavLink/NavLink';
+import NavBarLink from './NavLink/NavBarLink';
 import Aux from '../../hoc/Auxiliary/Auxiliary';
 import styles from './NavBar.less';
 import HomeButton from "./HomeButton/HomeButton";
@@ -13,7 +13,7 @@ const NavBar = (props) => {
                 <HomeButton clicked={clicked}/>
                 <ul className={props.isOpen ? styles.NavBarOpen:styles.NavBar}>
                      {props.links.map((link, index) => (
-                        <NavLink
+                        <NavBarLink
                             key={index}
                             content={link.value}
                             link={link.link}

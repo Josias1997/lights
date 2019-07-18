@@ -4,7 +4,12 @@
 .Posts {
     .display_flex(row, nowrap);
     color: @textColor;
+    margin-top: 40px;
+    .set_width(45%);
     [class="carousel"] {
+        display: none;
+    }
+    @media screen and (max-width: @mobileBreakPoint) {
         display: none;
     }
 }

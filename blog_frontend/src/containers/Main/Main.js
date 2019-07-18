@@ -1,8 +1,7 @@
 import React, {Component} from 'react';
-import {Route} from "react-router";
+import {Route, Switch} from "react-router";
 import Gallery from '../Galleries/Gallery/Gallery';
 import NavBar from "../../components/NavBar/NavBar";
-import Aux from '../../hoc/Auxiliary/Auxiliary';
 import Home from "../Home/Home";
 import Offers from "../Offers/Offers";
 import Blog from "../Blog/Blog";
@@ -11,6 +10,8 @@ import styles from './Main.less';
 import {connect} from 'react-redux';
 import {initArticles, initCategories, initOffers, initPictures, initProfile, toggleNavBar} from "../../store/actions";
 import Loader from "../../components/UI/Loader/Loader";
+import CssBaseLine from '@material-ui/core/CssBaseline';
+import Container from '@material-ui/core/Container'
 
 class Main extends Component {
     componentDidMount() {
@@ -22,28 +23,31 @@ class Main extends Component {
     }
 
     render() {
-        let content = <div className={styles.Container}>
-            <div className={styles.Loader}>
-                <p>Veuillez Patientez un instant</p>
-                <Loader/>
-            </div>
+        let content = <div className={styles.Loader}>
+            <p>Veuillez Patientez un instant</p>
+            <Loader/>
         </div>;
         if (this.props.loading && !this.props.error) {
-            content = <div className={!this.props.isOpen ? styles.Container : styles.Container + " " + styles.Blur}>
-                <Route path={"/"} exact component={Home}/>
-                <Route path={"/gallery"} component={() => <Gallery single={false}/>}/>
-                <Route path={"/offers"} component={() => <Offers anotherPage={true}/>}/>
-                <Route path={"/blog"} component={() => <Blog anotherPage={true}/>}/>
-                <Route path={"/about-us"} component={About}/>
+            content = <div className={!this.props.isOpen ? styles.Content : styles.Content + " " + styles.Blur}>
+                <Switch>
+                    <Route path={"/"} exact component={Home}/>
+                    <Route path={"/gallery"} component={() => <Gallery single={false}/>}/>
+                    <Route path={"/offers"} component={() => <Offers anotherPage={true}/>}/>
+                    <Route path={"/blog"} component={() => <Blog anotherPage={true}/>}/>
+                    <Route path={"/about-us"} component={About}/>
+                </Switch>
             </div>
         }
         return (
-            <Aux>
+            <React.Fragment>
                 <NavBar
                     clicked={this.props.onToggleNavBar}
                 />
-                {content}
-            </Aux>
+                <CssBaseLine/>
+                <Container>
+                    {content}
+                </Container>
+            </React.Fragment>
         );
     }
 }

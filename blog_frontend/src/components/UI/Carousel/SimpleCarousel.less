@@ -1,10 +1,20 @@
 @import "../../../less/mixins";
 @import "../../../less/functions";
+@import "../../../less/components/img";
 
 .Carousel {
     position: @relativePosition;
     img {
         .set_border_radius(10%);
+        .set_dimensions(600px, 400px);
+    }
+    [class="carousel"] {
+        display: none;
+    }
+    @media screen and (max-width: @mobileBreakPoint) {
+        img {
+            .set_height(200px);
+        }
     }
 }
 

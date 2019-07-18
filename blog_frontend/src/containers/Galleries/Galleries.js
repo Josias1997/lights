@@ -7,10 +7,8 @@ class Galleries extends Component {
         return (
             <div>
                 <h1>Gallerie</h1>
-                <div>
-                    <Gallery single={true} categoryClicked={galleryClicked}/>
-                </div>
-        </div>);
+                <Gallery single={true} categoryClicked={galleryClicked}/>
+            </div>);
     }
 }
 

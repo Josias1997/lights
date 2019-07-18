@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import Card from "./Card/Card";
+import Card from "./CustomCard/CustomCard";
 import Roll from 'react-reveal/Roll';
 import styles from './Grid.less';
 import {connect} from 'react-redux';

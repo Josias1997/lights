@@ -1,6 +1,5 @@
-import os
-from django.core.files.storage import default_storage
-from django.db.models import ImageField
+from PIL import Image as PILImage
+from io import StringIO
 
 
 def set_path(instance, path):
@@ -16,3 +15,15 @@ def set_path(instance, path):
     instance.url = "".join(url_list)
 
 
+def compress_images(instance):
+    if hasattr(instance, 'image'):
+        print("yES")
+        img = PILImage.open(StringIO(instance.image.read()))
+        if img.mode != "RGB":
+            img.convert('RGB')
+        width, height = img.size
+        if width > 640 or height > 480:
+            width, height = 640, 480
+        img.resize((width, height), PILImage.ANTIALIAS)
+        save_buff = StringIO()
+        img.save(save_buff, format="JPEG", optimize=True, quality=70)

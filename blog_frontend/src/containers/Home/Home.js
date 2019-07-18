@@ -37,8 +37,10 @@ class Home extends Component {
                     id={this.props.id}
                     type={this.state.type}
                 />
-                <Blog anotherPage={false} clicked={this.gotToBlog}/>
-                <Offers anotherPage={false} clicked={this.goToOffers}/>
+                <div className={styles.LastContents}>
+                    <Blog anotherPage={false} clicked={this.gotToBlog}/>
+                    <Offers anotherPage={false} clicked={this.goToOffers}/>
+                </div>
             </div>
         )
     }

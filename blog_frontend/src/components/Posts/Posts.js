@@ -8,15 +8,13 @@ import { connect } from 'react-redux';
 class Posts extends Component {
     render() {
         const {anotherPage, clicked } = this.props;
-        let content = <div>
-            <div className={styles.Posts}>
+        let content = <div className={styles.Posts}>
                 <MyCarousel
                     title={"Blog"}
                     loading={this.props.loading}
                     carouselClicked={() => clicked(this.props.articles[0].id, "articles")}
                 />
-            </div>
-        </div>;
+            </div>;
         if (anotherPage) {
             content = <Grid type={'articles'}/>
         }

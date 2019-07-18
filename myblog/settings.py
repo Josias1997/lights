@@ -83,9 +83,9 @@ WSGI_APPLICATION = 'myblog.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',
-        'NAME': 'Sjzod3Uji2',
-        'USER': 'Sjzod3Uji2',
-        'PASSWORD': 'CcjC75OYNh',
+        'NAME': 'dLDMUMU0xU',
+        'USER': 'dLDMUMU0xU',
+        'PASSWORD': 'B0LYd1zqfO',
         'HOST': 'remotemysql.com',
         'PORT': '3306'
     }
@@ -136,4 +136,3 @@ MEDIA_URL = 'medias/'
 MEDIA_ROOT = 'blog/medias'
 
 django_heroku.settings(locals())
-del DATABASES['default']['OPTIONS']['sslmode']

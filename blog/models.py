@@ -2,8 +2,7 @@ from django.db import models
 from django.utils import timezone
 from django.db.models.signals import pre_save, post_delete
 from django.dispatch import receiver
-import os
-from .helpers import set_path
+from .helpers import set_path, compress_images
 # Create your models here.
 
 

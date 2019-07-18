@@ -11,7 +11,7 @@ class MyModal extends Component {
         let content = null;
         if (open) {
             if (type === 'offers') {
-                // content = <Card card={this.state.elements} single={true}/>
+                // content = <CustomCard card={this.state.elements} single={true}/>
                 content = <OffersModalContent id={id}/>
             } else if (type === 'articles') {
                 content = <BlogModalContent id={id}/>

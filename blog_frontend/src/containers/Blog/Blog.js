@@ -7,12 +7,10 @@ class Blog extends Component {
     }
     render() {
         const {anotherPage, clicked} = this.props;
-        return (<div className={"Blog"}>
-            <Posts
+        return (<Posts
                    anotherPage={anotherPage}
                    clicked={clicked}
-            />
-        </div>);
+            />);
     }
 }
 
