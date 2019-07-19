@@ -30,7 +30,7 @@ export const initPictures = () => {
     return dispatch => {
         axios.get('api/blog/pictures')
             .then(response => {
-                let updatedPictures = response.data;
+                let updatedPictures = response.data.slice(0, 5);
                 dispatch(setPictures(updatedPictures, false))
             }).catch(error => {
                 dispatch(fetchPicturesFailed())
