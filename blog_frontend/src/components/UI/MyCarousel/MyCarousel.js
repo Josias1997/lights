@@ -8,7 +8,7 @@ import { connect } from 'react-redux';
 
 const MyCarousel = props => {
     const {title, carouselClicked} = props;
-    let elements = props.articles;
+    let elements = props.articles.slice(0, 3);
     let div = <div>
 
     </div>;
@@ -18,7 +18,7 @@ const MyCarousel = props => {
     }
     else {
         newTitle = 'Dernières offres';
-        elements = props.offers;
+        elements = props.offers.slice(0, 3);
     }
     if(elements.length !== 0) {
         div = <div className={styles.OffersText} onClick={carouselClicked}>

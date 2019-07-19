@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import Card from "./CustomCard/CustomCard";
+import CustomCard from "./CustomCard/CustomCard";
 import Roll from 'react-reveal/Roll';
 import styles from './Grid.less';
 import {connect} from 'react-redux';
@@ -31,28 +31,37 @@ class Grid extends Component {
         }
         let content = <div className={styles.Grid}>
             {elements.map(element => (
-                <Card key={element.id}
-                      card={element}
-                      single={false}
-                      handleClick={this.handleClick}
+                <CustomCard key={element.id}
+                            card={element}
+                            single={false}
+                            handleClick={this.handleClick}
                 />
             ))}
         </div>;
         return (
-            <Roll left>
-                {content}
-                <CustomModal id={this.state.selectedId}
-                             open={this.state.open}
-                             close={this.handleClose}
-                             type={this.props.type}
-                />
-            </Roll>
+            !this.props.isOpen ?
+                <Roll left>
+                    {content}
+                    <CustomModal id={this.state.selectedId}
+                                 open={this.state.open}
+                                 close={this.handleClose}
+                                 type={this.props.type}
+                    />
+                </Roll> : <div>
+                    {content}
+                    <CustomModal id={this.state.selectedId}
+                                 open={this.state.open}
+                                 close={this.handleClose}
+                                 type={this.props.type}
+                    />
+                </div>
         )
     }
 }
 
 const mapStateToProps = state => {
     return {
+        isOpen: state.main.isOpen,
         articles: state.blog.articles,
         offers: state.offer.offers,
         error: state.blog.error

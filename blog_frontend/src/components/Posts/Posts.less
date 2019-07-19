@@ -1,5 +1,6 @@
 @import "../../less/mixins";
 @import "../../less/functions";
+@import "../../less/components/img";
 
 .Posts {
     .display_flex(row, nowrap);
@@ -8,6 +9,9 @@
     .set_width(45%);
     [class="carousel"] {
         display: none;
+    }
+    img {
+        .set_dimensions(100%, 300px);
     }
     @media screen and (max-width: @mobileBreakPoint) {
         display: none;

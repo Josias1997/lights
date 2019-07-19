@@ -14,6 +14,7 @@ import CssBaseLine from '@material-ui/core/CssBaseline';
 import Container from '@material-ui/core/Container'
 
 class Main extends Component {
+
     componentDidMount() {
         this.props.onInitPictures();
         this.props.onInitCategories();
@@ -27,8 +28,9 @@ class Main extends Component {
             <p>Veuillez Patientez un instant</p>
             <Loader/>
         </div>;
-        if (this.props.loading && !this.props.error) {
-            content = <div className={!this.props.isOpen ? styles.Content : styles.Content + " " + styles.Blur}>
+        const {loading, isOpen, error} = this.props;
+        if (loading && !error) {
+            content = <div className={!isOpen ? styles.Content : styles.Content + " " + styles.Blur}>
                 <Switch>
                     <Route path={"/"} exact component={Home}/>
                     <Route path={"/gallery"} component={() => <Gallery single={false}/>}/>
@@ -45,7 +47,10 @@ class Main extends Component {
                 />
                 <CssBaseLine/>
                 <Container>
-                    {content}
+                    {isOpen ? <div onClick={this.props.onToggleNavBar}>
+                        {content}
+                    </div> : content
+                    }
                 </Container>
             </React.Fragment>
         );
@@ -58,10 +63,10 @@ const mapStateToProps = state => {
         loading: !state.home.loading && !state.blog.loading && !state.offer.loading &&
             !state.about.loading && !state.gallery.loading,
         error: state.home.error || state.blog.error || state.offer.error
-            || state.about.error || state.gallery.error
+            || state.about.error || state.gallery.error,
+        pictures: state.home.pictures
     }
 };
-
 const mapDispatchToProps = dispatch => {
     return {
         onToggleNavBar: () => dispatch(toggleNavBar()),

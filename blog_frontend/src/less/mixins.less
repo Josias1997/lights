@@ -8,14 +8,14 @@
   -webkit-filter: blur(@percentage);
   filter: blur(@percentage);
 }
-.display_flex() {
+.display_flex(@justify: center) {
     display: @displayTypeFlex;
-    justify-content: @alignCenter;
+    justify-content: @justify;
     align-items: @alignCenter;
     align-self: @alignCenter;
 }
-.display_flex(@type, @wrap) {
-  .display_flex();
+.display_flex(@type, @wrap, @justify: center) {
+  .display_flex(@justify);
   flex-flow: @type @wrap;
 }
 .put_on_top(@opacity) {

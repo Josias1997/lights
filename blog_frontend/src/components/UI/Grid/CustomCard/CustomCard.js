@@ -9,6 +9,7 @@ import {makeStyles, Card,
 const useStyles = makeStyles({
     card: {
         width: 96 + '%',
+        height: 300
     },
     media: {
         width: 100 + '%',
@@ -23,7 +24,7 @@ const CustomCard = props => {
     let content = null;
     if (!single) {
         const {handleClick} = props;
-        let truncatedContent = truncate(card.content, 200, null);
+        let truncatedContent = truncate(card.content, 50, null);
         content = <div className={styles.Card} onClick={() => handleClick(id)}>
             <Card className={classes.card}>
                 <CardActionArea href={""}>
@@ -33,9 +34,9 @@ const CustomCard = props => {
                         image={url}
                     />
                     <CardContent>
-                        <Typography gutterBottom variant={"h5"} component={"h2"}>
+                        <Typography gutterBottom variant={"h5"} component={"h5"}>
                             {title}
-                            {price !== undefined ? (<strong><p>Prix: {price}</p></strong>):null}
+                            {price !== undefined ? (<strong> ${price}</strong>):null}
                         </Typography>
                         <Typography variant={"body2"} color={"textSecondary"}
                                     component={"p"}>

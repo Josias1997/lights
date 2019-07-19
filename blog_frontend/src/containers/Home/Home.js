@@ -4,7 +4,7 @@ import Galleries from "../Galleries/Galleries";
 import Blog from "../Blog/Blog";
 import Offers from "../Offers/Offers";
 import styles from './Home.less';
-import { connect } from 'react-redux';
+import {connect} from 'react-redux';
 import MyModal from "../../components/UI/MyModal/MyModal";
 import {
     closeModal, openModal
@@ -29,7 +29,9 @@ class Home extends Component {
                         banner={true}
                     />
                 </div>
-                <Galleries galleryClicked={this.props.onOpenModal}/>
+                {this.props.isOpen ? <Galleries/> :
+                    <Galleries galleryClicked={this.props.onOpenModal}/>
+                }
 
                 <MyModal
                     open={this.props.open}
@@ -37,6 +39,9 @@ class Home extends Component {
                     id={this.props.id}
                     type={this.state.type}
                 />
+                {/*<div>*/}
+                {/*     <h1>Derniers articles</h1>*/}
+                {/*</div>*/}
                 <div className={styles.LastContents}>
                     <Blog anotherPage={false} clicked={this.gotToBlog}/>
                     <Offers anotherPage={false} clicked={this.goToOffers}/>
@@ -48,6 +53,7 @@ class Home extends Component {
 
 const mapStateToProps = state => {
     return {
+        isOpen: state.main.isOpen,
         open: state.home.open,
         id: state.home.id
     }

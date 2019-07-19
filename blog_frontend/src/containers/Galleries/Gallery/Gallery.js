@@ -6,15 +6,15 @@ import {connect} from 'react-redux';
 import MultiplePicturesCategory from "../../../components/Category/MultiplePicturesCategory";
 
 const Gallery = props => {
-        const {single, categoryClicked} = props;
-        let content = props.categories.map(category => (
+        const {single, categoryClicked, categories, isOpen} = props;
+        let content = categories.map(category => (
                     <SinglePictureCategory
                         key={category.id}
                         category={category}
                         clicked={() => categoryClicked(category.id)}
                     />));
         if (!single) {
-            content = props.categories.map(category => {
+            content = categories.map(category => {
                 return (
                     <MultiplePicturesCategory
                         key={category.id}
@@ -24,7 +24,9 @@ const Gallery = props => {
             });
         }
     return (
-            <Roll>
+            isOpen ? <div className={single ? styles.Gallery : styles.Slider}>
+                    {content}
+                </div> :  <Roll>
                 <div className={single ? styles.Gallery : styles.Slider}>
                     {content}
                 </div>
@@ -35,6 +37,7 @@ const Gallery = props => {
 const mapStateToProps = state => {
     return {
         categories: state.gallery.categories,
+        isOpen: state.main.isOpen,
         error: state.gallery.error,
         loading: state.gallery.loading
     }
