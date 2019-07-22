@@ -1,24 +1,17 @@
 @import "../../../less/mixins";
 
 .Slogan {
-    .put_on_top(0.5);
-    .set_top_left(40%, 50%);
-    width: 80%;
-}
-.Slogan .title {
+  .put_on_top(0.5);
+  .set_top_left(40%, 50%);
+  width: 80%;
+  font-size: 8px;
+  top: 40%;
+
+  .title {
     text-transform: uppercase;
-}
-@media screen and (max-width: 570px) {
-    .Slogan {
-        width: 50%;
-        font-size: 8px;
-        top: 40%;
-    }
-}
-@media screen and (max-width: 400px) {
-    .Slogan {
-        width: 80%;
-        font-size: 8px;
-        top: 40%;
-    }
+  }
+
+  @media screen and (min-width: 570px) {
+    width: 50%;
+  }
 }

@@ -14,7 +14,7 @@
 }
 .SinglePictureCategory {
     .display_flex(left);
-    width: 33%;
+    width: 45%;
     height: 100%;
     > div:first-child {
         height: 90%;
@@ -23,8 +23,8 @@
         .set_dimensions(95%, 50%);
         border-radius: 10%;
     }
-    @media screen and (max-width: @mobileBreakPoint) {
-        width: 45%;
+    @media screen and (min-width: @mobileBreakPoint) {
+        width: 33%;
     }
     @media screen and (max-width: 360px) {
         width: 90%;
@@ -67,9 +67,7 @@
      &:hover {
         .filter_opacity(60%);
     }
-    @media screen and (max-width: 599px) {
-        .set_font_size(9px)
-    }
+  .set_font_size(9px);
 
     @media screen and (min-width: 600px) {
         .set_font_size(10px);

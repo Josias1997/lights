@@ -5,15 +5,14 @@
 .Carousel {
     position: @relativePosition;
     img {
-        .set_border_radius(10%);
-        .set_dimensions(600px, 400px);
+        .set_dimensions(600px, 200px);
     }
     [class="carousel"] {
         display: none;
     }
-    @media screen and (max-width: @mobileBreakPoint) {
+    @media screen and (min-width: @mobileBreakPoint) {
         img {
-            .set_height(200px);
+            .set_height(400px);
         }
     }
 }

@@ -3,7 +3,7 @@
 @import "../../less/components/img";
 
 .Offers {
-    .display_flex(row, nowrap);
+    display: none;
     color: @textColor;
     margin-top: 40px;
     .set_width(45%);
@@ -13,7 +13,7 @@
     img {
         .set_dimensions(100%, 300px);
     }
-    @media screen and (max-width: @mobileBreakPoint) {
-        display: none;
+    @media screen and (min-width: @mobileBreakPoint) {
+        .display_flex(row, nowrap);
     }
 }

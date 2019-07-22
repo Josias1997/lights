@@ -1,7 +1,8 @@
 @import "../../../less/mixins";
 .Grid {
-    .display_flex(row, wrap, left);
-    @media screen and (max-width: @mobileBreakPoint) {
-        .display_flex(column, nowrap);
+    width: 100%;
+    .display_flex(column, nowrap);
+    @media screen and (min-width: @mobileBreakPoint) {
+        .display_flex(row, wrap, left);
     }
 }
