@@ -1,48 +1,41 @@
-import React, { Component } from 'react';
-import CustomCard from "../Grid/CustomCard/CustomCard";
-import styles from "../CustomCarousel/CustomCarousel.less";
+import React from 'react';
+import {Carousel} from 'react-responsive-carousel'
+import 'react-responsive-carousel/lib/styles/carousel.css';
+import styles from './Slider.less';
+import Slogan from "../Slogan/Slogan";
+import {connect} from 'react-redux';
 
-
-class Slider extends Component {
-    state = {
-        currentDivIndex: 1,
-        timer: null
-    };
-    componentDidMount() {
-        if (this.props.auto === true) {
-            this.setState({
-                timer: setInterval(this.changeDiv, this.props.interval)
-            });
-        }
-    }
-
-    changeDiv = () => {
-         let slides = document.getElementsByClassName(styles.Slides);
-         this.setState(prevState => {
-             if (prevState.currentDivIndex === slides.length) {
-                return {
-                    currentDivIndex: 1
-                }
-            }
-            return {
-                currentDivIndex: prevState.currentDivIndex + 1
-            }
-        })
-    };
-
-    render() {
-        return(
-            <div>
-                {this.props.elements.map(element => {
-                    return (
-                        <div className={styles.Slides}>
-                            Frame 1
-                        </div>
-                    )
-                })}
+const Slider = props => {
+    let content = <Carousel
+        showArrows
+        emulateTouch
+        infiniteLoop
+        autoPlay
+        interval={2000}
+    >
+        {props.pictures.map(picture => (
+            <div key={picture.id}>
+                <img src={picture.url} alt={picture.url}/>
             </div>
-        )
+        ))}
+    </Carousel>;
+    let slogan = null;
+    if (props.banner && props.pictures.length !== 0) {
+        slogan = <Slogan title={"Lights Photography"}
+                         subtitle={"\"Parce que vos instants ont de la valeur pour nous\""}
+        />
     }
-}
+    return (
+        <div className={styles.Carousel}>
+            {slogan}
+            {content}
+        </div>
+    )
+};
+const mapStateToProps = state => {
+    return {
+        pictures: state.home.pictures,
+    }
+};
 
-export default Slider;
+export default connect(mapStateToProps)(Slider);

@@ -23,9 +23,12 @@
   color: @textColor;
   font-weight:  @boldWeight;
   position: @absolutePosition;
-  transform: translate(-50%, -50%);
+  transform: translate(-50%, -95%);
   z-index: 2;
   text-align: @alignCenter;
+  @media screen and (min-width: @mobileBreakPoint) {
+    transform: translate(-50%, -50%);
+  }
 }
 .set_top_left(@top, @left) {
   top: @top;

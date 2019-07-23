@@ -1,6 +1,6 @@
 from django.db import models
 from django.utils import timezone
-from django.db.models.signals import pre_save, post_delete
+from django.db.models.signals import pre_save
 from django.dispatch import receiver
 from .helpers import set_path, compress_images
 # Create your models here.
@@ -51,6 +51,7 @@ class AboutMe(models.Model):
 
 @receiver(pre_save)
 def save_handler(sender, instance, **kwargs):
+    compress_images(instance)
     if isinstance(instance, Article):
         set_path(instance, "articles")
     elif isinstance(instance, Picture):

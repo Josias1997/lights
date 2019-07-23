@@ -1,5 +1,7 @@
 from PIL import Image as PILImage
-from io import StringIO
+from io import BytesIO
+from django.core.files.uploadedfile import InMemoryUploadedFile
+import sys
 
 
 def set_path(instance, path):
@@ -17,13 +19,11 @@ def set_path(instance, path):
 
 def compress_images(instance):
     if hasattr(instance, 'image'):
-        print("yES")
-        img = PILImage.open(StringIO(instance.image.read()))
-        if img.mode != "RGB":
-            img.convert('RGB')
-        width, height = img.size
-        if width > 640 or height > 480:
-            width, height = 640, 480
-        img.resize((width, height), PILImage.ANTIALIAS)
-        save_buff = StringIO()
-        img.save(save_buff, format="JPEG", optimize=True, quality=70)
+        image_temp = PILImage.open(instance.image)
+        output_io_stream = BytesIO()
+        image_temp_resized = image_temp.resize((1020, 573))
+        image_temp.save(output_io_stream, format='JPEG', quality=30)
+        output_io_stream.seek(0)
+        instance.image = InMemoryUploadedFile(output_io_stream, 'ImageField',
+                                              f"{instance.image.name.split('.')[0]}.jpg", 'image/jpeg',
+                                              sys.getsizeof(output_io_stream), None)

@@ -1,17 +1,18 @@
 import React, {Component} from 'react';
 import {Route, Switch} from "react-router";
-import Gallery from '../Galleries/Gallery/Gallery';
-import NavBar from "../../components/NavBar/NavBar";
-import Home from "../Home/Home";
-import Offers from "../Offers/Offers";
-import Blog from "../Blog/Blog";
-import About from "../About/About";
+import Gallery from '../../components/Utility/Gallery/Gallery';
+import NavBar from "../../components/Navigation/NavBar/NavBar";
+import Home from "../../components/Pages/Home/Home";
+import Offers from "../../components/Pages/Offers/Offers";
+import Blog from "../../components/Pages/Blog/Blog";
+import About from "../../components/Pages/About/About";
 import styles from './Main.less';
 import {connect} from 'react-redux';
 import {initArticles, initCategories, initOffers, initPictures, initProfile, toggleNavBar} from "../../store/actions";
 import Loader from "../../components/UI/Loader/Loader";
 import CssBaseLine from '@material-ui/core/CssBaseline';
 import Container from '@material-ui/core/Container'
+import Footer from "../../components/Navigation/Footer/Footer";
 
 class Main extends Component {
 
@@ -52,6 +53,7 @@ class Main extends Component {
                     </div> : content
                     }
                 </Container>
+                { loading && !error ? <Footer/> : null }
             </React.Fragment>
         );
     }

@@ -1,10 +1,10 @@
 @import "../mixins";
 
 .title(@width: 10%, @height: 85px) {
-  width: @width;
-  height: @height;
-  @media screen and (max-width: @mobileBreakPoint) {
-    width: 18%;
-    height: 55px;
+  width: 25%;
+  height: 55px;
+  @media screen and (min-width: @mobileBreakPoint) {
+    width: @width;
+    height: @height;
   }
 }

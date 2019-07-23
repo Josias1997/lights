@@ -1,0 +1,24 @@
+@import "../../../less/mixins";
+
+.singleCarousel {
+  cursor: pointer;
+}
+
+.OffersText {
+  .put_on_top(0.8);
+  text-align: center;
+  /*top: 50%;*/
+  /*left: 50%;*/
+  width: 50%;
+  font-size: 10px;
+  cursor: @cursorTypePointer;
+
+  &:hover {
+    .filter_opacity(60%);
+  }
+
+  @media screen and (min-width: 550px) {
+    width: @containerWidth;
+    height: 50px;
+  }
+}
