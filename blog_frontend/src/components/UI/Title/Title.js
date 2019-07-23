@@ -4,7 +4,7 @@ const Title = props => {
 
     const {name, styleClass} = props;
     let content = <div className={styleClass}>
-        <p>{name}</p>;
+        <p>{name}</p>
     </div>;
     return (
         content
