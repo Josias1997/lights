@@ -1,0 +1,28 @@
+@import '../../../less/mixins';
+
+.Paginator {
+  margin-top: 20px;
+  text-align: @alignCenter;
+  .display_flex(row, wrap, left);
+
+  .active {
+    color: blue;
+    font-weight: bold;
+    border: 1px solid blue;
+  }
+  .Link {
+    cursor: pointer;
+    width: 10%;
+    border: 1px solid #ccc;
+    padding: 2px;
+    margin-left: 2px;
+    &:hover {
+      .filter_opacity(50%);
+    }
+
+    @media screen and(min-width: @mobileBreakPoint) {
+      width: 5%;
+      .display_flex(row, nowrap, center);
+    }
+  }
+}

@@ -1,21 +1,36 @@
 @import "../../less/mixins";
-.Container {
-    margin-top: 100px;
-    @media screen and (max-width: @mobileBreakPoint) {
-        margin-top: 50px;
+.Content {
+    position: relative;
+    margin-top: 70px;
+    margin-bottom: 150px;
+    @media screen and (min-width: @mobileBreakPoint) {
+        margin-top: 100px;
+        margin-bottom: 120px;
     }
 }
+
 .Blur {
     margin-top: 100px;
-    .filter_opacity(40%);
+    .filter_opacity(8%);
     -webkit-transition: -webkit-filter 0.8s linear;
     transition: filter 0.8s linear;
 }
+
 .Loader {
     position: absolute;
-    top: 40%;
-    left: 40%;
     font-size: 14px;
     font-weight: bold;
+    top: 30%;
+    left: 20%;
+
+    @media screen and (min-width: 405px) {
+        left: 25%;
+    }
+    @media screen and (min-width: 470px) {
+        left: 30%;
+    }
+    @media screen and (min-width: @mobileBreakPoint) {
+        left: 40%;
+    }
 }
 

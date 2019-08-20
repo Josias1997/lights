@@ -11,6 +11,7 @@ https://docs.djangoproject.com/en/2.2/ref/settings/
 """
 
 import os
+import django_heroku
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
@@ -41,7 +42,9 @@ INSTALLED_APPS = [
     'blog',
     'rest_framework',
     'blog_frontend',
-    'django_cleanup'
+    'django_cleanup',
+    'blog_articles',
+    'ckeditor'
 ]
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
@@ -82,11 +85,11 @@ WSGI_APPLICATION = 'myblog.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',
-        'NAME': 'lightsphotography',
-        'USER': 'myadmin@lightsphotography',
-        'PASSWORD': 'Kngyjb199*#',
-        'HOST': 'lightsphotography.mysql.database.azure.com',
-        'PORT': '3306',
+        'NAME': 'dLDMUMU0xU',
+        'USER': 'dLDMUMU0xU',
+        'PASSWORD': 'B0LYd1zqfO',
+        'HOST': 'remotemysql.com',
+        'PORT': '3306'
     }
 }
 
@@ -133,3 +136,7 @@ STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
 
 MEDIA_URL = 'medias/'
 MEDIA_ROOT = 'blog/medias'
+
+django_heroku.settings(locals())
+# del DATABASES['default']['OPTIONS']['sslmode']
+

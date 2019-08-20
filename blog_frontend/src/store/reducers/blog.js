@@ -14,7 +14,7 @@ const blog = (state = initialState, action) => {
                 articles: action.articles,
                 loading: action.loading
             };
-        case actionTypes.FETCH_ARTICLES_FAILED:
+        case actionTypes.SET_PROFILE_FAILED:
             return {
                 ...state,
                 error: true

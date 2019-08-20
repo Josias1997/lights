@@ -1,6 +1,6 @@
 import React from 'react';
 import {connect} from 'react-redux';
-import Card from "../../Grid/Card/Card";
+import Card from "../../Grid/CustomCard/CustomCard";
 
 const OffersModalContent = ({offers, id}) => {
     let offer = offers.filter(offer => (

@@ -3,14 +3,13 @@ import ReactDOM from 'react-dom'
 import { Provider } from 'react-redux';
 import { createStore, applyMiddleware, compose, combineReducers } from "redux";
 import thunk from 'redux-thunk';
-import App from './App';
+import App from './containers/App';
 import homeReducer from "./store/reducers/home";
 import galleryReducer from './store/reducers/gallery';
 import offersReducer from './store/reducers/offers';
 import blogReducer from './store/reducers/blog';
 import mainReducer from './store/reducers/main';
 import aboutReducer from './store/reducers/about';
-import categoryReducer from './store/reducers/category';
 
 // const composeEnhancers = process.env.NODE_ENV === 'development' ? window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ : null || compose;
 
@@ -21,7 +20,6 @@ const rootReducer = combineReducers({
     blog: blogReducer,
     main: mainReducer,
     about: aboutReducer,
-    category: categoryReducer
 });
 
 export const store = createStore(rootReducer, compose(

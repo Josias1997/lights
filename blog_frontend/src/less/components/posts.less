@@ -1,0 +1,19 @@
+@import "../mixins";
+@import "../functions";
+@import "./img";
+
+.posts() {
+  color: @textColor;
+    margin-top: 40px;
+    .set_width(100%);
+    [class="carousel"] {
+        display: none;
+    }
+    img {
+        .set_dimensions(100%, 300px);
+    }
+    @media screen and (min-width: @mobileBreakPoint) {
+        .display_flex(row, nowrap);
+        .set_width(45%);
+    }
+}

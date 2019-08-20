@@ -1,0 +1,42 @@
+@import "../../../../less/mixins";
+@import "../../../../less/functions";
+
+.sharedStyle {
+    .set_width(100%);
+    .set_border_radius(20%);
+}
+.Card {
+    .set_width(33%);
+    text-align: @alignLeft;
+    margin-top: 10px;
+    .CardBody {
+        width: 90%;
+        @media screen and (max-width: @mobileBreakPoint) {
+            .set_width(100%);
+        }
+    }
+    img {
+        &:extend(.sharedStyle);
+    }
+    button {
+        .set_width(100%);
+        border-radius: 5%;
+        cursor: @cursorTypePointer;
+        &:hover {
+            .filter_opacity(60%);
+        }
+    }
+    @media screen and (max-width: @mobileBreakPoint) {
+        .set_width(100%);
+        text-align: @alignCenter;
+        margin-top: 10px;
+    }
+}
+.ModalContent {
+    .set_width(100%);
+    color: @bgColor;
+    text-align: @alignLeft;
+    img {
+        &:extend(.sharedStyle);
+    }
+}

@@ -35,9 +35,3 @@ export {
     setProfileFailed,
     initProfile
 } from './about';
-
-export {
-    setCategoryPictures,
-    setCategoryPicturesFailed,
-    initCategoryPictures
-} from './category'

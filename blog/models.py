@@ -1,9 +1,8 @@
 from django.db import models
 from django.utils import timezone
-from django.db.models.signals import pre_save, post_delete
+from django.db.models.signals import pre_save
 from django.dispatch import receiver
-import os
-from .helpers import set_path
+from .helpers import set_path, compress_images
 # Create your models here.
 
 
@@ -13,13 +12,6 @@ class Content(models.Model):
     created_at = models.DateTimeField(default=timezone.now)
     is_visible = models.BooleanField(default=False)
     url = models.CharField(max_length=100, null=True, default="none")
-
-
-class Article(Content):
-    image = models.ImageField(upload_to="articles/pictures/", null=True)
-
-    def __str__(self):
-        return self.title
 
 
 class Picture(Content):
@@ -47,13 +39,13 @@ class AboutMe(models.Model):
     overview = models.TextField()
     image = models.ImageField(upload_to="profile/pictures")
     url = models.CharField(max_length=100, null=True, default="none")
+    created_at = models.DateTimeField(default=timezone.now)
 
 
 @receiver(pre_save)
 def save_handler(sender, instance, **kwargs):
-    if isinstance(instance, Article):
-        set_path(instance, "articles")
-    elif isinstance(instance, Picture):
+    compress_images(instance)
+    if isinstance(instance, Picture):
         set_path(instance, "pictures")
     elif isinstance(instance, Offer):
         set_path(instance, "offers")

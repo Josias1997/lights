@@ -1,6 +1,10 @@
 /__pycache__
+*.pyc
+*~
+.DS_Store
 /node_modules
 /venv
 /.idea
-/blog_frontend/static/frontend/js
+db.sqlite3
+datadump.json
 

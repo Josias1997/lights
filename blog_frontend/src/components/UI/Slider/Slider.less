@@ -1,0 +1,19 @@
+@import "../../../less/mixins";
+@import "../../../less/functions";
+@import "../../../less/components/img";
+
+.Carousel {
+    position: @relativePosition;
+    img {
+        .set_dimensions(600px, 200px);
+    }
+    [class="carousel"] {
+        display: none;
+    }
+    @media screen and (min-width: @mobileBreakPoint) {
+        img {
+            .set_height(400px);
+        }
+    }
+}
+
