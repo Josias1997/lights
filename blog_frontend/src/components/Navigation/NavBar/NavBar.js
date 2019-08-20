@@ -8,15 +8,22 @@ const NavBar = (props) => {
     const {clicked} = props;
     return (
         <React.Fragment>
-            <nav>
-                <HomeButton clicked={clicked}/>
-                <ul className={props.isOpen ? styles.NavBarOpen : styles.NavBar}>
-                    {props.links.map((link, index) => (
+            <nav className="navbar navbar-expand-lg navbar-dark primary-color">
+                <NavBarLink classes={"navbar-brand"} content={props.links[0].value}/>
+                <button className="navbar-toggler" type="button" data-toggle="collapse" data-target="#basicExampleNav"
+                        aria-controls="basicExampleNav" aria-expanded="false" aria-label="Toggle navigation">
+                    <span className="navbar-toggler-icon">
+
+                    </span>
+                </button>
+                <ul className="navbar-nav mr-auto">
+                    {props.links.slice(1).map((link, index) => (
                         <NavBarLink
                             key={index}
                             content={link.value}
                             link={link.link}
                             clicked={clicked}
+                            classes={"nav-link"}
                         />
                     ))}
                 </ul>
