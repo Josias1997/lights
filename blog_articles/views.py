@@ -1,11 +1,19 @@
-from django.shortcuts import render
+from django.shortcuts import render, get_object_or_404
+from django.views.generic import ListView, DetailView
+from .models import Article
 
 # Create your views here.
 
 
-def get_articles(request):
-    return render(request, 'articles/home.html')
+class HomeView(ListView):
+    model = Article
+    template_name = 'articles/home.html'
+    paginate_by = 6
+    context_object_name = 'articles_list'
 
 
-def get_details(request, slug):
-    return render(request, 'articles/post-page.html')
+class ArticleDetailView(DetailView):
+    model = Article
+    template_name = 'articles/post-page.html'
+    context_object_name = 'article'
+

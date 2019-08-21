@@ -135,7 +135,7 @@ STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
 
 MEDIA_URL = 'medias/'
-MEDIA_ROOT = 'blog/medias'
+MEDIA_ROOT = 'medias'
 
 django_heroku.settings(locals())
 # del DATABASES['default']['OPTIONS']['sslmode']
