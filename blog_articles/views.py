@@ -4,4 +4,8 @@ from django.shortcuts import render
 
 
 def get_articles(request):
-    return render(request, 'articles/articles.html')
+    return render(request, 'articles/home.html')
+
+
+def get_details(request, slug):
+    return render(request, 'articles/post-page.html')

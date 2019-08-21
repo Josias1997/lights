@@ -1,31 +1,12 @@
-{% load static %}
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Swiper/4.4.1/css/swiper.min.css">
-    <title>{% block title %} LightsPhotography {% endblock %}</title>
-    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.2/css/all.css">
-    <link rel="icon" type="image/png" href="{% static 'img/favicon.png' %}"/>
-    <link href="{% static 'css/bootstrap.min.css' %}" rel="stylesheet">
-    <!-- Material Design Bootstrap -->
-    <link href="{% static 'css/mdb.min.css' %}" rel="stylesheet">
-    <!-- Your custom styles (optional) -->
-    <link href="{% static 'css/style.css' %}" rel="stylesheet">
-</head>
+{% include 'header.html' %}
 <body>
-    {% block container %}
+{% include 'navbar.html' %}
+{% block container %}
 {% endblock %}
+{% include 'footer.html' %}
 </body>
 <!-- SCRIPTS -->
 <!-- JQuery -->
 {% block scripts %} {% endblock %}
-<script type="text/javascript" src="{% static 'js/jquery-3.4.1.min.js' %}"></script>
-<!-- Bootstrap tooltips -->
-<script type="text/javascript" src="{% static 'js/popper.min.js' %}"></script>
-<!-- Bootstrap core JavaScript -->
-<script type="text/javascript" src="{% static 'js/bootstrap.min.js' %}"></script>
-<!-- MDB core JavaScript -->
-<script type="text/javascript" src="{% static 'js/mdb.min.js' %}"></script>
+{% include 'scripts.html' %}
 </html>

@@ -1,18 +1,13 @@
 import React, {Component} from 'react';
 import {Route, Switch} from "react-router";
 import Gallery from '../../components/Utility/Gallery/Gallery';
-import NavBar from "../../components/Navigation/NavBar/NavBar";
 import Home from "../../components/Pages/Home/Home";
 import Offers from "../../components/Pages/Offers/Offers";
 import Blog from "../../components/Pages/Blog/Blog";
 import About from "../../components/Pages/About/About";
-import styles from './Main.less';
 import {connect} from 'react-redux';
 import { initCategories, initOffers, initPictures, initProfile, toggleNavBar} from "../../store/actions";
 import Loader from "../../components/UI/Loader/Loader";
-import CssBaseLine from '@material-ui/core/CssBaseline';
-import Container from '@material-ui/core/Container'
-import Footer from "../../components/Navigation/Footer/Footer";
 
 class Main extends Component {
 
@@ -24,13 +19,12 @@ class Main extends Component {
     }
 
     render() {
-        let content = <div className={styles.Loader}>
-            <p>Veuillez Patientez un instant</p>
-            <Loader/>
-        </div>;
-        const {loading, isOpen, error} = this.props;
+        let content = <div className={"spinner-border text-primary"}>
+                <span className={"sr-only"}>Loading...</span>
+            </div>
+        const {loading, error} = this.props;
         if (loading && !error) {
-            content = <div className={!isOpen ? styles.Content : styles.Content + " " + styles.Blur}>
+            content = <div>
                 <Switch>
                     <Route path={"/"} exact component={Home}/>
                     <Route path={"/gallery"} component={() => <Gallery single={false}/>}/>
@@ -42,17 +36,9 @@ class Main extends Component {
         }
         return (
             <React.Fragment>
-                <NavBar
-                    clicked={this.props.onToggleNavBar}
-                />
-                <CssBaseLine/>
-                <Container>
-                    {isOpen ? <div onClick={this.props.onToggleNavBar}>
+                    <div>
                         {content}
-                    </div> : content
-                    }
-                </Container>
-                { loading && !error ? <Footer/> : null }
+                    </div>
             </React.Fragment>
         );
     }

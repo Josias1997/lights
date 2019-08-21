@@ -1,11 +1,15 @@
+{% extends 'base.html' %}
 {% load static %}
 
-{% block content %}
-    <div class="container" id="app">
-    </div>
+{% block container %}
+    <main class="mt-5 pt-5">
+        <div class="container" id="app">
+
+        </div>
+    </main>
 {% endblock %}
 {% block scripts %}
-<script src="{% static "frontend/js/main.js" %}"></script>
+    <script src="{% static "frontend/js/main.js" %}"></script>
 {% endblock %}
 <!-- SCRIPTS -->
 <!-- JQuery -->
