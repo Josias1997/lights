@@ -17,11 +17,10 @@
 
                             <!--Card image-->
                             <div class="view overlay">
-                                <img src="https://mdbootstrap.com/wp-content/uploads/2017/11/brandflow-tutorial-fb.jpg"
+                                <img src="../{{ article.image.url }}"
                                      class="card-img-top"
-                                     alt="">
-                                <a href="{{ article.get_absolute_url }}"
-                                   target="_blank">
+                                     alt="{{ article.title }}">
+                                <a href="{{ article.get_absolute_url }}">
                                     <div class="mask rgba-white-slight"></div>
                                 </a>
                             </div>
@@ -31,13 +30,11 @@
                                 <!--Title-->
                                 <h4 class="card-title">{{ article.title }}</h4>
                                 <!--Text-->
-                                <p class="card-text">Learn how to create a smart website which learns your user and
-                                    reacts properly to
-                                    his behavior.</p>
-                                <a href="{{ article.get_absolute_url }}"
-                                   target="_blank"
-                                   class="btn btn-primary btn-md">Plus
-                                    <i class="fas fa-play ml-2"></i>
+                                <p class="card-text">
+                                    {{ article.content|safe|truncatechars:10 }}
+                                </p>
+                                <a href="{{ article.get_absolute_url }}" class="btn btn-primary btn-md">
+                                    Plus
                                 </a>
                             </div>
 

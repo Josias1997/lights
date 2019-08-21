@@ -29,9 +29,7 @@ class Home extends Component {
                         banner={true}
                     />
                 </div>
-                {this.props.isOpen ? <Galleries/> :
-                    <Galleries galleryClicked={this.props.onOpenModal}/>
-                }
+                <Galleries galleryClicked={this.props.onOpenModal}/>
 
                 <MyModal
                     open={this.props.open}
@@ -53,7 +51,6 @@ class Home extends Component {
 
 const mapStateToProps = state => {
     return {
-        isOpen: state.main.isOpen,
         open: state.home.open,
         id: state.home.id
     }

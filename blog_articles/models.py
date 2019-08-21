@@ -1,6 +1,6 @@
 from django.db import models
 from django.utils import timezone
-from ckeditor.fields import RichTextField
+from ckeditor_uploader.fields import RichTextUploadingField
 from django.shortcuts import reverse
 from django.dispatch import receiver
 from django.db.models.signals import pre_save
@@ -13,7 +13,7 @@ class Article(models.Model):
     title = models.CharField(max_length=100)
     author = models.CharField(max_length=100)
     slug = models.SlugField(max_length=255, default="test-slug")
-    content = RichTextField()
+    content = RichTextUploadingField()
     created_at = models.DateTimeField(default=timezone.now)
     is_visible = models.BooleanField(default=False)
     url = models.CharField(max_length=100, null=True, default="none")
