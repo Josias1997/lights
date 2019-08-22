@@ -25,7 +25,7 @@ const CustomCard = props => {
     if (!single) {
         const {handleClick} = props;
         let truncatedContent = truncate(card.content, 50, null);
-        content = <div className={styles.Card} onClick={() => handleClick(id)} data-toggle={"modal"} data-target={"#myModal"}>
+        content = <div className={styles.Card} onClick={() => handleClick(id)}>
             <Card className={classes.card}>
                 <CardActionArea href={""}>
                     <CardMedia
@@ -66,6 +66,7 @@ const CustomCard = props => {
                 {price !== undefined ? (<h3 className={"badge badge-primary"}>Prix: {price}</h3>):null}
                 <p className={"text-justify"}>{card.content}</p>
             </div>
+            <a href={"/book-offer"} className={"btn btn-primary"}>Réserver</a>
         </div>
     }
     return (

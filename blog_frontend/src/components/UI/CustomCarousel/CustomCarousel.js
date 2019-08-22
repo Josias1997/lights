@@ -41,8 +41,8 @@ class CustomCarousel extends Component {
                             key={image.id}
                             alt={image.url}
                             src={image.url}
-                            className={index !== this.state.currentImageIndex - 1 ?
-                                style + " " + styles.DisplayNone: style + " " + styles.DisplayBlock
+                            className={(index !== this.state.currentImageIndex - 1 ?
+                                style + " " + styles.DisplayNone: style + " " + styles.DisplayBlock) + " img-fluid"
                             }
                         />
                     )
