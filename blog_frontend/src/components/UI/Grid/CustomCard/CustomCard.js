@@ -25,7 +25,7 @@ const CustomCard = props => {
     if (!single) {
         const {handleClick} = props;
         let truncatedContent = truncate(card.content, 50, null);
-        content = <div className={styles.Card} onClick={() => handleClick(id)}>
+        content = <div className={styles.Card} onClick={() => handleClick(id)} data-toggle={"modal"} data-target={"#myModal"}>
             <Card className={classes.card}>
                 <CardActionArea href={""}>
                     <CardMedia
@@ -55,12 +55,16 @@ const CustomCard = props => {
             </Card>
         </div>
     } else {
-        content = <div className={styles.ModalContent}>
-            <img src={url} alt={url}/>
-            <div className={styles.CardBody}>
-                <h2>{title}</h2>
-                {price !== undefined ? (<h3>Prix: {price}</h3>):null}
-                <p>{card.content}</p>
+        content = <div className={"container"}>
+            <div className={"view"}>
+                <img src={url} alt={url} className={"img-fluid"}/>
+                <div className={"pattern1 flex-center"}>
+                    <p className={"white-text"}>{title}</p>
+                </div>
+            </div>
+            <div className={"container"}>
+                {price !== undefined ? (<h3 className={"badge badge-primary"}>Prix: {price}</h3>):null}
+                <p className={"text-justify"}>{card.content}</p>
             </div>
         </div>
     }

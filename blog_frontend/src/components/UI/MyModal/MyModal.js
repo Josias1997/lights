@@ -20,12 +20,12 @@ const MyModal = props => {
     }
 
     return (
-        < div className="modal fade" id="myModal"
+        < div className="modal fade bottom" id="myModal"
             tabIndex="-1"
             role="dialog"
             aria-labelledby="exampleModalCenterTitle"
             aria-hidden={open}>
-            < div className="modal-dialog modal-dialog-centered" role="document">
+            < div className="modal-dialog modal-full-height modal-bottom modal-sm" role="document">
                 < div className="modal-content">
                     < div className="modal-header">
                         < h5 className="modal-title" id="exampleModalLongTitle">
@@ -41,12 +41,11 @@ const MyModal = props => {
                     < div
                         className="modal-footer">
                         < button type="button"
-                            className="btn btn-secondary"
+                            className="btn btn-danger"
                             data-dismiss="modal"
                             onClick={close}>
                             Close
                         </button>
-                        <button type="button" className="btn btn-primary">Save changes</button>
                     </div>
                 </div>
             </div>

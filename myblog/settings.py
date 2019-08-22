@@ -39,6 +39,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'corsheaders',
+    'crispy_forms',
     'blog',
     'rest_framework',
     'blog_frontend',
@@ -153,6 +154,8 @@ CKEDITOR_CONFIGS = {
         'toolbar': None,
     },
 }
+
+CRISPY_TEMPLATE_PACK = 'bootstrap4'
 
 
 

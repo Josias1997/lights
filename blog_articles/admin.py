@@ -1,5 +1,5 @@
 from django.contrib import admin
-from .models import Article
+from .models import Article, Comment
 
 # Register your models here.
 
@@ -10,5 +10,5 @@ class ArticleAdmin(admin.ModelAdmin):
     list_editable = ('is_visible', 'image')
 
 
-
 admin.site.register(Article, ArticleAdmin)
+admin.site.register(Comment)
