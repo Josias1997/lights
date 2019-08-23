@@ -5,8 +5,10 @@ const Slogan = props => {
     const {title, subtitle} = props;
     return (
         <div className={styles.Slogan}>
-             <h1 className={styles.title}>{title}</h1>
-            <h1 className={"subtitle"}>{subtitle}</h1>
+             <h2 className={"h1-responsive display-4"}>
+                 <strong>{title}</strong>
+             </h2>
+            <p className={"lead"}>{" " + subtitle}</p>
         </div>
     )
 };

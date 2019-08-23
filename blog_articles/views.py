@@ -3,6 +3,9 @@ from django.views.generic import ListView, DetailView
 from .models import Article
 from .forms import CommentForm
 from django.utils import timezone
+from .serializers import ArticleSerializer
+from rest_framework.generics import GenericAPIView
+from rest_framework.mixins import ListModelMixin
 # Create your views here.
 
 
@@ -37,5 +40,11 @@ def add_comment(request, slug):
             comment.created_at = timezone.now()
             comment.save()
             return redirect('article_details', slug)
-    else:
-        return HttpResponse("Erreur")
+
+
+class ArticleListView(ListModelMixin, GenericAPIView):
+    queryset = Article.objects.filter(is_visible=True)[0:3]
+    serializer_class = ArticleSerializer
+
+    def get(self, request, *args, **kwargs):
+        return self.list(request, *args, **kwargs)

@@ -4,10 +4,9 @@ import Gallery from '../../components/Utility/Gallery/Gallery';
 import Home from "../../components/Pages/Home/Home";
 import Offers from "../../components/Pages/Offers/Offers";
 import Blog from "../../components/Pages/Blog/Blog";
-import About from "../../components/Pages/About/About";
+import Contact from "../../components/Pages/Contact/Contact";
 import {connect} from 'react-redux';
-import { initCategories, initOffers, initPictures, initProfile, toggleNavBar} from "../../store/actions";
-import Loader from "../../components/UI/Loader/Loader";
+import {initArticles, initCategories, initOffers, initPictures, initProfile, toggleNavBar} from "../../store/actions";
 
 class Main extends Component {
 
@@ -16,6 +15,7 @@ class Main extends Component {
         this.props.onInitCategories();
         this.props.onInitOffers();
         this.props.onInitProfile();
+        this.props.onInitArticles();
     }
 
     render() {
@@ -30,7 +30,7 @@ class Main extends Component {
                     <Route path={"/gallery"} component={() => <Gallery single={false}/>}/>
                     <Route path={"/offers"} component={() => <Offers anotherPage={true}/>}/>
                     <Route path={"/blog"} component={() => <Blog anotherPage={true}/>}/>
-                    <Route path={"/about-us"} component={About}/>
+                    <Route path={"/contact"} component={Contact}/>
                 </Switch>
             </div>
         }
@@ -47,7 +47,7 @@ class Main extends Component {
 const mapStateToProps = state => {
     return {
         isOpen: state.main.isOpen,
-        loading: !state.home.loading && !state.offer.loading &&
+        loading: !state.home.loading && !state.offer.loading && !state.blog.loading &&
             !state.about.loading && !state.gallery.loading,
         error: state.home.error || state.blog.error || state.offer.error
             || state.about.error || state.gallery.error,
@@ -61,6 +61,7 @@ const mapDispatchToProps = dispatch => {
         onInitCategories: () => dispatch(initCategories()),
         onInitProfile: () => dispatch(initProfile()),
         onInitOffers: () => dispatch(initOffers()),
+        onInitArticles: () => dispatch(initArticles())
     }
 };
 

@@ -37,11 +37,8 @@ class Home extends Component {
                     id={this.props.id}
                     type={this.state.type}
                 />
-                {/*<div>*/}
-                {/*     <h1>Derniers articles</h1>*/}
-                {/*</div>*/}
                 <div className={styles.LastContents}>
-                    <Blog anotherPage={false} clicked={this.gotToBlog}/>
+                    <Blog clicked={this.gotToBlog}/>
                     <Offers anotherPage={false} clicked={this.goToOffers}/>
                 </div>
             </div>

@@ -5,7 +5,7 @@ import Grid from "../../UI/Grid/Grid";
 import {connect} from 'react-redux';
 
 const Posts = props => {
-    const {anotherPage, clicked} = props;
+    const {clicked} = props;
     let content = <div className={styles.Posts}>
         <MyCarousel
             title={"Blog"}
@@ -13,9 +13,6 @@ const Posts = props => {
             carouselClicked={() => clicked(props.articles[0].id, "articles")}
         />
     </div>;
-    if (anotherPage) {
-        content = <Grid type={'articles'}/>
-    }
     return (
         content
     )

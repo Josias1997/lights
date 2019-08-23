@@ -1,0 +1,196 @@
+import React, {Component} from 'react';
+import {connect} from 'react-redux';
+import Input from "../../UI/Input/Input";
+import axios from 'axios';
+
+class Contact extends Component {
+
+    state = {
+        formElements: [
+            {
+                type: 'text',
+                id: 'name',
+                label: 'Nom',
+                colLength: 6,
+                mb: true,
+                value: '',
+                isValid: false,
+            },
+            {
+                type: 'email',
+                id: 'email',
+                label: 'Email',
+                colLength: 6,
+                mb: true,
+                value: '',
+                isValid: false,
+            },
+            {
+                type: 'text',
+                id: 'sujet',
+                label: 'Sujet',
+                colLength: 12,
+                mb: true,
+                value: '',
+                isValid: false
+            },
+            {
+                type: 'textarea',
+                id: 'message',
+                label: 'Votre message',
+                colLength: 12,
+                mb: false,
+                value: '',
+                isValid: false
+            },
+        ],
+        status: ''
+    };
+    checkValidity = (input) => {
+        if (input.type === 'text') {
+            return input.value.length >= 3;
+        }
+        if (input.type === 'email') {
+            let pattern = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+            return pattern.test(String(input.value).toLocaleLowerCase());
+        }
+        if (input.type === 'textarea') {
+            return input.value.length >= 10;
+        }
+    };
+
+    onSubmitForm = () => {
+        let validity = true;
+        this.state.formElements.forEach(element => {
+            if (!element.isValid) {
+                this.changeStatus(element);
+                validity = false;
+            }
+        });
+        if (validity) {
+            console.log('Form submitted');
+            this.setState({
+                status: ''
+            })
+        }
+    };
+
+    onChange = (event) => {
+        const {value, id} = event.target;
+        const elements = [...this.state.formElements];
+        elements.forEach(element => {
+            if (element.id === id) {
+                element.value = value;
+                element.isValid = this.checkValidity(element);
+                console.log(element.isValid);
+            }
+        });
+        this.setState({
+            formElements: elements
+        })
+    };
+    changeStatus = element => {
+        let status = '';
+        if (element.type === 'email') {
+            status += 'Email Invalid \n'
+        }
+        if (element.type === 'text') {
+            status += 'Nom ou Sujet trop court (Minimum 3 caractères)\n';
+        }
+        if (element.type === 'textarea') {
+            status += 'Message trop court (Minimum 10 caractères)\n';
+        }
+        this.setState({
+            status: status
+        });
+        status = '';
+    };
+
+    render() {
+        return (
+            <section className="mb-4">
+                <h2 className="h1-responsive font-weight-bold text-center my-4">Me contacter</h2>
+                <p className="text-center w-responsive mx-auto mb-5">Avez vous des questions? N'hésitez pas à me
+                    contacter
+                    directement.</p>
+
+                <div className="row">
+
+                    <div className="col-md-9 mb-md-0 mb-5">
+                        <form id="contact-form" method="POST" className={"needs-validation"}>
+                            <div className="row">
+                                {this.state.formElements.filter(element => (element.colLength === 6)).map(input => {
+                                    return (
+                                        <Input type={input.type} key={input.id}
+                                               id={input.id}
+                                               label={input.label}
+                                               colLength={input.colLength}
+                                               mb={input.mb}
+                                               change={this.onChange}
+                                               value={input.value}
+                                        />
+                                    );
+                                })}
+
+                            </div>
+                            {this.state.formElements.filter(element => (element.colLength === 12)).map(input => {
+                                return (
+                                    <div className="row" key={input.id}>
+                                        <Input type={input.type} id={input.id} label={input.label}
+                                               colLength={12}
+                                               mb={input.mb}
+                                               change={this.onChange}
+                                               value={input.value}
+                                        />
+                                    </div>
+                                )
+                            })}
+                        </form>
+
+                        <div className="text-center text-md-left">
+                            <a className="btn btn-primary"
+                               onClick={this.onSubmitForm}>Envoyer</a>
+                        </div>
+                        <div className="status">
+                            {this.state.status}
+                        </div>
+                    </div>
+                    <div className="col-md-3 text-center">
+                        <ul className="list-unstyled mb-0">
+                            <li><i className="fas fa-map-marker-alt fa-2x">
+
+                            </i>
+                                <p>Rabat, Bab El Had, Maroc</p>
+                            </li>
+
+                            <li><i className="fas fa-phone mt-4 fa-2x">
+
+                            </i>
+                                <p>+ 01 234 567 89</p>
+                            </li>
+
+                            <li><i className="fas fa-envelope mt-4 fa-2x">
+
+                            </i>
+                                <p>johndoe@gmail.com</p>
+                            </li>
+                        </ul>
+                    </div>
+
+                </div>
+
+            </section>
+        );
+    }
+
+
+}
+
+const mapStateToProps = state => {
+    return {
+        profile: state.about.profile,
+        error: state.about.error,
+    }
+};
+
+export default connect(mapStateToProps)(Contact);
