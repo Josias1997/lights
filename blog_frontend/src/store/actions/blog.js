@@ -17,7 +17,7 @@ export const fetchArticlesFailed = () => {
 
 export const initArticles = () => {
     return dispatch => {
-       axios.get('api/blog/articles')
+       axios.get('blog/api/articles')
            .then(response => {
                dispatch(setArticles(response.data, false))
            }).catch(error => {

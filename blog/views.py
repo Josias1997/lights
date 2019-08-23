@@ -14,17 +14,17 @@ class CategoryListView(ListModelMixin, GenericAPIView):
 
 
 class PictureListView(ListAPIView):
-    queryset = Picture.objects.all().order_by('-created_at')
+    queryset = Picture.objects.filter(is_visible=True).order_by('-created_at')
     serializer_class = PictureSerializer
 
 
 class SinglePictureView(RetrieveAPIView):
-    queryset = Picture.objects.all()
+    queryset = Picture.objects.filter(is_visible=True)
     serializer_class = PictureSerializer
 
 
 class OfferListView(ListModelMixin, GenericAPIView):
-    queryset = Offer.objects.all().order_by('-created_at')
+    queryset = Offer.objects.filter(is_visible=True).order_by('-created_at')
     serializer_class = OfferSerializer
 
     def get(self, request, *args, **kwargs):
@@ -32,7 +32,7 @@ class OfferListView(ListModelMixin, GenericAPIView):
 
 
 class SingleOfferView(RetrieveAPIView):
-    queryset = Offer.objects.all()
+    queryset = Offer.objects.filter(is_visible=True)
     serializer_class = OfferSerializer
 
 

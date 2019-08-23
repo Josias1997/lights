@@ -1,7 +1,7 @@
 /*
  * MDBootstrap integration with Datatables
  * Learn more: https://mdbootstrap.com/docs/jquery/tables/datatables/
- * About MDBootstrap: https://mdbootstrap.com/
+ * Contact MDBootstrap: https://mdbootstrap.com/
  *
  * This combined file was created by the DataTables downloader builder:
  *   https://datatables.net/download

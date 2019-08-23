@@ -1,0 +1,36 @@
+@import "../../../less/mixins";
+@import "../../../less/components/img";
+
+.BlurContainer {
+  position: relative;
+}
+.Profile{
+  .filter_blur(2px);
+  height: 100%;
+  background-position: @alignCenter;
+  background-repeat: no-repeat;
+  background-size: cover;
+  img {
+    .set_dimensions(100%; 600px);
+  }
+}
+/* Position text in the middle of the page/image */
+.Description {
+  .put_on_top(0.4);
+  .set_top_left(50%, 50%);
+  border: 3px solid #f1f1f1;
+  width: 80%;
+  padding: @containerPadding;
+  transition: transform 2s linear;
+  #overview {
+    text-align: @alignLeft;
+  }
+  @media screen and (max-width: @mobileBreakPoint) {
+      width: 100%;
+      top: 0;
+      font-size: 10px;
+      transform: translate(-50%, 0);
+  }
+}
+
+

@@ -19,20 +19,20 @@
 
             <!-- Left -->
             <ul class="navbar-nav mr-auto">
-                <li class="nav-item active">
+                <li class="nav-item {% if request.resolver_match.url_name == 'gallery' %} active {% endif %}">
                     <a class="nav-link waves-effect" href="{% url 'gallery' %}">Gallerie
                         <span class="sr-only">(current)</span>
                     </a>
                 </li>
-                <li class="nav-item">
+                <li class="nav-item {% if request.resolver_match.url_name == 'offers' %} active {% endif %}">
                     <a class="nav-link waves-effect" href="{% url 'offers' %}">Offres</a>
                 </li>
-                <li class="nav-item">
+                <li class="nav-item {% if request.resolver_match.url_name == 'blog' %} active {% endif %}">
                     <a class="nav-link waves-effect"
                        href="{% url 'all_articles' %}">Blog</a>
                 </li>
-                <li class="nav-item">
-                    <a class="nav-link waves-effect" href="{% url 'about-us' %}">About US</a>
+                <li class="nav-item {% if request.resolver_match.url_name == 'contact' %} active {% endif %}">
+                    <a class="nav-link waves-effect" href="{% url 'contact' %}">Contact</a>
                 </li>
             </ul>
         </div>

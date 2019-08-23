@@ -7,6 +7,9 @@ const MyModal = props => {
 
     const {id, open, close, type} = props;
     let content = null;
+    const style = {
+        'z-index': 10000
+    };
     if (open) {
         if (type === 'offers') {
             content = <OffersModalContent id={id}/>
@@ -16,12 +19,12 @@ const MyModal = props => {
     }
 
     return (
-        <div className={"container z-depth-5"}>
             <Modal open={open}
-                   onClose={close}>
+                   onClose={close}
+                   styles={{...style}}
+            >
                 {content}
             </Modal>
-        </div>
     );
 };
 

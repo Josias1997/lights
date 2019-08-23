@@ -33,6 +33,10 @@ class CustomCarousel extends Component {
 
     render() {
         let style = styles.Slides;
+        const customStyle = {
+            height: 500 + 'px',
+            width: 700 + 'px'
+        };
         return(
             <div className={styles.Carousel} onClick={this.changeImage}>
                 {this.props.images.map((image, index) => {
@@ -44,6 +48,7 @@ class CustomCarousel extends Component {
                             className={(index !== this.state.currentImageIndex - 1 ?
                                 style + " " + styles.DisplayNone: style + " " + styles.DisplayBlock) + " img-fluid"
                             }
+                            style={{...customStyle}}
                         />
                     )
                 })}

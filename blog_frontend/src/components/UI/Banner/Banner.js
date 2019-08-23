@@ -5,7 +5,7 @@ const Banner = props => {
     const {newTitle} = props;
     return (
         <Aux>
-            <h1>{newTitle}</h1>
+            <h1 className={"h1-responsive"}>{newTitle}</h1>
         </Aux>
     )
 };
