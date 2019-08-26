@@ -10,6 +10,7 @@ urlpatterns = [
     path('api/blog/pictures/<int:pk>', views.SinglePictureView.as_view(), name='article'),
     path('api/blog/offers/', views.OfferListView.as_view(), name='offers'),
     path('api/blog/offers/<int:pk>', views.SingleOfferView.as_view(), name='article'),
-    path('api/blog/about-us/', views.AboutListView.as_view(), name='about')
+    path('api/blog/offers/create-reservation', views.ReservationCreateView.as_view(), name="make-reservation"),
+    path('api/blog/contact', views.ContactCreateView.as_view(), name='contact'),
 ]
 urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

@@ -45,6 +45,15 @@ class Comment(models.Model):
         self.save()
 
 
+class NewsletterUser(models.Model):
+    email = models.EmailField()
+    name = models.CharField(max_length=100)
+    date_subscription = models.DateTimeField(auto_now_add=True)
+
+    def __str__(self):
+        return self.email
+
+
 @receiver(pre_save, sender=Article)
 def must_automatically_fill_slug_field(sender, instance, **kwargs):
     slug = instance.title.replace(" ", "-")

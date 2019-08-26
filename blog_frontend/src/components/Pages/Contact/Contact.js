@@ -1,5 +1,4 @@
 import React, {Component} from 'react';
-import {connect} from 'react-redux';
 import Input from "../../UI/Input/Input";
 import axios from 'axios';
 
@@ -68,10 +67,17 @@ class Contact extends Component {
             }
         });
         if (validity) {
-            console.log('Form submitted');
-            this.setState({
-                status: ''
-            })
+            const datas = {};
+            this.state.formElements.forEach(element => {
+                datas[element.id] = element.value;
+            });
+            axios.post('api/blog/contact', datas)
+                .then(response => {
+                    console.log(response.data);
+                })
+                .catch(error => {
+                    console.log(error);
+                })
         }
     };
 
@@ -151,9 +157,9 @@ class Contact extends Component {
                             <a className="btn btn-primary"
                                onClick={this.onSubmitForm}>Envoyer</a>
                         </div>
-                        <div className="status">
+                        {this.state.status !== '' ? <div className={"alert alert-info"}>
                             {this.state.status}
-                        </div>
+                        </div>:null}
                     </div>
                     <div className="col-md-3 text-center">
                         <ul className="list-unstyled mb-0">
@@ -186,11 +192,5 @@ class Contact extends Component {
 
 }
 
-const mapStateToProps = state => {
-    return {
-        profile: state.about.profile,
-        error: state.about.error,
-    }
-};
 
-export default connect(mapStateToProps)(Contact);
+export default Contact;

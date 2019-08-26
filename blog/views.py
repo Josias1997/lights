@@ -1,6 +1,7 @@
-from .models import Category, Picture, Offer, AboutMe
-from .serializers import CategorySerializer, PictureSerializer, OfferSerializer, AboutMeSerializer
-from rest_framework.generics import GenericAPIView, RetrieveAPIView, ListAPIView
+from .models import Category, Picture, Offer, AboutMe, Reservation
+from .serializers import CategorySerializer, PictureSerializer, \
+    OfferSerializer, AboutMeSerializer, ReservationSerializer
+from rest_framework.generics import GenericAPIView, RetrieveAPIView, ListAPIView, CreateAPIView
 from rest_framework.mixins import ListModelMixin
 # Create your views here.
 
@@ -42,3 +43,16 @@ class AboutListView(ListModelMixin, GenericAPIView):
 
     def get(self, request, *args, **kwargs):
         return self.list(request, *args, **kwargs)
+
+
+class ReservationCreateView(CreateAPIView):
+    def post(self, request, *args, **kwargs):
+        email = request.data.get("email")
+        name = request.data.get("name")
+        print(email)
+
+
+class ContactCreateView(CreateAPIView):
+    pass
+
+

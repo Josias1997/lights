@@ -1,5 +1,5 @@
 from django.contrib import admin
-from .models import Article, Comment
+from .models import Article, Comment, NewsletterUser
 
 # Register your models here.
 
@@ -11,4 +11,11 @@ class ArticleAdmin(admin.ModelAdmin):
 
 
 admin.site.register(Article, ArticleAdmin)
+
+
+class NewsLetterAdmin(admin.ModelAdmin):
+    list_display = ('email', 'name', 'date_subscription')
+
+
+admin.site.register(NewsletterUser, NewsLetterAdmin)
 admin.site.register(Comment)

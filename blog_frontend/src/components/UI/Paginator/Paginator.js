@@ -1,28 +1,29 @@
 import React from 'react';
-import styles from './Paginator.less';
 
 const Paginator = props => {
     const {pages, handleClick, current} = props;
     const pagesArray = [];
-    console.log(pages);
     for(let i = 1; i <= pages; i++){
-        pagesArray.push(i)
+        pagesArray.push(i);
     }
     return (
-        <div className={styles.Paginator}>
+        <nav className={"Page navigation example mt-5 ml-5"}>
+            <ul className={"pagination pg-blue"}>
                 {
                 pagesArray.map(page => (
-                    <div key={page}
+                    <li key={page}
                         onClick={() => handleClick(page)}
                         className={current === page ?
-                            styles.Link + " " + styles.active :
-                        styles.Link}
+                            "page-item active" : "page-item"}
                     >
-                        {page}
-                    </div>
+                        <a className={"page-link"}>
+                           {page}
+                        </a>
+                    </li>
                 ))
             }
-        </div>
+            </ul>
+        </nav>
     )
 };
 

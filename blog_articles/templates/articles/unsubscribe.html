@@ -1,0 +1,17 @@
+{% extends 'base.html' %}
+{% load crispy_forms_tags %}
+
+{% block title %} Unsubscribe {% endblock %}
+{% block container %}
+    <main class="mt-5 pt-5">
+        <div class="container mt-5">
+             <form action="{% url 'signup' %}" method="post" class="mt-5">
+                    {% csrf_token %}
+                    {{ form|crispy }}
+                  <div class="text-center mt-4">
+                    <button class="btn btn-info btn-md" type="submit">Se désabonner</button>
+                  </div>
+    </form>
+        </div>
+    </main>
+{% endblock %}

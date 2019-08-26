@@ -27,8 +27,13 @@ SECRET_KEY = '2i8+l9+&nl!&p5@f^ouo*fqrc7!&^zo*u#$2zpv3v$4354cocx'
 DEBUG = True
 
 ALLOWED_HOSTS = ['*']
+EMAIL_HOST = 'smtp.gmail.com'
+EMAIL_HOST_USER = 'kologojosias@gmail.com'
+EMAIL_HOST_PASSWORD = 'kingjosias'
+EMAIL_PORT = 587
+EMAIL_USE_TLS = True
 
-
+DATA_UPLOAD_MAX_NUMBER_FIELDS = 10000
 # Application definition
 
 INSTALLED_APPS = [
@@ -137,7 +142,7 @@ STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
 
 MEDIA_URL = 'medias/'
-MEDIA_ROOT = 'medias/'
+MEDIA_ROOT = os.path.join(BASE_DIR, 'medias/')
 
 django_heroku.settings(locals())
 # del DATABASES['default']['OPTIONS']['sslmode']

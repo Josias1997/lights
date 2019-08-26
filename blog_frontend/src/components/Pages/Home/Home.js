@@ -7,13 +7,20 @@ import styles from './Home.less';
 import {connect} from 'react-redux';
 import MyModal from "../../UI/MyModal/MyModal";
 import {
-    closeModal, openModal
+    closeModal, initArticles, initCategories, initOffers, initPictures, openModal
 } from "../../../store/actions";
+import LoadComponent from "../../Utility/LoadComponent/LoadComponent";
 
 class Home extends Component {
     state = {
         type: 'categories'
     };
+    componentDidMount() {
+        this.props.onInitPictures();
+        this.props.onInitCategories();
+        this.props.onInitOffers();
+        this.props.onInitArticles();
+    }
     goToOffers = () => {
         this.props.history.push("/offers");
     };
@@ -22,8 +29,9 @@ class Home extends Component {
     };
 
     render() {
+        const {loading, error} = this.props;
         return (
-            <div>
+            <LoadComponent loading={loading} error={error}>
                 <div className={styles.Home}>
                     <SimpleCarousel
                         banner={true}
@@ -41,7 +49,7 @@ class Home extends Component {
                     <Blog clicked={this.gotToBlog}/>
                     <Offers anotherPage={false} clicked={this.goToOffers}/>
                 </div>
-            </div>
+            </LoadComponent>
         )
     }
 }
@@ -49,7 +57,11 @@ class Home extends Component {
 const mapStateToProps = state => {
     return {
         open: state.home.open,
-        id: state.home.id
+        id: state.home.id,
+        loading: !state.home.loading && !state.offer.loading && !state.blog.loading &&
+            !state.gallery.loading,
+        error: state.home.error || state.blog.error || state.offer.error || state.gallery.error,
+        pictures: state.home.pictures
     }
 };
 
@@ -57,6 +69,10 @@ const mapDispatchToProps = dispatch => {
     return {
         onOpenModal: id => dispatch(openModal(id)),
         onCloseModal: () => dispatch(closeModal()),
+        onInitPictures: () => dispatch(initPictures()),
+        onInitCategories: () => dispatch(initCategories()),
+        onInitOffers: () => dispatch(initOffers()),
+        onInitArticles: () => dispatch(initArticles())
     }
 };
 

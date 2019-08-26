@@ -23,6 +23,20 @@ class Offer(Content):
     image = models.ImageField(upload_to="offers/pictures/", null=True)
     price = models.FloatField(default=0)
 
+    def __str__(self):
+        return f"{self.title} {self.price}"
+
+
+class Reservation(models.Model):
+    offer = models.ForeignKey('Offer', on_delete=models.CASCADE, related_name='reservations')
+    reservation_author_name = models.CharField(max_length=100)
+    reservation_author_email = models.EmailField()
+    reservation_date = models.DateTimeField(auto_now_add=True)
+
+    def __str__(self):
+        return f"{self.reservation_author_name} a fait une réservation pour l'offre {self.offer.title}" \
+               f" (Prix) {self.offer.price}"
+
 
 class Category(models.Model):
     name = models.CharField(max_length=100)
