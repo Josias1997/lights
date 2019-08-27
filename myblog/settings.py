@@ -25,10 +25,8 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 SECRET_KEY = '2i8+l9+&nl!&p5@f^ouo*fqrc7!&^zo*u#$2zpv3v$4354cocx'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-if os.environ.get('ENV') == 'PRODUCTION'
-    DEBUG = False
-else:
-    DEBUG = True
+DEBUG = False
+
 
 ALLOWED_HOSTS = ['lights-photograhy.herokuapp.com', 'localhost']
 EMAIL_HOST = 'smtp.gmail.com'
@@ -143,7 +141,7 @@ USE_TZ = True
 
 STATIC_URL = '/static/'
 
-if os.environ.get('ENV') == 'PRODUCTION':
+if DEBUG == False:
     STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
     STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
     STATICFILES_DIRS = (
@@ -160,7 +158,7 @@ CRISPY_TEMPLATE_PACK = 'bootstrap4'
 
 CKEDITOR_UPLOAD_PATH = 'uploads/'
 
-if os.environ.get('ENV') == 'PRODUCTION':
+if DEBUG == False:
     db_from_env = dj_database_url.config(conn_max_age=500)
     DATABASES['default'].update(db_from_env)
 
