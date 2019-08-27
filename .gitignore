@@ -7,4 +7,3 @@
 /.idea
 db.sqlite3
 datadump.json
-/staticfiles
