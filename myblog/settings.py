@@ -29,7 +29,7 @@ DEBUG = True
 
 
 ALLOWED_HOSTS = ['lights-photograhy.herokuapp.com', 'localhost']
-EMAIL_HOST = 'smtp.gmail.com'
+EMAIL_HOST = 'smtp.sendgrid.net'
 EMAIL_HOST_USER = 'kologojosias@gmail.com'
 EMAIL_HOST_PASSWORD = 'kingjosias'
 EMAIL_PORT = 587
