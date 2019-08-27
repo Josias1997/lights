@@ -24,7 +24,7 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 SECRET_KEY = '2i8+l9+&nl!&p5@f^ouo*fqrc7!&^zo*u#$2zpv3v$4354cocx'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
 ALLOWED_HOSTS = ['*']
 EMAIL_HOST = 'smtp.gmail.com'
@@ -50,7 +50,6 @@ INSTALLED_APPS = [
     'blog_frontend',
     'django_cleanup',
     'blog_articles',
-    'tinymce',
     'ckeditor',
     'ckeditor_uploader'
 ]
@@ -146,7 +145,7 @@ MEDIA_URL = '/media/'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media/')
 
 django_heroku.settings(locals())
-# del DATABASES['default']['OPTIONS']['sslmode']
+del DATABASES['default']['OPTIONS']['sslmode']
 
 SITE_ID = 1
 
