@@ -50,7 +50,7 @@ class AboutMe(models.Model):
     lastName = models.CharField(max_length=100)
     phoneNumber = models.IntegerField()
     email = models.EmailField(max_length=100)
-    overview = models.TextField()
+    description = models.TextField()
     image = models.ImageField(upload_to="profile/pictures")
     url = models.CharField(max_length=100, null=True, default="none")
     created_at = models.DateTimeField(default=timezone.now)

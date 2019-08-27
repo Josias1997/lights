@@ -1,6 +1,7 @@
 import React, {Component} from 'react';
 import Input from "../../UI/Input/Input";
 import axios from 'axios';
+import CSRFToken from "../../Utility/CSRFToken/CSRFToken";
 
 class Contact extends Component {
 
@@ -26,7 +27,7 @@ class Contact extends Component {
             },
             {
                 type: 'text',
-                id: 'sujet',
+                id: 'subject',
                 label: 'Sujet',
                 colLength: 12,
                 mb: true,
@@ -43,7 +44,8 @@ class Contact extends Component {
                 isValid: false
             },
         ],
-        status: ''
+        status: '',
+        loading: false,
     };
     checkValidity = (input) => {
         if (input.type === 'text') {
@@ -71,12 +73,23 @@ class Contact extends Component {
             this.state.formElements.forEach(element => {
                 datas[element.id] = element.value;
             });
+            axios.defaults.xsrfCookieName = 'csrftoken';
+            axios.defaults.xsrfHeaderName = 'X-CSRFToken';
+            this.setState({
+                loading: true
+            });
             axios.post('api/blog/contact', datas)
                 .then(response => {
-                    console.log(response.data);
+                    this.setState({
+                        status: response.data,
+                        loading: false,
+                    })
                 })
                 .catch(error => {
-                    console.log(error);
+                    this.setState({
+                        status: error.toString(),
+                        loading: false
+                    })
                 })
         }
     };
@@ -88,7 +101,6 @@ class Contact extends Component {
             if (element.id === id) {
                 element.value = value;
                 element.isValid = this.checkValidity(element);
-                console.log(element.isValid);
             }
         });
         this.setState({
@@ -124,6 +136,7 @@ class Contact extends Component {
 
                     <div className="col-md-9 mb-md-0 mb-5">
                         <form id="contact-form" method="POST" className={"needs-validation"}>
+                            <CSRFToken/>
                             <div className="row">
                                 {this.state.formElements.filter(element => (element.colLength === 6)).map(input => {
                                     return (
@@ -152,12 +165,13 @@ class Contact extends Component {
                                 )
                             })}
                         </form>
-
-                        <div className="text-center text-md-left">
+                        {this.state.loading ? <div className={"spinner-border text-danger"}>
+                                    <span className={"sr-only"}>...</span>
+                                </div>:<div className="text-center text-md-left">
                             <a className="btn btn-primary"
                                onClick={this.onSubmitForm}>Envoyer</a>
-                        </div>
-                        {this.state.status !== '' ? <div className={"alert alert-info"}>
+                        </div>}
+                        {this.state.status !== '' ? <div className={"alert alert-info mt-2 ml-3"}>
                             {this.state.status}
                         </div>:null}
                     </div>

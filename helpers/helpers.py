@@ -13,7 +13,7 @@ def set_path(instance, path):
     except ValueError:
         pass
     finally:
-        url_list.insert(1, '/' + path + '/pictures/')
+        url_list.insert(2, '/' + path + '/pictures/')
     instance.url = "".join(url_list)
 
 

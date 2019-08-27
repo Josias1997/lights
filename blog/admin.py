@@ -1,20 +1,20 @@
 from django.contrib import admin
-from .models import Content, Offer, Picture, AboutMe, Category
+from .models import Content, Offer, Picture, AboutMe, Category, Reservation
 
 
 class OfferAdmin(admin.ModelAdmin):
-    list_display = ('title', 'created_at', 'is_visible', 'image')
+    list_display = ('title', 'created_at', 'is_visible', 'image', 'url')
     list_filter = ('created_at', 'is_visible')
-    list_editable = ('is_visible', 'image')
+    list_editable = ('is_visible', 'image', 'url')
 
 
 admin.site.register(Offer, OfferAdmin)
 
 
 class PictureAdmin(admin.ModelAdmin):
-    list_display = ('title', 'created_at', 'is_visible', 'image', 'category')
+    list_display = ('title', 'created_at', 'is_visible', 'image', 'url', 'category')
     list_filter = ('created_at', 'is_visible', 'category')
-    list_editable = ('is_visible', 'image')
+    list_editable = ('is_visible', 'image', 'url')
 
 
 admin.site.register(Picture, PictureAdmin)
@@ -34,5 +34,6 @@ class CategoryAdmin(admin.ModelAdmin):
 
 
 admin.site.register(Category, CategoryAdmin)
+admin.site.register(Reservation)
 admin.site.register(Content)
 

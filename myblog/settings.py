@@ -50,6 +50,7 @@ INSTALLED_APPS = [
     'blog_frontend',
     'django_cleanup',
     'blog_articles',
+    'tinymce',
     'ckeditor',
     'ckeditor_uploader'
 ]
@@ -141,26 +142,20 @@ STATIC_URL = '/static/'
 STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
 
-MEDIA_URL = 'medias/'
-MEDIA_ROOT = os.path.join(BASE_DIR, 'medias/')
+MEDIA_URL = '/media/'
+MEDIA_ROOT = os.path.join(BASE_DIR, 'media/')
 
 django_heroku.settings(locals())
 # del DATABASES['default']['OPTIONS']['sslmode']
 
 SITE_ID = 1
 
-CKEDITOR_JQUERY_URL = 'https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js'
-
-CKEDITOR_UPLOAD_PATH = 'articles/uploads/'
-CKEDITOR_IMAGE_BACKEND = "pillow"
-
-CKEDITOR_CONFIGS = {
-    'default': {
-        'toolbar': None,
-    },
-}
-
 CRISPY_TEMPLATE_PACK = 'bootstrap4'
+
+CKEDITOR_UPLOAD_PATH = 'uploads/'
+
+
+
 
 
 

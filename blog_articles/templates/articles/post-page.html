@@ -25,7 +25,7 @@
             <!--Featured Image-->
             <div class="card mb-4 wow fadeIn">
 
-              <img src="../../{{ article.image.url }}" class="img-fluid" alt="{{ article.title }}" style="height: 400px;">
+              <img src="{{ article.image.url }}" class="img-fluid" alt="{{ article.title }}" style="height: 400px;">
 
             </div>
             <!--Card-->
@@ -134,7 +134,7 @@
                 <p class="mb-4">
                   <strong>Voir la gallerie</strong>
                 </p>
-                <a href="{% url 'home' %}" class="btn btn-outline-white btn-md">Cliquer ici
+                <a href="{% url 'blog_frontend:home' %}" class="btn btn-outline-white btn-md">Cliquer ici
                   <i class="fas fa-hand-right ml-2"></i>
                 </a>
 
@@ -179,7 +179,7 @@
                     {% for article in related_articles %}
                   <li class="media mt-2">
                     <img class="rounded float-left img-fluid" style="width:50%; height:80px;"
-                         src="../../{{ article.image.url }}" alt="{{ article.title }}">
+                         src="{{ article.image.url }}" alt="{{ article.title }}">
                     <div class="media-body ml-3">
                       <a href="{% url 'article_details' article.slug %}">
                         <h5 class="mt-0 mb-1 font-weight-bold">{{ article.title }}</h5>

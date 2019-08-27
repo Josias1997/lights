@@ -29,7 +29,7 @@ const ContribCarousel = props => {
         <Roll left>
             {div}
             <div className={styles.singleCarousel}>
-                <div id="myCarousel2" className="carousel slide carousel-fade" data-ride="carousel">
+                <div id={title} className="carousel slide carousel-fade" data-ride="carousel">
                     <ol className="carousel-indicators">
 
                         {elements.map((element, index) => (
@@ -60,13 +60,13 @@ const ContribCarousel = props => {
                             );
                         })}
                     </div>
-                    <a className="carousel-control-prev" href="#myCarousel2" role="button" data-slide="prev">
+                    <a className="carousel-control-prev" href={"#"+title} role="button" data-slide="prev">
                 <span className="carousel-control-prev-icon" aria-hidden="true">
 
                 </span>
                         <span className="sr-only">Previous</span>
                     </a>
-                    <a className="carousel-control-next" href="#myCarousel2" role="button" data-slide="next">
+                    <a className="carousel-control-next" href={"#"+title} role="button" data-slide="next">
                 <span className="carousel-control-next-icon" aria-hidden="true">
 
                 </span>

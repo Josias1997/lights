@@ -1,10 +1,10 @@
 from django.db import models
 from django.utils import timezone
-from ckeditor_uploader.fields import RichTextUploadingField
 from django.shortcuts import reverse
 from django.dispatch import receiver
 from django.db.models.signals import pre_save
 from helpers.helpers import set_path, compress_images
+from ckeditor_uploader.fields import RichTextUploadingField
 
 # Create your models here.
 

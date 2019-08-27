@@ -5,9 +5,9 @@ from .models import Article, Comment, NewsletterUser
 
 
 class ArticleAdmin(admin.ModelAdmin):
-    list_display = ('title', 'created_at', 'is_visible', 'image')
+    list_display = ('title', 'created_at', 'is_visible', 'image', 'url')
     list_filter = ('created_at', 'is_visible')
-    list_editable = ('is_visible', 'image')
+    list_editable = ('is_visible', 'image', 'url')
 
 
 admin.site.register(Article, ArticleAdmin)
