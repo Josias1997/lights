@@ -29,7 +29,6 @@ class ArticleDetailView(DetailView):
         context = super().get_context_data(**kwargs)
         related_articles = Article.objects.filter(title__icontains=context['article'].meta_keywords)[0:3]
         context['related_articles'] = related_articles
-        about_the_author = About
         form = CommentForm()
         newsletter_signup_form = NewsletterSignUpForm()
         context['form'] = form
