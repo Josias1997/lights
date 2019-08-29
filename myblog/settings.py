@@ -11,7 +11,6 @@ https://docs.djangoproject.com/en/2.2/ref/settings/
 """
 
 import os
-import django_heroku
 import dj_database_url
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
@@ -94,10 +93,10 @@ WSGI_APPLICATION = 'myblog.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',
-        'NAME': 'dLDMUMU0xU',
-        'USER': 'dLDMUMU0xU',
-        'PASSWORD': 'B0LYd1zqfO',
-        'HOST': 'remotemysql.com',
+        'NAME': 'godson$lightsphotography',
+        'USER': 'godson',
+        'PASSWORD': 'Kngyjb199*#',
+        'HOST': 'godson.mysql.pythonanywhere-services.com',
         'PORT': '3306'
     }
 }
@@ -158,7 +157,6 @@ CKEDITOR_UPLOAD_PATH = 'uploads/'
 db_from_env = dj_database_url.config(conn_max_age=500)
 DATABASES['default'].update(db_from_env)
 
-django_heroku.settings(locals())
 
 
 
