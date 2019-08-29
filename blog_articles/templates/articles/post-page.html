@@ -3,7 +3,7 @@
 {% block title %} Blog-{{ article.title }} {% endblock %}
 
 {% block container %}
-  <main class="mt-5 pt-5">
+  <main class="mt-5 pt-5 orange">
   {% if messages %}
       {% for message in messages %}
           <div class="alert alert-{{ message.tags }} alert-dismissible fade show">
@@ -20,12 +20,12 @@
         <div class="row">
 
           <!--Grid column-->
-          <div class="col-md-8 mb-4">
+          <div class="col-md-12 mb-4">
 
             <!--Featured Image-->
             <div class="card mb-4 wow fadeIn">
 
-              <img src="{{ article.image.url }}" class="img-fluid" alt="{{ article.title }}" style="height: 400px;">
+              <img src="{{ article.image.url }}" class="img-fluid" alt="{{ article.title }}">
 
             </div>
             <!--Card-->
@@ -52,13 +52,7 @@
                     <i class="fab fa-facebook-f mr-2"></i>
                   </a>
                   <a href="">
-                    <i class="fab fa-twitter mr-2"></i>
-                  </a>
-                  <a href="">
                     <i class="fab fa-instagram mr-2"></i>
-                  </a>
-                  <a href="">
-                    <i class="fab fa-linkedin-in mr-2"></i>
                   </a>
                 </span>
               </div>
@@ -92,8 +86,10 @@
                 {% for comment in article.comments.all %}
                 <div class="media d-block d-md-flex mt-4">
                   <div class="media-body text-center text-md-left ml-md-3 ml-0">
-                    <h5 class="mt-0 font-weight-bold">{{ comment.author_name }}</h5>
-                    {{ comment.text }}
+                    <h5 class="mt-0 font-weight-bold">{{ comment.author_name }} - <i>{{ comment.created_at|date:"SHORT_DATE_FORMAT" }}</i></h5>
+                    <p>
+                      {{ comment.text }}
+                    </p>
 
                   </div>
                 </div>
@@ -117,7 +113,7 @@
           <!--Grid column-->
 
           <!--Grid column-->
-          <div class="col-md-4 mb-4">
+          <div class="col-md-12 mb-4">
 
             <!--Card: Jumbotron-->
             <div class="card blue-gradient mb-4 wow fadeIn">
@@ -178,7 +174,7 @@
                 <ul class="list-unstyled">
                     {% for article in related_articles %}
                   <li class="media mt-2">
-                    <img class="rounded float-left img-fluid" style="width:50%; height:80px;"
+                    <img class="rounded float-left img-fluid" style="width:50%; height:200px;"
                          src="{{ article.image.url }}" alt="{{ article.title }}">
                     <div class="media-body ml-3">
                       <a href="{% url 'article_details' article.slug %}">

@@ -3,7 +3,7 @@ import CustomCard from "./CustomCard/CustomCard";
 import Fade from 'react-reveal/Fade';
 import styles from './Grid.less';
 import {connect} from 'react-redux';
-import CustomModal from "../MyModal/MyModal";
+import MyModal from "../MyModal/MyModal";
 import Paginator from "../Paginator/Paginator";
 
 class Grid extends Component {
@@ -61,7 +61,7 @@ class Grid extends Component {
                     />
                 ))}
             </div>
-            <CustomModal id={this.state.selectedId}
+            <MyModal id={this.state.selectedId}
                          open={this.state.open}
                          close={this.handleClose}
                          type={this.props.type}

@@ -1,5 +1,5 @@
 from rest_framework import serializers
-from .models import Category, Picture, Offer, AboutMe, Reservation
+from .models import Category, Picture, Offer, Reservation
 
 
 class CategorySerializer(serializers.ModelSerializer):
@@ -19,12 +19,6 @@ class PictureSerializer(serializers.ModelSerializer):
 class OfferSerializer(serializers.ModelSerializer):
     class Meta:
         model = Offer
-        fields = '__all__'
-
-
-class AboutMeSerializer(serializers.ModelSerializer):
-    class Meta:
-        model = AboutMe
         fields = '__all__'
 
 

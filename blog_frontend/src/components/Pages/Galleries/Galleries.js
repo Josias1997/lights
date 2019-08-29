@@ -4,8 +4,7 @@ import Gallery from "../../Utility/Gallery/Gallery";
 const Galleries = props => {
     const {galleryClicked} = props;
     return (
-        <div>
-            <h1>Gallerie</h1>
+        <div className="mt-4">
             <Gallery single={true} categoryClicked={galleryClicked}/>
         </div>);
 };

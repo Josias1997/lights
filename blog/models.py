@@ -45,16 +45,6 @@ class Category(models.Model):
         return self.name
 
 
-class AboutMe(models.Model):
-    firstName = models.CharField(max_length=100)
-    lastName = models.CharField(max_length=100)
-    phoneNumber = models.IntegerField()
-    email = models.EmailField(max_length=100)
-    description = models.TextField()
-    image = models.ImageField(upload_to="profile/pictures")
-    url = models.CharField(max_length=100, null=True, default="none")
-    created_at = models.DateTimeField(default=timezone.now)
-
 
 @receiver(pre_save)
 def save_handler(sender, instance, **kwargs):
@@ -63,6 +53,4 @@ def save_handler(sender, instance, **kwargs):
         set_path(instance, "pictures")
     elif isinstance(instance, Offer):
         set_path(instance, "offers")
-    elif isinstance(instance, AboutMe):
-        set_path(instance, "profile")
 

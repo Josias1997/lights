@@ -38,7 +38,6 @@ class Home extends Component {
                     />
                 </div>
                 <Galleries galleryClicked={this.props.onOpenModal}/>
-
                 <MyModal
                     open={this.props.open}
                     close={this.props.onCloseModal}

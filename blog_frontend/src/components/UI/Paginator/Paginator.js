@@ -8,7 +8,7 @@ const Paginator = props => {
     }
     return (
         <nav className={"Page navigation example mt-5 ml-5"}>
-            <ul className={"pagination pg-blue"}>
+            <ul className={"pagination pagination-circle pg-dark"}>
                 {
                 pagesArray.map(page => (
                     <li key={page}

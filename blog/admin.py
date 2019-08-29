@@ -1,5 +1,5 @@
 from django.contrib import admin
-from .models import Content, Offer, Picture, AboutMe, Category, Reservation
+from .models import Content, Offer, Picture, Category, Reservation
 
 
 class OfferAdmin(admin.ModelAdmin):
@@ -18,14 +18,6 @@ class PictureAdmin(admin.ModelAdmin):
 
 
 admin.site.register(Picture, PictureAdmin)
-
-
-class AboutMeAdmin(admin.ModelAdmin):
-    list_display = ('firstName', 'lastName', 'phoneNumber', 'email', 'image')
-    list_editable = ('phoneNumber', 'email', 'image')
-
-
-admin.site.register(AboutMe, AboutMeAdmin)
 
 
 class CategoryAdmin(admin.ModelAdmin):

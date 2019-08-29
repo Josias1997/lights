@@ -27,7 +27,7 @@ class CustomCard extends Component {
                     <div className="card-body">
                         <h4 className="card-title">{title + " " + price}</h4>
                         <p className="card-text">{truncatedContent}</p>
-                        <a href="#" className="btn btn-primary" onClick={() => handleClick(id)}>Détails</a>
+                        <a href="#" className="btn btn-danger" onClick={() => handleClick(id)}>Détails</a>
                     </div>
 
                 </div>

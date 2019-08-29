@@ -54,6 +54,7 @@ class NewsletterUser(models.Model):
         return self.email
 
 
+
 @receiver(pre_save, sender=Article)
 def must_automatically_fill_slug_field(sender, instance, **kwargs):
     slug = instance.title.replace(" ", "-")

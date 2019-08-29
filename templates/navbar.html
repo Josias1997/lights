@@ -1,11 +1,11 @@
 <header>
     <!-- Navbar -->
-<nav class="navbar fixed-top navbar-expand-lg navbar-light white scrolling-navbar">
+<nav class="navbar fixed-top navbar-expand-lg red darken-3 white scrolling-navbar">
     <div class="container">
 
         <!-- Brand -->
         <a class="navbar-brand waves-effect" href="{% url 'blog_frontend:home' %}">
-            <strong class="blue-text">LightsPhotography</strong>
+            <strong class="white-text">LightsPhotography</strong>
         </a>
 
         <!-- Collapse -->
@@ -20,19 +20,22 @@
             <!-- Left -->
             <ul class="navbar-nav mr-auto">
                 <li class="nav-item {% if request.resolver_match.url_name == 'gallery' %} active {% endif %}">
-                    <a class="nav-link waves-effect" href="{% url 'blog_frontend:gallery' %}">Gallerie
+                    <a class="nav-link waves-effect text-white" href="{% url 'blog_frontend:gallery' %}">
+                        Gallerie
                         <span class="sr-only">(current)</span>
                     </a>
                 </li>
                 <li class="nav-item {% if request.resolver_match.url_name == 'offers' %} active {% endif %}">
-                    <a class="nav-link waves-effect" href="{% url 'blog_frontend:offers' %}">Offres</a>
+                    <a class="nav-link waves-effect text-white" href="{% url 'blog_frontend:offers' %}">
+                    Offres
+                </a>
                 </li>
                 <li class="nav-item {% if request.resolver_match.url_name == 'blog' %} active {% endif %}">
-                    <a class="nav-link waves-effect"
+                    <a class="nav-link waves-effect text-white"
                        href="{% url 'all_articles' %}">Blog</a>
                 </li>
                 <li class="nav-item {% if request.resolver_match.url_name == 'contact' %} active {% endif %}">
-                    <a class="nav-link waves-effect" href="{% url 'blog_frontend:contact' %}">Contact</a>
+                    <a class="nav-link waves-effect text-white" href="{% url 'blog_frontend:contact' %}">Contact</a>
                 </li>
             </ul>
         </div>

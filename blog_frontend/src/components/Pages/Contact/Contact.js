@@ -168,7 +168,7 @@ class Contact extends Component {
                         {this.state.loading ? <div className={"spinner-border text-danger"}>
                                     <span className={"sr-only"}>...</span>
                                 </div>:<div className="text-center text-md-left">
-                            <a className="btn btn-primary"
+                            <a className="btn btn-danger"
                                onClick={this.onSubmitForm}>Envoyer</a>
                         </div>}
                         {this.state.status !== '' ? <div className={"alert alert-info mt-2 ml-3"}>

@@ -1,4 +1,4 @@
-from .models import Category, Picture, Offer, AboutMe, Reservation
+from .models import Category, Picture, Offer, Reservation
 from .serializers import CategorySerializer, PictureSerializer, \
     OfferSerializer
 from rest_framework.generics import GenericAPIView, RetrieveAPIView, ListAPIView

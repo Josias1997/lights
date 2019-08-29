@@ -26,14 +26,15 @@ const ContribCarousel = props => {
         </div>
     }
     return (
-        <Roll left>
-            {div}
+    <div style={{
+        width: 100 + "%"
+    }} className="ml-3">
             <div className={styles.singleCarousel}>
                 <div id={title} className="carousel slide carousel-fade" data-ride="carousel">
                     <ol className="carousel-indicators">
 
                         {elements.map((element, index) => (
-                            <li key={index} data-target="myCarousel2" data-slide-to={index}
+                            <li key={index} data-target={title} data-slide-to={index}
                                 className={index === 0 ? "active" : ""}>
 
                             </li>
@@ -72,10 +73,9 @@ const ContribCarousel = props => {
                 </span>
                         <span className="sr-only">Next</span>
                     </a>
-                </div>
-                ;
             </div>
-        </Roll>
+        </div>
+    </div>
     )
 };
 

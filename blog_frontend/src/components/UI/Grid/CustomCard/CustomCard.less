@@ -2,5 +2,8 @@
 @import "../../../../less/functions";
 
 .Card {
-    .set_width(33%);
+    .set_width(100%);
+    @media screen and (min-width: 785px) {
+        .set_width(33%);
+    }
 }
