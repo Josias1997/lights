@@ -14,7 +14,7 @@ class CustomCard extends Component {
             const {handleClick} = this.props;
             let truncatedContent = truncate(card.content, 50, null);
             content = <div className={styles.Card} onClick={() => handleClick(id)}>
-                <div className="card ml-4 mt-4">
+                <div className="card ml-4 mt-3">
                     <div className="view overlay">
                         <img className="card-img-top"
                              src={url}
@@ -37,7 +37,7 @@ class CustomCard extends Component {
                 <div className={"view"}>
                     <img src={url} alt={url} className={"img-fluid"}/>
                     <div className={"pattern1 flex-center"}>
-                        <p className={"white-text"}>{title}</p>
+                        <p>{title}</p>
                     </div>
                 </div>
                 <div className={"container"}>

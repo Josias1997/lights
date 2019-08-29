@@ -1,5 +1,4 @@
 import React from 'react';
-import {Carousel} from 'react-responsive-carousel';
 import styles from "./Category.less";
 import Title from "../../UI/Title/Title";
 import {connect} from "react-redux";
@@ -10,7 +9,7 @@ const MultiplePicturesCategory = props => {
             (category.id === picture.category.id));
         let content = categoryPictures.length !== 0 ? (
             <div key={category.id}
-                 className={styles.MultipleCategory + "mt-3"}
+                 className={styles.MultipleCategory + " mt-3"}
             >
                 <div id={"categoryCarousel" + category.id} className="carousel slide carousel-fade" data-ride="carousel">
                     <ol className="carousel-indicators">
@@ -30,9 +29,7 @@ const MultiplePicturesCategory = props => {
                                     <div className="view">
                                         <img className="d-block w-100"
                                              src={element.url}
-                                             alt={element.title} style={{
-                                                height: 400 + 'px'
-                                             }}/>
+                                             alt={element.title} />
                                         <div className="mask rgba-black-slight">
 
                                         </div>

@@ -28,8 +28,8 @@ SECRET_KEY = '2i8+l9+&nl!&p5@f^ouo*fqrc7!&^zo*u#$2zpv3v$4354cocx'
 DEBUG = True
 
 
-ALLOWED_HOSTS = ['lights-photograhy.herokuapp.com', 'localhost']
-EMAIL_HOST = 'smtp.sendgrid.net'
+ALLOWED_HOSTS = ['lights-photograhy.herokuapp.com', 'localhost', '192.168.0.128']
+EMAIL_HOST = 'smtp.gmail.com'
 EMAIL_HOST_USER = 'kologojosias@gmail.com'
 EMAIL_HOST_PASSWORD = 'kingjosias'
 EMAIL_PORT = 587

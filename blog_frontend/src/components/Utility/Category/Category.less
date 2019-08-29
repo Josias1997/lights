@@ -14,9 +14,7 @@
     &:hover {
         .filter_opacity(90%);
     }
-    img {
-        height: 480px;
-    }
+    
 }
 .SinglePictureCategory {
     .display_flex(left);
@@ -44,7 +42,12 @@
         }
     }
     img {
-        height: 400px;
+        height: 200px;
+    }
+    @media screen and (min-width: @mobileBreakPoint) {
+        img {
+            height: 400px;
+        }
     }
 }
 .shared {

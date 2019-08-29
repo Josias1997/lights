@@ -6,7 +6,7 @@ import {connect} from 'react-redux';
 
 const Posts = props => {
     const {clicked} = props;
-    let content = <div className={styles.Posts}>
+    let content = <div className={"col-md-6 mt-2"}>
         <MyCarousel
             title={"Blog"}
             loading={props.loading}

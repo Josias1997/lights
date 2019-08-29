@@ -13,7 +13,7 @@ const Offers = props => {
     }, []);
     return (
         <LoadComponent loading={loading} error={error}>
-            {anotherPage ? <Grid type={"offers"}/> : <div className={styles.Offers}>
+            {anotherPage ? <Grid type={"offers"}/> : <div className={"col-md-6 mt-2"}>
         <MyCarousel
             title={"Offers"}
             carouselClicked={clicked}

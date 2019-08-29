@@ -1,36 +1,10 @@
 import React from 'react';
-import {Carousel} from 'react-responsive-carousel'
-import 'react-responsive-carousel/lib/styles/carousel.css';
 import styles from './Slider.less';
 import Slogan from "../Slogan/Slogan";
 import {connect} from 'react-redux';
 import Roll from "react-reveal/Roll";
 
 const Slider = props => {
-    {/*<Carousel*/
-    }
-    {/*    showArrows*/
-    }
-    {/*    emulateTouch*/
-    }
-    {/*    infiniteLoop*/
-    }
-    {/*    autoPlay*/
-    }
-    {/*    interval={2000}*/
-    }
-    {/*>*/
-    }
-    {/*    {props.pictures.map(picture => (*/
-    }
-    {/*        <div key={picture.id}>*/
-    }
-    {/*            <img src={picture.url} alt={picture.url}/>*/
-    }
-    {/*        </div>*/
-    }
-    {/*    ))}*/
-    }
     let content = <div id="myCarousel" className="carousel slide carousel-fade" data-ride="carousel">
         <ol className="carousel-indicators">
 
