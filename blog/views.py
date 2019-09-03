@@ -60,7 +60,7 @@ def make_reservation(request):
     send_mail(subject="Réservation", from_email=settings.EMAIL_HOST_USER, recipient_list=[email],
         message="Réservation éffectuée", fail_silently=False)
     send_mail(subject="Réservation", from_email=settings.EMAIL_HOST_USER, recipient_list=[settings.EMAIL_HOST_USER],
-        message=f"Nouvelle réservation de {name} email: {email}", fail_silently=False)
+        message=f"Nouvelle réservation de {name} email: {email} pour l'offre {offer.title}: {offer.price} ", fail_silently=False)
     return HttpResponse("Réservation éffectuée")
 
 

@@ -14,6 +14,7 @@ class Article(models.Model):
     author = models.CharField(max_length=100)
     slug = models.SlugField(max_length=255, default="test-slug")
     content = RichTextUploadingField()
+    content_overview = models.TextField(default="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam venenatis lobortis quam ut feugiat.")
     created_at = models.DateTimeField(default=timezone.now)
     is_visible = models.BooleanField(default=False)
     url = models.CharField(max_length=100, null=True, default="none")
@@ -53,6 +54,13 @@ class NewsletterUser(models.Model):
     def __str__(self):
         return self.email
 
+class BlogTheme(models.Model):
+    title = models.CharField(max_length=100)
+    slogan = models.CharField(max_length=100)
+    wallpaper = models.ImageField(upload_to='blog_theme/pictures')
+
+    def __str__(self):
+        return self.title
 
 
 @receiver(pre_save, sender=Article)

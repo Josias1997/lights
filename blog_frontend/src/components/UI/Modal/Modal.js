@@ -1,35 +1,24 @@
 import React, {useState} from 'react';
 import OffersModalContent from "./OffersModal/OffersModal";
-import './Modal.css';
+import styles from './Modal.less';
 
 
 const MyModal = props => {
-    const {id, open} = props;
+    const {id, open, close} = props;
 
     let content = null;
 
     if (open) {
         content = <OffersModalContent id={id}/>
     }
-    const style = {
-      display: open ? 'block':'none',
-      position: 'fixed',
-      zIndex: 10000,
-      left: 0,
-      top: 0,
-      width: 100 + '%',
-      height: 80 + '%',
-      overflow: 'auto',
-      backgroundColor: 'rgba(0, 0, 0)',
-      backgroundColor: 'rgba(0, 0, 0, 0.4)'
-    }
 
     return (
-      <div id="myModal" style={{...style}}>
-      <div className="modal-content">
+      <div id="myModal" className={open ? styles.ModalOpen: styles.ModalOpen
+        + " " + styles.ModalClose}>
+      <div className={styles.ModalContent}>
         {content}
+        <button className="btn btn-danger mt-5" onClick={close}>Fermer</button>
       </div>
-      <button>Fermer</button>
     </div>
           
     );

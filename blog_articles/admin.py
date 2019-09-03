@@ -1,5 +1,5 @@
 from django.contrib import admin
-from .models import Article, Comment, NewsletterUser
+from .models import Article, Comment, NewsletterUser, BlogTheme
 
 # Register your models here.
 
@@ -18,4 +18,10 @@ class NewsLetterAdmin(admin.ModelAdmin):
 
 
 admin.site.register(NewsletterUser, NewsLetterAdmin)
+
+class BlogThemeAdmin(admin.ModelAdmin):
+    list_display = ('title', 'slogan', 'wallpaper')
+    list_editable = ('slogan', 'wallpaper')
+
+admin.site.register(BlogTheme, BlogThemeAdmin)
 admin.site.register(Comment)

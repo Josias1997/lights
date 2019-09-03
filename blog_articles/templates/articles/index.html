@@ -1,0 +1,66 @@
+{% extends 'base.html' %}
+{% block title %} Blog {% endblock %}
+
+{% block container %}
+  <header class="masthead" style="background-image: url('{{blog_theme.wallpaper.url}}')">
+    <div class="overlay"></div>
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-8 col-md-10 mx-auto">
+          <div class="site-heading">
+            <h1>{{ blog_theme.title }}</h1>
+            <span class="subheading">{{ blog_theme.slogan }}</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <!-- Main Content -->
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-8 col-md-10 mx-auto">
+      {% for article in articles_list %}
+      <hr>
+        <div class="post-preview">
+          <a href="{% url 'blog_articles:article_details' article.slug %}">
+            <h2 class="post-title">
+              {{ article.title }}
+            </h2>
+            <h3 class="post-subtitle">
+              {{ article.content_overview|truncatechars:100 }}
+            </h3>
+          </a>
+          <p class="post-meta">Posté par
+            <a href="#">{{ article.author }}</a>
+            le {{ article.created_at|date:"SHORT_DATE_FORMAT" }}</p>
+        </div>
+        {% empty %}
+          <div class="post-preview">
+            <h2 class="post-title">
+              Aucun article n'est disponible pour le moment !
+            </h2>
+        </div>
+        {% endfor %}
+        <!-- Pager -->
+        {% if is_paginated %}
+          {% if page_obj.has_next %}
+            <div class="clearfix">
+              <a class="btn btn-danger float-right" href="?page={{ page_obj.next_page_number }}">Anciens posts &rarr;</a>
+            </div>
+          {% endif %}
+          {% if page_obj.has_previous %}
+          <div class="clearfix">
+            <a class="btn btn-danger float-left" href="?page={{ page_obj.previous_page_number }}">Posts récents &larr;</a>
+          </div>
+          {% endif %}
+        {% endif %}
+      </div>
+    </div>
+  </div>
+
+  <hr>
+{% endblock %}
+{% block footer %}
+{% include 'footer-blog.html' %}
+{% endblock %}

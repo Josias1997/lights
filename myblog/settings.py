@@ -27,7 +27,7 @@ SECRET_KEY = '2i8+l9+&nl!&p5@f^ouo*fqrc7!&^zo*u#$2zpv3v$4354cocx'
 DEBUG = True
 
 
-ALLOWED_HOSTS = ['lights-photograhy.herokuapp.com', 'localhost']
+ALLOWED_HOSTS = ['*']
 EMAIL_HOST = 'smtp.gmail.com'
 EMAIL_HOST_USER = 'kologojosias@gmail.com'
 EMAIL_HOST_PASSWORD = 'kingjosias'

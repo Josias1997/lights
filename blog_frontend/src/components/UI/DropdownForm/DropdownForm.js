@@ -60,10 +60,11 @@ class DropdownForm extends Component {
             });
             axios.defaults.xsrfCookieName = 'csrftoken';
             axios.defaults.xsrfHeaderName = 'X-CSRFToken';
-            axios.post('api/blog/offers/create-reservation', datas)
+            axios.post('/api/blog/offers/create-reservation', datas)
                 .then(response => {
+                    console.log(response);
                     this.setState({
-                        status: response.data,
+                        status: "Réservation éffectuée",
                         loading: false
                     })
                 })
@@ -118,7 +119,7 @@ class DropdownForm extends Component {
                     }
                     {
                     this.state.status !== '' ? <div className="alert alert-info ml-2">
-                        {this.state.status}
+                        Réservation effectuée
                 </div>:null
                 }
                 </form>

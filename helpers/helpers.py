@@ -2,6 +2,7 @@ from PIL import Image as PILImage
 from io import BytesIO
 from django.core.files.uploadedfile import InMemoryUploadedFile
 import sys
+import math
 
 
 def set_path(instance, path):
@@ -28,3 +29,16 @@ def compress_images(instance):
         instance.image = InMemoryUploadedFile(output_io_stream, 'ImageField',
                                               f"{instance.image.name.split('.')[0]}.jpg", 'image/jpeg',
                                               sys.getsizeof(output_io_stream), None)
+
+
+
+def filter(articles_list, tags):
+    related_articles = []
+    for article in articles_list:
+        number_tags_matched = 0
+        for tag in tags:
+            if tag in article.meta_keywords:
+                number_tags_matched += 1
+        if number_tags_matched >= math.floor(len(tags) * 0.75):
+            related_articles.append(article)
+    return related_articles

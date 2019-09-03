@@ -38,16 +38,17 @@ class Gallery extends Component {
             <Fade top>
                 <LoadComponent loading={loading} error={error}>
                 <div className="row">
-                    <div className="col-md-12 d-flex justify-content-center mb-5">
-
-                        <button type="button" className="btn btn-outline-black waves-effect filter" onClick={
+                    <div className="col-sm-12 mb-5">
+                        <button type="button" className={"btn btn-rounded waves-effect waves-light btn-" + (this.state.currentCategory === 'all' ?
+                        "danger":"outline-red")} onClick={
                             () => this.resetImages()
                         }>
                             Toutes les catégories
                         </button>
                         {
                             categories.map(({id, name}) => (
-                                <button key={id} type="button" className="btn btn-outline-black waves-effect" onClick={
+                                <button key={id} type="button" className={"btn btn-rounded waves-effect waves-light btn-" + (this.state.currentCategory === id ?
+                                "danger":"" )} onClick={
                                     () => this.filterImages(id)
                                 }>
                                     {name}

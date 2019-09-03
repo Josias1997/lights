@@ -16,4 +16,7 @@
     {% if request.resolver_match.url_name == 'home' %}
         <link href="{% static 'css/style.css' %}" rel="stylesheet">
     {% endif %}
+    {% if '/blog/' in request.path %}
+        <link href="{% static 'css/clean-blog.min.css' %}" rel="stylesheet">
+    {% endif %}
 </head>

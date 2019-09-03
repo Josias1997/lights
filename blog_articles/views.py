@@ -1,7 +1,8 @@
 from django.shortcuts import render, \
     get_object_or_404, redirect, HttpResponseRedirect
 from django.views.generic import ListView, DetailView
-from .models import Article, NewsletterUser
+from django.views.generic.list import MultipleObjectMixin
+from .models import Article, NewsletterUser, BlogTheme
 from .forms import CommentForm, NewsletterSignUpForm
 from django.utils import timezone
 from .serializers import ArticleSerializer
@@ -10,30 +11,36 @@ from rest_framework.mixins import ListModelMixin
 from django.contrib import messages
 from django.core.mail import send_mass_mail, send_mail
 from django.conf import settings
+from helpers.helpers import filter
+from django.db.models import Q
 # Create your views here.
 
 
 class HomeView(ListView):
     model = Article
-    template_name = 'articles/home.html'
-    paginate_by = 6
+    template_name = 'articles/index.html'
+    paginate_by = 5
     context_object_name = 'articles_list'
-
-
-class ArticleDetailView(DetailView):
-    model = Article
-    template_name = 'articles/post-page.html'
-    context_object_name = 'article'
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
-        related_articles = Article.objects.filter(title__icontains=context['article'].meta_keywords)[0:3]
-        context['related_articles'] = related_articles
-        form = CommentForm()
-        newsletter_signup_form = NewsletterSignUpForm()
-        context['form'] = form
-        context['newsletter_signup_form'] = newsletter_signup_form
+        blog_theme = BlogTheme.objects.all()[0]
+        articles = Article.objects.filter(is_visible=True)
+        context['blog_theme'] = blog_theme
+        context['articles_list'] = articles
         return context
+
+
+
+def get_article_details(request, slug):
+    article = get_object_or_404(Article, slug=slug)
+    tags = article.meta_keywords.split(" ")
+    articles = Article.objects.filter(~Q(title=article.title)).order_by('-created_at')
+    related_articles = filter(articles, tags)
+    return render(request, 'articles/post.html', {
+        'article': article,
+        'related_articles': related_articles,
+    })
 
 
 def add_comment(request, slug):
@@ -78,17 +85,3 @@ def newsletter_signup(request):
                           fail_silently=False)
     return HttpResponseRedirect(next_page)
 
-
-def newsletter_unsubscribe(request):
-    unsubscribe_form = NewsletterSignUpForm(request.POST or None)
-    if unsubscribe_form.is_valid():
-        user_instance = unsubscribe_form.save(commit=False)
-        if NewsletterUser.objects.filter(email=user_instance.email).exists():
-            NewsletterUser.objects.filter(email=user_instance.email).delete()
-            messages.success(request, "Vous vous êtes désabonnés avec succès")
-        else:
-            messages.warning(request, "Cet email n'existe pas")
-
-    return render(request, 'articles/unsubscribe.html', {
-        'form': unsubscribe_form
-    })

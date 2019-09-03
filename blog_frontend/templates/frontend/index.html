@@ -8,8 +8,9 @@
         </div>
     </main>
 {% endblock %}
-{% block biographie %} Ok {% endblock %}
-{% block vision %} Ok {% endblock %}
+{% block footer %} 
+    {% include 'footer-gallery.html' with description_object=description %}
+{% endblock %}
 {% block scripts %}
 <script type="text/javascript" src="{% static 'frontend/js/main.js' %}"></script>
 {% endblock %}

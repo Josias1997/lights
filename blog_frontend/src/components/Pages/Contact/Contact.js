@@ -50,7 +50,7 @@ class Contact extends Component {
         phone: '',
         address: '',
         email: '',
-        loading: true,
+        loadingData: true,
         error: false,
     };
     componentDidMount() {
@@ -60,12 +60,12 @@ class Contact extends Component {
                 phone: response.data[0].phone,
                 address: response.data[0].address,
                 email: response.data[0].email,
-                loading: false,
-            }).catch(error => {
-                this.setState({
-                    loading: false,
-                    error: true
-                })
+                loadingData: false,
+            })
+        }).catch(error => {
+            this.setState({
+                loadingData: false,
+                error: true
             })
         })
     }
@@ -100,10 +100,11 @@ class Contact extends Component {
             this.setState({
                 loading: true
             });
-            axios.post('api/blog/contact', datas)
+            axios.post('/api/blog/contact', datas)
                 .then(response => {
+                    console.log(response);
                     this.setState({
-                        status: response.data,
+                        status: "Message envoyé avec succès",
                         loading: false,
                     })
                 })
@@ -147,7 +148,7 @@ class Contact extends Component {
     };
 
     render() {
-        const {loading, error, phone, address, email} = this.state;
+        const {loadingData, error, phone, address, email} = this.state;
         return (
             <section className="mb-4">
                 <h2 className="h1-responsive font-weight-bold text-center my-4">Me contacter</h2>
@@ -195,10 +196,10 @@ class Contact extends Component {
                                onClick={this.onSubmitForm}>Envoyer</a>
                         </div>}
                         {this.state.status !== '' ? <div className={"alert alert-info mt-2 ml-3"}>
-                            {this.state.status}
+                            "Message envoyé avec succès" 
                         </div>:null}
                     </div>
-                    <LoadComponent loading={!loading} error={error} component={"contact"}>
+                    <LoadComponent loading={!loadingData} error={error} component={"contact"}>
                     <div className="col-md-3 text-center">
                         <ul className="list-unstyled mb-0">
                             <li><i className="fas fa-map-marker-alt fa-2x">
