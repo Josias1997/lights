@@ -1,6 +1,6 @@
-from .models import Category, Picture, Offer, Reservation
+from .models import Category, Picture, Offer, Reservation, HomeData
 from .serializers import CategorySerializer, PictureSerializer, \
-    OfferSerializer
+    OfferSerializer, HomeDataSerializer
 from rest_framework.generics import GenericAPIView, RetrieveAPIView, ListAPIView
 from rest_framework.mixins import ListModelMixin
 from rest_framework.decorators import api_view
@@ -39,6 +39,14 @@ class OfferListView(ListModelMixin, GenericAPIView):
 class SingleOfferView(RetrieveAPIView):
     queryset = Offer.objects.filter(is_visible=True)
     serializer_class = OfferSerializer
+
+
+class HomeDataView(ListModelMixin, GenericAPIView):
+    queryset = HomeData.objects.all()
+    serializer_class = HomeDataSerializer
+
+    def get(self, request, *args, **kwargs):
+        return self.list(request, *args, **kwargs)
 
 
 @api_view(http_method_names=['POST'])

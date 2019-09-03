@@ -7,24 +7,25 @@ import App from './containers/App';
 import homeReducer from "./store/reducers/home";
 import galleryReducer from './store/reducers/gallery';
 import offersReducer from './store/reducers/offers';
-import blogReducer from './store/reducers/blog';
-import mainReducer from './store/reducers/main';
-import aboutReducer from './store/reducers/about';
+import axios from 'axios';
 
-// const composeEnhancers = process.env.NODE_ENV === 'development' ? window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ : null || compose;
+const composeEnhancers = process.env.NODE_ENV === 'development' ? window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ : null || compose;
 
 const rootReducer = combineReducers({
     home: homeReducer,
     gallery: galleryReducer,
     offer: offersReducer,
-    blog: blogReducer,
-    main: mainReducer,
-    about: aboutReducer,
 });
 
-export const store = createStore(rootReducer, compose(
+export const store = createStore(rootReducer, composeEnhancers(
     applyMiddleware(thunk)
 ));
+
+
+axios.interceptors.response.use(response => {
+    return response.headers['content-type'] === 'application/json' ? response : Promise.reject(response)
+    
+}, error => Promise.reject(error));
 
 ReactDOM.render(<Provider store={store}>
     <App />

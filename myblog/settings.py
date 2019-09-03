@@ -54,6 +54,8 @@ INSTALLED_APPS = [
     'ckeditor',
     'ckeditor_uploader'
 ]
+
+
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
@@ -93,10 +95,10 @@ WSGI_APPLICATION = 'myblog.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',
-        'NAME': 'godson$lightsphotography',
-        'USER': 'godson',
-        'PASSWORD': 'Kngyjb199*#',
-        'HOST': 'godson.mysql.pythonanywhere-services.com',
+        'NAME': 'dLDMUMU0xU',
+        'USER': 'dLDMUMU0xU',
+        'PASSWORD': 'B0LYd1zqfO',
+        'HOST': 'remotemysql.com',
         'PORT': '3306'
     }
 }

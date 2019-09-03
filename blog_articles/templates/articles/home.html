@@ -11,35 +11,22 @@
                 {% for article in articles_list %}
                                         <!--Grid column-->
                     <div class="col-lg-4 col-md-6 mb-4">
+                        
+                        <div class="card card-image" style="background-image: url({{ article.image.url }});">
 
-                        <!--Card-->
-                        <div class="card">
-
-                            <!--Card image-->
-                            <div class="view overlay">
-                                <img src="{{ article.image.url }}"
-                                     class="card-img-top img-fluid"
-                                     alt="{{ article.title }}" style="height:180px;">
-                                <a href="{{ article.get_absolute_url }}">
-                                    <div class="mask rgba-white-slight"></div>
-                                </a>
-                            </div>
-
-                            <!--Card content-->
-                            <div class="card-body">
-                                <!--Title-->
-                                <h4 class="card-title">{{ article.title }}</h4>
-                                <!--Text-->
-                                <p class="card-text">
-                                    {{ article.content|safe|truncatewords:2 }}
-                                </p>
-                                <a href="{{ article.get_absolute_url }}" class="btn btn-danger btn-md">
-                                    Plus
-                                </a>
-                            </div>
-
-                        </div>
-                        <!--/.Card-->
+    <!-- Content -->
+    <div class="text-white text-center d-flex align-items-center rgba-black-strong py-5 px-4">
+        <div>
+            <h5 class="pink-text"><i class="fas fa-chart-pie"></i> Blog </h5>
+            <h3 class="card-title pt-2"><strong>{{ article.title }}</strong></h3>
+            <p>{{ article.content|safe|truncatewords:2 }}</p>
+            <a class="btn btn-danger" href="{% url 'blog_articles:article_details' article.slug %}">
+            <i class="far fa-clone left"></i> Plus
+            </a>
+        </div>
+    </div>
+    <!-- Content -->
+</div>
 
                     </div>
                     <!--Grid column-->

@@ -3,6 +3,7 @@ from django.conf.urls.static import static
 from django.conf import settings
 from . import views
 
+app_name = 'blog_articles'
 
 urlpatterns = [
     path('blog/api/articles', views.ArticleListView.as_view(), name="articles_api_url"),

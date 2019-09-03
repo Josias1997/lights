@@ -15,16 +15,9 @@ export const fetchCategoriesFailed = () => {
     }
 };
 
-export const toggleSingle = single => {
-    return {
-        type: actionTypes.TOGGLE_SINGLE,
-        single: single
-    }
-};
-
 export const initCategories = () => {
     return dispatch => {
-       axios.get('api/blog/categories')
+       axios.get('/api/blog/categories/')
            .then(response => {
                dispatch(setCategories(response.data, false))
            }).catch(error => {

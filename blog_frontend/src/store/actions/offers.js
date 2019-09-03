@@ -17,7 +17,7 @@ export const fetchOffersFailed = () => {
 
 export const initOffers = () => {
     return dispatch => {
-       axios.get('api/blog/offers')
+       axios.get('/api/blog/offers/')
            .then(response => {
                dispatch(setOffers(response.data, false))
            }).catch(error => {

@@ -1,11 +1,11 @@
 from django.urls import path
 from . import views
+from django.conf.urls import url
 
-app_name = 'blog_frontend'
 
 urlpatterns = [
     path('', views.index, name="home"),
-    path('gallery', views.index, name="gallery"),
-    path('offers', views.index, name="offers"),
-    path('contact', views.index, name="contact"),
+    path('gallerie/', views.index, name='gallery'),
+    path('offres/', views.index, name='offers'),
+    path('contact/', views.index, name='contact')
 ]

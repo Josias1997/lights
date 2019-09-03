@@ -3,7 +3,7 @@ import CustomCard from "./CustomCard/CustomCard";
 import Fade from 'react-reveal/Fade';
 import styles from './Grid.less';
 import {connect} from 'react-redux';
-import MyModal from "../MyModal/MyModal";
+import MyModal from "../Modal/Modal";
 import Paginator from "../Paginator/Paginator";
 
 class Grid extends Component {
@@ -11,8 +11,7 @@ class Grid extends Component {
         open: false,
         selectedId: '',
         itemsPerPages: 6,
-        elements: this.props.type !== 'articles' ?
-            this.props.offers : this.props.articles,
+        elements: this.props.offers,
         currentElements: [],
         currentPage: 1,
         pages: 0,
@@ -29,7 +28,6 @@ class Grid extends Component {
         });
     }
     handleClick = id => {
-        console.log(id);
         this.setState({
             open: true,
             selectedId: id
@@ -64,7 +62,6 @@ class Grid extends Component {
             <MyModal id={this.state.selectedId}
                          open={this.state.open}
                          close={this.handleClose}
-                         type={this.props.type}
             />
             <Paginator
                 pages={this.state.pages}
@@ -85,10 +82,7 @@ class Grid extends Component {
 
 const mapStateToProps = state => {
     return {
-        isOpen: state.main.isOpen,
-        articles: state.blog.articles,
         offers: state.offer.offers,
-        error: state.blog.error
     }
 };
 

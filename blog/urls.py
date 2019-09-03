@@ -5,6 +5,7 @@ from django.conf import settings
 
 app_name = 'blog'
 urlpatterns = [
+    path('api/blog/home/', views.HomeDataView.as_view(), name='api_home'),
     path('api/blog/categories/', views.CategoryListView.as_view(), name='categories'),
     path('api/blog/pictures/', views.PictureListView.as_view(), name='pictures'),
     path('api/blog/pictures/<int:pk>', views.SinglePictureView.as_view(), name='article'),

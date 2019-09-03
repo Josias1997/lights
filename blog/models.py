@@ -45,6 +45,16 @@ class Category(models.Model):
         return self.name
 
 
+class HomeData(models.Model):
+    about_me = models.TextField()
+    phone = models.CharField(max_length=20)
+    email = models.EmailField()
+    address = models.CharField(max_length=255)
+
+    def __str__(self):
+        return self.about_me
+
+
 
 @receiver(pre_save)
 def save_handler(sender, instance, **kwargs):
@@ -53,4 +63,5 @@ def save_handler(sender, instance, **kwargs):
         set_path(instance, "pictures")
     elif isinstance(instance, Offer):
         set_path(instance, "offers")
+
 

@@ -14,21 +14,10 @@ export const fetchPicturesFailed = () => {
         type: actionTypes.FETCH_PICTURES_FAILED
     }
 };
-export const openModal = (id) => {
-    return {
-        type: actionTypes.OPEN_MODAL,
-        selectedId: id
-    }
-};
-export const closeModal = () => {
-    return {
-        type: actionTypes.CLOSE_MODAL
-    }
-};
 
 export const initPictures = () => {
     return dispatch => {
-        axios.get('api/blog/pictures')
+        axios.get('/api/blog/pictures/')
             .then(response => {
                 let updatedPictures = response.data.slice(0, 30);
                 dispatch(setPictures(updatedPictures, false))

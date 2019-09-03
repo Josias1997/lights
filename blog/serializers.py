@@ -1,5 +1,5 @@
 from rest_framework import serializers
-from .models import Category, Picture, Offer, Reservation
+from .models import Category, Picture, Offer, Reservation, HomeData
 
 
 class CategorySerializer(serializers.ModelSerializer):
@@ -20,9 +20,18 @@ class OfferSerializer(serializers.ModelSerializer):
     class Meta:
         model = Offer
         fields = '__all__'
-
+        
 
 class ReservationSerializer(serializers.ModelSerializer):
     class Meta:
         model = Reservation
         fields = '__all__'
+
+
+
+class HomeDataSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = HomeData
+        
+        fields = '__all__'
+

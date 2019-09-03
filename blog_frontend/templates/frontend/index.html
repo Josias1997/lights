@@ -2,14 +2,16 @@
 {% load static %}
 
 {% block container %}
-    <main class="mt-5 pt-5 pb-5 orange">
-        <div class="container" id="app">
-
+    <main>
+        <div id="app" class="container mt-4 pb-5 pt-5 d-flex justify-content-center">
+          
         </div>
     </main>
 {% endblock %}
+{% block biographie %} Ok {% endblock %}
+{% block vision %} Ok {% endblock %}
 {% block scripts %}
-    <script src="{% static "frontend/js/main.js" %}"></script>
+<script type="text/javascript" src="{% static 'frontend/js/main.js' %}"></script>
 {% endblock %}
 <!-- SCRIPTS -->
 <!-- JQuery -->

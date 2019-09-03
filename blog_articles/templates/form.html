@@ -1,5 +1,5 @@
 {% load crispy_forms_tags %}
-<form action="{% url 'add-comment' article.slug %}" method="post">
+<form action="{% url 'blog_articles:add-comment' article.slug %}" method="post">
     {% csrf_token %}
     {{ form|crispy }}
     <div class="text-center mt-4">

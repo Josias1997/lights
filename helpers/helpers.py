@@ -14,7 +14,8 @@ def set_path(instance, path):
         pass
     finally:
         url_list.insert(2, '/' + path + '/pictures/')
-    instance.url = "".join(url_list)
+        url = "".join(url_list)
+    instance.url = "/" + url 
 
 
 def compress_images(instance):

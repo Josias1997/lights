@@ -2,6 +2,7 @@ import React, {Component} from 'react';
 import Input from "../../UI/Input/Input";
 import axios from 'axios';
 import CSRFToken from "../../Utility/CSRFToken/CSRFToken";
+import LoadComponent from '../../Utility/LoadComponent/LoadComponent';
 
 class Contact extends Component {
 
@@ -46,7 +47,28 @@ class Contact extends Component {
         ],
         status: '',
         loading: false,
+        phone: '',
+        address: '',
+        email: '',
+        loading: true,
+        error: false,
     };
+    componentDidMount() {
+        axios.get('/api/blog/home/')
+        .then(response => {
+            this.setState({
+                phone: response.data[0].phone,
+                address: response.data[0].address,
+                email: response.data[0].email,
+                loading: false,
+            }).catch(error => {
+                this.setState({
+                    loading: false,
+                    error: true
+                })
+            })
+        })
+    }
     checkValidity = (input) => {
         if (input.type === 'text') {
             return input.value.length >= 3;
@@ -125,6 +147,7 @@ class Contact extends Component {
     };
 
     render() {
+        const {loading, error, phone, address, email} = this.state;
         return (
             <section className="mb-4">
                 <h2 className="h1-responsive font-weight-bold text-center my-4">Me contacter</h2>
@@ -175,27 +198,29 @@ class Contact extends Component {
                             {this.state.status}
                         </div>:null}
                     </div>
+                    <LoadComponent loading={!loading} error={error} component={"contact"}>
                     <div className="col-md-3 text-center">
                         <ul className="list-unstyled mb-0">
                             <li><i className="fas fa-map-marker-alt fa-2x">
 
                             </i>
-                                <p>Rabat, Bab El Had, Maroc</p>
+                                <p>{address}</p>
                             </li>
 
                             <li><i className="fas fa-phone mt-4 fa-2x">
 
                             </i>
-                                <p>+ 01 234 567 89</p>
+                                <p>{phone}</p>
                             </li>
 
                             <li><i className="fas fa-envelope mt-4 fa-2x">
 
                             </i>
-                                <p>johndoe@gmail.com</p>
+                                <p>{email}</p>
                             </li>
                         </ul>
-                    </div>
+                        </div>
+                    </LoadComponent>
 
                 </div>
 

@@ -35,7 +35,7 @@ class CustomCard extends Component {
         } else {
             content = <div className={"container"}>
                 <div className={"view"}>
-                    <img src={url} alt={url} className={"img-fluid"}/>
+                    <img src={url} alt={title} className={"img-fluid"}/>
                     <div className={"pattern1 flex-center"}>
                         <p>{title}</p>
                     </div>
