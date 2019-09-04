@@ -60,7 +60,8 @@ def make_reservation(request):
     send_mail(subject="Réservation", from_email=settings.EMAIL_HOST_USER, recipient_list=[email],
         message="Réservation éffectuée", fail_silently=False)
     send_mail(subject="Réservation", from_email=settings.EMAIL_HOST_USER, recipient_list=[settings.EMAIL_HOST_USER],
-        message=f"Nouvelle réservation de {name} email: {email} pour l'offre {offer.title}: {offer.price} ", fail_silently=False)
+        message="Nouvelle réservation de {} email: {} pour l'offre {}: {} ".format(name, email, offer.title, offer.price)
+        , fail_silently=False)
     return HttpResponse("Réservation éffectuée")
 
 
@@ -72,7 +73,7 @@ def contact_admin(request):
     message = request.data.get("message")
     reply_message = "Merci de me contacter je vous reviendrai avec les renseignements nécessaires"
     send_mail(subject=subject, from_email=email, recipient_list=[settings.EMAIL_HOST_USER],
-              message=f"{name} {email} {message}"
+              message="{} {} {}".format(name, email, message)
               , fail_silently=False)
     send_mail(subject=subject, from_email=settings.EMAIL_HOST_USER, recipient_list=[email],
               message=reply_message, fail_silently=False)
