@@ -196,7 +196,7 @@ class Contact extends Component {
                                onClick={this.onSubmitForm}>Envoyer</a>
                         </div>}
                         {this.state.status !== '' ? <div className={"alert alert-info mt-2 ml-3"}>
-                            "Message envoyé avec succès" 
+                            {this.state.status} 
                         </div>:null}
                     </div>
                     <LoadComponent loading={!loadingData} error={error} component={"contact"}>

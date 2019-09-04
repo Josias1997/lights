@@ -70,7 +70,7 @@ class DropdownForm extends Component {
                 })
                 .catch(error => {
                     this.setState({
-                        status: error,
+                        status: error.toString(),
                         loading: false
                     })
                 })
@@ -119,7 +119,7 @@ class DropdownForm extends Component {
                     }
                     {
                     this.state.status !== '' ? <div className="alert alert-info ml-2">
-                        Réservation effectuée
+                        {this.state.status}
                 </div>:null
                 }
                 </form>

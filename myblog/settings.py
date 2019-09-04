@@ -24,13 +24,13 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 SECRET_KEY = '2i8+l9+&nl!&p5@f^ouo*fqrc7!&^zo*u#$2zpv3v$4354cocx'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
 
 ALLOWED_HOSTS = ['*']
 EMAIL_HOST = 'smtp.gmail.com'
-EMAIL_HOST_USER = 'toguyeni98@gmail.com'
-EMAIL_HOST_PASSWORD = 'soleil98'
+EMAIL_HOST_USER = 'kologojosias@gmail.com'
+EMAIL_HOST_PASSWORD = 'kingjosias'
 EMAIL_PORT = 587
 EMAIL_USE_TLS = True
 
