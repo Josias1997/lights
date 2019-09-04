@@ -5,7 +5,7 @@ from django.conf.urls import url
 
 urlpatterns = [
     path('', views.index, name="home"),
-    path('gallerie/', views.index, name='gallery'),
+    path('galerie/', views.index, name='gallery'),
     path('offres/', views.index, name='offers'),
     path('contact/', views.index, name='contact')
 ]

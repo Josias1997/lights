@@ -50,5 +50,5 @@
   <hr>
 {% endblock %}
 {% block footer %}
-{% include 'footer-blog.html' %}
+{% include 'footer-blog.html' with url=request.path %}
 {% endblock %}
