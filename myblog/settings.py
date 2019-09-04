@@ -95,10 +95,10 @@ WSGI_APPLICATION = 'myblog.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',
-        'NAME': 'dLDMUMU0xU',
-        'USER': 'dLDMUMU0xU',
-        'PASSWORD': 'B0LYd1zqfO',
-        'HOST': 'remotemysql.com',
+        'NAME': 'godson$lightsphotography',
+        'USER': 'godson',
+        'PASSWORD': 'Kngyjb199*#',
+        'HOST': 'godson.mysql.pythonanywhere-services.com',
         'PORT': '3306'
     }
 }
