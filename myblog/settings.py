@@ -24,7 +24,7 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 SECRET_KEY = '2i8+l9+&nl!&p5@f^ouo*fqrc7!&^zo*u#$2zpv3v$4354cocx'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = False
+DEBUG = True
 
 
 ALLOWED_HOSTS = ['*']
@@ -98,10 +98,10 @@ WSGI_APPLICATION = 'myblog.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',
-        'NAME': 'godson$lightsphotography',
-        'USER': 'godson',
-        'PASSWORD': 'Kngyjb199*#',
-        'HOST': 'godson.mysql.pythonanywhere-services.com',
+        'NAME': 'dLDMUMU0xU',
+        'USER': 'dLDMUMU0xU',
+        'PASSWORD': '6KgTsuziUj',
+        'HOST': 'remotemysql.com',
         'PORT': '3306'
     }
 }
