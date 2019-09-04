@@ -110,7 +110,7 @@ class Contact extends Component {
                 })
                 .catch(error => {
                     this.setState({
-                        status: error.toString(),
+                        status: "Erreur d'envoi. Problème serveur",
                         loading: false
                     })
                 })

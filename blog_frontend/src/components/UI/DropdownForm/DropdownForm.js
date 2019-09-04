@@ -70,7 +70,7 @@ class DropdownForm extends Component {
                 })
                 .catch(error => {
                     this.setState({
-                        status: error.toString(),
+                        status: "Echec réservation! Veuillez réessayer svp",
                         loading: false
                     })
                 })
