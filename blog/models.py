@@ -24,7 +24,7 @@ class Offer(Content):
     price = models.FloatField(default=0)
 
     def __str__(self):
-        return f"{self.title} {self.price}"
+        return "{} {}".format(self.title, self.price)
 
 
 class Reservation(models.Model):
@@ -34,8 +34,7 @@ class Reservation(models.Model):
     reservation_date = models.DateTimeField(auto_now_add=True)
 
     def __str__(self):
-        return f"{self.reservation_author_name} a fait une réservation pour l'offre {self.offer.title}" \
-               f" (Prix) {self.offer.price}"
+        return "{} a fait une réservation pour l'offre {} (Prix) {}".format(self.reservation_author_name, self.offer.title, self.offer.price)
 
 
 class Category(models.Model):
