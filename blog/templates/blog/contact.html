@@ -1,0 +1,7 @@
+{% extends 'email.html' %}
+
+{% block preheader %} Confirmation contact {% endblock %}
+
+{% block name %} {{ name }} {% endblock %}
+
+{% block message %}  {{ content|safe }} {% endblock %}

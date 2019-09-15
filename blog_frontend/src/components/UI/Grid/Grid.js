@@ -6,6 +6,7 @@ import {connect} from 'react-redux';
 import MyModal from "../Modal/Modal";
 import Paginator from "../Paginator/Paginator";
 
+
 class Grid extends Component {
     state = {
         open: false,
@@ -61,7 +62,8 @@ class Grid extends Component {
             </div>
             <MyModal id={this.state.selectedId}
                          open={this.state.open}
-                         close={this.handleClose}
+                         onClose={this.handleClose}
+                         location={"offers"}
             />
             <Paginator
                 pages={this.state.pages}

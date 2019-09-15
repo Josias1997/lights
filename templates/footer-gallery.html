@@ -1,6 +1,13 @@
 <!--Footer-->
 <footer class="page-footer text-center font-small mdb-color danger-color-dark mt-auto wow fadeIn">
     <div class="container-fluid text-center text-md-left">
+    {% if description_object.image %}
+    <div class="row text-center d-flex justify-content-center pt-5 mb-3">
+      <div class="avatar mx-auto" style="width:20%; height:20%"><img src="{{ description_object.image.url }}"
+            alt="avatar profile" class="rounded-circle img-fluid">
+        </div>
+    </div>
+    {% endif %}
 
     <!-- Grid row -->
     <div class="row">

@@ -3,6 +3,9 @@ from io import BytesIO
 from django.core.files.uploadedfile import InMemoryUploadedFile
 import sys
 import math
+from django.core.mail import send_mail, EmailMessage
+from django.template.loader import render_to_string
+from django.conf import settings
 
 
 def set_path(instance, path):
@@ -42,3 +45,10 @@ def filter(articles_list, tags):
         if number_tags_matched >= math.floor(len(tags) * 0.75):
             related_articles.append(article)
     return related_articles
+
+
+def send_mail_html(to_list, subject, template_name, context, sender=settings.EMAIL_HOST_USER):
+    message_html = render_to_string(template_name, context)
+    msg = EmailMessage(subject=subject, body=message_html, from_email=sender, bcc=to_list)
+    msg.content_subtype = "html"
+    msg.send()

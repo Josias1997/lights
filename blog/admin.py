@@ -1,5 +1,5 @@
 from django.contrib import admin
-from .models import Content, Offer, Picture, Category, Reservation, HomeData
+from .models import Content, Offer, Picture, Category, Reservation, HomeData, EmailMessage
 
 
 class OfferAdmin(admin.ModelAdmin):
@@ -31,4 +31,5 @@ admin.site.register(Category, CategoryAdmin)
 admin.site.register(HomeData)
 admin.site.register(Reservation)
 admin.site.register(Content)
+admin.site.register(EmailMessage)
 

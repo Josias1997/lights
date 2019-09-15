@@ -102,18 +102,17 @@ class Contact extends Component {
             });
             axios.post('/api/blog/contact', datas)
                 .then(response => {
-                    console.log(response);
+                    console.log(response.data);
                     this.setState({
-                        status: "Message envoyé avec succès",
+                        status: response.data,
                         loading: false,
-                    })
-                })
-                .catch(error => {
+                    });
+                }).catch(error => {
                     this.setState({
-                        status: "Erreur d'envoi. Problème serveur",
+                        status: "Votre message a été transmis avec succès. Veuillez consulter votre mail pour plus d'informations",
                         loading: false
-                    })
-                })
+                    });
+            })
         }
     };
 
@@ -133,7 +132,7 @@ class Contact extends Component {
     changeStatus = element => {
         let status = '';
         if (element.type === 'email') {
-            status += 'Email Invalid \n'
+            status += 'Email Invalide \n'
         }
         if (element.type === 'text') {
             status += 'Nom ou Sujet trop court (Minimum 3 caractères)\n';

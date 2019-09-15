@@ -28,11 +28,11 @@ DEBUG = True
 
 
 ALLOWED_HOSTS = ['*']
-EMAIL_HOST = 'smtp.gmail.com'
-EMAIL_HOST_USER = 'kologojosias@gmail.com'
-EMAIL_HOST_PASSWORD = 'kingjosias'
-EMAIL_PORT = 587
-EMAIL_USE_TLS = True
+EMAIL_HOST = 'sv64.ifastnet13.org'
+EMAIL_HOST_USER = 'toguyeni@lightsphotography.net'
+EMAIL_HOST_PASSWORD = 'toguyeni199*#'
+EMAIL_PORT = 290
+EMAIL_USE_SSL = True
 # EMAIL_HOST = os.environ.get('EMAIL_HOST', 'smtp.gmail.com')
 # EMAIL_HOST_USER = os.environ.get('EMAIL_HOST_USER', 'kologojosias@gmail.com')
 # EMAIL_HOST_PASSWORD = os.environ.get('EMAIL_HOST_PASSWORD', 'kingjosias')
@@ -146,7 +146,7 @@ USE_TZ = True
 STATIC_URL = '/static/'
 
 
-STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
+STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles/')
 STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
 
 MEDIA_URL = '/media/'

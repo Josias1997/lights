@@ -3,6 +3,7 @@ from django.utils import timezone
 from django.db.models.signals import pre_save
 from django.dispatch import receiver
 from helpers.helpers import set_path, compress_images
+from ckeditor_uploader.fields import RichTextUploadingField
 # Create your models here.
 
 
@@ -52,6 +53,15 @@ class HomeData(models.Model):
 
     def __str__(self):
         return self.about_me
+
+
+class EmailMessage(models.Model):
+    title = models.CharField(max_length=50, default="Messages")
+    reservationMessage = RichTextUploadingField()
+    contactMessage = RichTextUploadingField()
+
+    def __str__(self):
+        return self.title
 
 
 

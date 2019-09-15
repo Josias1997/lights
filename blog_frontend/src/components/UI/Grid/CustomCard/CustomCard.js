@@ -2,6 +2,7 @@ import React, {Component} from 'react';
 import truncate from "../../../../helpers/truncate";
 import styles from './CustomCard.less';
 import DropdownForm from "../../DropdownForm/DropdownForm";
+import Button from '../../Button/Button.js';
 
 
 class CustomCard extends Component {
@@ -25,26 +26,26 @@ class CustomCard extends Component {
                             </a>
                     </div>
                     <div className="card-body">
-                        <h4 className="card-title">{title + " " + price}</h4>
+                        <h4 className="card-title">{title + " " + price} DHS</h4>
                         <p className="card-text">{truncatedContent}</p>
-                        <a href="#" className="btn btn-danger" onClick={() => handleClick(id)}>Détails</a>
+                        <Button id={id} type="button" styleClasses="btn btn-danger" click={handleClick} value={"Détails"}/>
                     </div>
 
                 </div>
             </div>
         } else {
-            content = <div className={"container"}>
-                <div className={"view"}>
-                    <img src={url} alt={title} className={"img-fluid"}/>
-                    <div className={"pattern1 flex-center"}>
-                        <p>{title}</p>
-                    </div>
+            content = <div className={"row"} style={{
+                width: 100 + '%',
+                height: '50' + '%'
+            }}>
+                <div className={"col-md-6 mt-4"}>
+                    <img src={url} alt={title} className={"img-fluid ml-3"}/>
                 </div>
-                <div className={"container"}>
-                    <h3 className={"badge badge-primary"}>Prix: {price}</h3>
-                    <p className={"text-justify"}>{card.content}</p>
+                <div className={"col-md-6 mt-4"}>
+                    <p className={"text-justify ml-3"}>{card.content}</p>
+                    <h1 className={"badge badge-success"}>Prix: {price} DHS</h1>
+                    <DropdownForm offerId={id}/>
                 </div>
-                <DropdownForm offerId={id}/>
             </div>
         }
         return (

@@ -3,12 +3,18 @@ import Fade from 'react-reveal/Fade';
 import {connect} from 'react-redux';
 import {initCategories, initPictures} from "../../../store/actions";
 import LoadComponent from "../../Utility/LoadComponent/LoadComponent";
+import styles from './Gallery.less';
+import Picture from '../../Picture/Picture.js';
+import Button from '../../UI/Button/Button.js';
+import MyModal from '../../UI/Modal/Modal.js';
 
 
 class Gallery extends Component {
 
     state = {
-        currentCategory: 'all'
+        currentCategory: 'all',
+        open: false,
+        selectedPictureId: ''
     }
 
     componentDidMount() {
@@ -21,6 +27,7 @@ class Gallery extends Component {
     }
 
     filterImages = categoryId => {
+        console.log(categoryId);
         this.setState({
             currentCategory: categoryId
         })
@@ -28,6 +35,21 @@ class Gallery extends Component {
     resetImages = () => {
         this.setState({
             currentCategory: 'all'
+        })
+    }
+
+    handleClick = (id) => {
+        this.setState({
+            open: true,
+            selectedPictureId: id
+        })
+    }
+
+
+    handleClose = () => {
+        this.setState({
+            open: false,
+            selectedPictureId: ''
         })
     }
 
@@ -39,53 +61,36 @@ class Gallery extends Component {
                 <LoadComponent loading={loading} error={error}>
                 <div className="row">
                     <div className="col-sm-12 mb-5">
-                        <button type="button" className={"btn btn-rounded waves-effect waves-light btn-" + (this.state.currentCategory === 'all' ?
-                        "danger":"outline-red")} onClick={
-                            () => this.resetImages()
-                        }>
-                            Toutes les catégories
-                        </button>
+                        <Button type="button" styleClasses={"btn btn-rounded waves-effect waves-light btn-" + (this.state.currentCategory === 'all' ?
+                        "danger":"outline-red")} click={this.resetImages} value={"Toutes les catégories"}/>
+                            
                         {
                             categories.map(({id, name}) => (
-                                <button key={id} type="button" className={"btn btn-rounded waves-effect waves-light btn-" + (this.state.currentCategory === id ?
-                                "danger":"" )} onClick={
-                                    () => this.filterImages(id)
-                                }>
-                                    {name}
-                                </button>
+                                <Button id={id} key={id} type="button" styleClasses={"btn btn-rounded waves-effect waves-light btn-" + (this.state.currentCategory === id ?
+                                "danger":"" )} click={this.filterImages} value={name} />
                             ))
                         }
 
                     </div>
 
                 </div>
-                <div className="row">
+                <div className={styles.gallery}>
                     {
                         this.state.currentCategory === 'all' ? pictures.map(({id, url, title}) => (
-                            <div key={id} className={"col-md-4 mt-3"}>
-                                <figure className="figure">
-                                    <a href={url}>
-                                        <img className="img-fluid" src={url} alt={title}/>
-                                    </a>
-                                    <figcaption className="figure-caption text-right">{title}</figcaption>
-                                </figure>
-                            </div>
+                            <Picture id={id} key={id} url={url} title={title} click={this.handleClick}/>
                         )) : pictures.filter(({category}) => (
                             category.id === this.state.currentCategory
                         )).map(({id, url, title}) => (
-                            <div key={id} className={"col-md-4 mt-3 fadeIn"}>
-                                <figure className="figure">
-                                    <a href={url}>
-                                        <img className="img-fluid" src={url} alt={title}/>
-                                    </a>
-                                    <figcaption className="figure-caption text-right">{title}</figcaption>
-                                </figure>
-                            </div>
+                            <Picture id={id} key={id} url={url} title={title} click={this.handleClick}/>
                         ))
                     }
 
                 </div>
                 </LoadComponent>
+                <MyModal onClose={this.handleClose} 
+                id={this.state.currentCategory}
+                pictureId={this.state.selectedPictureId} 
+                open={this.state.open} location="gallery"/>
             </Fade>
         );
     }

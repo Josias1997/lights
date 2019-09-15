@@ -1,4 +1,4 @@
-from .models import Category, Picture, Offer, Reservation, HomeData
+from .models import Category, Picture, Offer, Reservation, HomeData, EmailMessage
 from .serializers import CategorySerializer, PictureSerializer, \
     OfferSerializer, HomeDataSerializer
 from rest_framework.generics import GenericAPIView, RetrieveAPIView, ListAPIView
@@ -7,6 +7,7 @@ from rest_framework.decorators import api_view
 from django.shortcuts import HttpResponse, get_object_or_404
 from django.core.mail import send_mail
 from django.conf import settings
+from helpers.helpers import send_mail_html
 # Create your views here.
 
 
@@ -54,13 +55,19 @@ def make_reservation(request):
     id = request.data.get("id")
     offer = get_object_or_404(Offer, id=id)
     name = request.data.get("name")
+    number = request.data.get("number")
     email = request.data.get("email")
     reservation = Reservation(offer=offer, reservation_author_name=name, reservation_author_email=email)
     reservation.save()
-    send_mail(subject="Réservation", from_email=settings.EMAIL_HOST_USER, recipient_list=[email],
-        message="Réservation éffectuée", fail_silently=False)
+    messages = EmailMessage.objects.all()[0]
+    bookingMessage = messages.reservationMessage
+    context = {
+        'content': bookingMessage,
+        'name': name
+    }
+    send_mail_html([email], "Réservation", 'blog/reservation.html', context, settings.EMAIL_HOST_USER)
     send_mail(subject="Réservation", from_email=settings.EMAIL_HOST_USER, recipient_list=[settings.EMAIL_HOST_USER],
-        message="Nouvelle réservation de {} email: {} pour l'offre {}: {} ".format(name, email, offer.title, offer.price)
+        message="Nouvelle réservation de {} email: {} pour l'offre {}: {} {}".format(name, email, offer.title, offer.price, number)
         , fail_silently=False)
     return HttpResponse("Réservation éffectuée")
 
@@ -71,12 +78,16 @@ def contact_admin(request):
     email = request.data.get("email")
     subject = request.data.get("subject")
     message = request.data.get("message")
-    reply_message = "Merci de me contacter je vous reviendrai avec les renseignements nécessaires"
-    send_mail(subject=subject, from_email=email, recipient_list=[settings.EMAIL_HOST_USER],
+    messages = EmailMessage.objects.all()[0]
+    contactMessage = messages.contactMessage
+    context = {
+        'content': contactMessage,
+        'name': name
+    }
+    send_mail_html([email], "Confirmation contact", 'blog/contact.html', context, settings.EMAIL_HOST_USER)
+    send_mail(subject=subject, from_email=settings.EMAIL_HOST_USER, recipient_list=[settings.EMAIL_HOST_USER],
               message="{} {} {}".format(name, email, message)
               , fail_silently=False)
-    send_mail(subject=subject, from_email=settings.EMAIL_HOST_USER, recipient_list=[email],
-              message=reply_message, fail_silently=False)
     return HttpResponse("Votre message a été transmis avec succès. Veuillez consulter votre mail pour "
                         "plus d'informations")
 

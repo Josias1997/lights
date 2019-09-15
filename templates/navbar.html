@@ -20,13 +20,13 @@
 
             <!-- Left -->
             <ul class="navbar-nav mr-auto">
-                <li class="nav-item {% if request.path == '/gallerie' %} active {% endif %}">
+                <li class="nav-item {% if request.path == '/galerie' %} active {% endif %}">
                     <a class="nav-link waves-effect text-white" href="{% url 'gallery' %}">
-                        Gallerie
+                        Galerie
                         <span class="sr-only">(current)</span>
                     </a>
                 </li>
-                <li class="nav-item {% if request.path == '/offers' %} active {% endif %}">
+                <li class="nav-item {% if request.path == '/offres' %} active {% endif %}">
                     <a class="nav-link waves-effect text-white" href="{% url 'offers' %}">
                     Offres
                 </a>

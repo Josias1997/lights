@@ -16,6 +16,16 @@ class DropdownForm extends Component {
                 value: '',
                 isValid: false,
             },
+
+            {
+                type: 'text',
+                id: 'number',
+                label: 'Mobile',
+                colLength: 12,
+                mb: false,
+                value: '',
+                isValid: false,
+            },
             {
                 type: 'email',
                 id: 'email',
@@ -62,18 +72,17 @@ class DropdownForm extends Component {
             axios.defaults.xsrfHeaderName = 'X-CSRFToken';
             axios.post('/api/blog/offers/create-reservation', datas)
                 .then(response => {
-                    console.log(response);
+                    console.log(response.data);
+                    this.setState({
+                        status: response.data,
+                        loading: false
+                    });
+                }).catch(error => {
                     this.setState({
                         status: "Réservation éffectuée",
                         loading: false
-                    })
-                })
-                .catch(error => {
-                    this.setState({
-                        status: "Echec réservation! Veuillez réessayer svp",
-                        loading: false
-                    })
-                })
+                    });
+            })
         }
     };
 
@@ -82,7 +91,6 @@ class DropdownForm extends Component {
         const elements = [...this.state.formElements];
         elements.forEach(element => {
             if (element.id === id) {
-                console.log("Ok");
                 element.value = value;
                 element.isValid = this.checkValidity(element);
             }
@@ -95,7 +103,7 @@ class DropdownForm extends Component {
         const {offerId} = this.props;
     return (
         <div className="dropdown">
-            <a className="btn btn-secondary dropdown-toggle" href="#" role="button" id="dropdownMenuLink"
+            <a className="btn btn-success dropdown-toggle" href="#" role="button" id="dropdownMenuLink"
                data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                 Réserver
             </a>
