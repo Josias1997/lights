@@ -29,7 +29,7 @@ DEBUG = True
 
 ALLOWED_HOSTS = ['*']
 EMAIL_HOST = 'sv64.ifastnet13.org'
-EMAIL_HOST_USER = 'toguyeni@lightsphotography.net'
+EMAIL_HOST_USER = 'contact@lightsphotography.net'
 EMAIL_HOST_PASSWORD = 'toguyeni199*#'
 EMAIL_PORT = 290
 EMAIL_USE_SSL = True

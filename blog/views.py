@@ -59,8 +59,10 @@ def make_reservation(request):
     email = request.data.get("email")
     reservation = Reservation(offer=offer, reservation_author_name=name, reservation_author_email=email)
     reservation.save()
-    messages = EmailMessage.objects.all()[0]
-    bookingMessage = messages.reservationMessage
+    messages = EmailMessage.objects.all()
+    bookingMessage = "Confirmation réservation"
+    if len(messages) != 0:
+        bookingMessage = messages[0].reservationMessage
     context = {
         'content': bookingMessage,
         'name': name
@@ -78,8 +80,10 @@ def contact_admin(request):
     email = request.data.get("email")
     subject = request.data.get("subject")
     message = request.data.get("message")
-    messages = EmailMessage.objects.all()[0]
-    contactMessage = messages.contactMessage
+    messages = EmailMessage.objects.all()
+    contactMessage = "Message reçu"
+    if len(messages) != 0:
+        contactMessage = messages[0].contactMessage
     context = {
         'content': contactMessage,
         'name': name
